@@ -152,13 +152,18 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
     @Override
-    public Boolean hasRole(String... roleName) {
+    public Boolean hasAnyRole(String... roleName) {
         for (String r : roleName) {
             if(user != null && userRolesCache != null && userRolesCache.contains(r)){
                 return Boolean.TRUE;
             }
         }
         return Boolean.FALSE;
+    }
+
+    @Override
+    public Boolean hasRole(String role){
+        return hasAnyRole(role);
     }
 
     /** @Override

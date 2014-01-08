@@ -104,9 +104,9 @@ public class UserMBean extends StateMBean<User> {
          * only
          */
         if(securityContext.hasRole(AppConstants.Role.ADMIN)){
-            MessagesController.addInfo(getDeleteMessage());
+            super.delete();
         }else {
-            throw new BusinessException(getResourceBundle().getString("security.role-allowed"),AppConstants.Role.ADMIN);
+            throw new BusinessException(getResourceBundle().getString("security.role-allowed",AppConstants.Role.ADMIN));
         }
 
     }

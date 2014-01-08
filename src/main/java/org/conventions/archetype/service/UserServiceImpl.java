@@ -83,7 +83,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         return super.configFindPaginated(columnFilters, externalFilter, dc);
     }
 
-    @SecurityMethod(rolesAllowed = AppConstants.Role.OPERATOR, message = "Only operator can perform this tssk")
+    @SecurityMethod(rolesAllowed = AppConstants.Role.OPERATOR, message = "Only operator can perform this task")
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public void testPermission(){
         MessagesController.addInfo(resourceBundle.getString("test.permission",currentUser.getName(),currentUser.getUserRoles()));
