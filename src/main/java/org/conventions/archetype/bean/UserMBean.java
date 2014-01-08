@@ -5,6 +5,7 @@
 package org.conventions.archetype.bean;
 
 import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
+import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.bean.StateMBean;
 import org.conventionsframework.bean.state.CrudState;
 import org.conventionsframework.exception.BusinessException;
@@ -94,6 +95,20 @@ public class UserMBean extends StateMBean<User> {
             //tell groupService which user it is working on @see GroupServiceImpl#configFindPaginated
             groupPaginator.getFilter().put("currentUser", currentUserId);
         }
+    }
+
+    @Override
+    public void delete() {
+        /**
+         * programatic permission check
+         * only
+         */
+        if(securityContext.hasRole(AppConstants.Role.ADMIN)){
+            MessagesController.addInfo(getDeleteMessage());
+        }else {
+            throw new BusinessException(getResourceBundle().getString("security.role-allowed"),AppConstants.Role.ADMIN);
+        }
+
     }
 
     public void test() {

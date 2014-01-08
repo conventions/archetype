@@ -127,9 +127,7 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
          */
     }
 
-    public boolean hasRole(String roleName) {
-        return user != null && userRolesCache != null && userRolesCache.contains(roleName);
-    }
+
 
     public void updateUserRolesEvent(@Observes UpdateUserRoles updateUserRoles) {
         userRolesCache = updateUserRoles.getUserRoles();
@@ -151,6 +149,16 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     public Boolean loggedIn() {
         log.info("logged in:"+(user != null && user.getId() != null));
         return user != null && user.getId() != null;
+    }
+
+    @Override
+    public Boolean hasRole(String... roleName) {
+        for (String r : roleName) {
+            if(user != null && userRolesCache != null && userRolesCache.contains(r)){
+                return Boolean.TRUE;
+            }
+        }
+        return Boolean.FALSE;
     }
 
     /** @Override
