@@ -6,7 +6,9 @@ package org.conventions.archetype.util;
 public class AppConstants {
 
         public static final class Role {
-            public static final String ADMIN = "Administrator";
-            public static final String OPERATOR = "Operator";
+            public static final String ADMIN = "administrator";
+            public static final String OPERATOR = "operator";
+            public static final String DEVELOPER = "developer";
+
         }
 }

@@ -57,8 +57,8 @@ public class InitAppBean implements Serializable{
             final Group groupDevOps = new Group("DevOps");
             final Group groupOperations = new Group("Operations");
             
-            Role roleOp = new Role("Operator"); 
-            Role roleSystem = new Role("System Engineer"); 
+            Role roleOp = new Role("operator");
+            Role roleSystem = new Role("system engineer");
             Role roleArch = new Role("architect"); 
             
             groupDevOps.addRole(roleSystem);
@@ -67,11 +67,11 @@ public class InitAppBean implements Serializable{
             groupOperations.addRole(roleOp);
             groupOperations.addRole(roleSystem);
             
-            Role roleAdmin = new Role("Administrator"); 
+            Role roleAdmin = new Role("administrator");
             
             groupManager.addRole(roleAdmin);
             
-            Role roleDev = new Role("Developer"); 
+            Role roleDev = new Role("developer");
             
             groupDev.addRole(roleDev);
             groupDev.addRole(roleArch);
@@ -84,12 +84,12 @@ public class InitAppBean implements Serializable{
             userAdmin.addGroup(groupDev);
             userService.store(userAdmin);
             
-            User op = new User("Operator");
+            User op = new User("operator");
             op.setPassword(utils.encrypt("operator"));
             op.addGroup(groupOperations);
             userService.store(op);
             
-            User devOps = new User("DevOps Man");
+            User devOps = new User("devops");
             devOps.setPassword(utils.encrypt("devops"));
             devOps.addGroup(groupDevOps);
             userService.store(devOps);
