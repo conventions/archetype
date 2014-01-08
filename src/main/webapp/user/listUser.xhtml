@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:framework="http://java.sun.com/jsf/composite/components/conventions"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        template="../templates/main.xhtml"
+        >
+    <ui:define name="content">
+        <framework:statePusher state="#{findState}" mbean="#{userMBean}"/>
+        <center>
+            <p:panel header="#{msg.user}s" style="margin: 15px;width: 700px;text-align: left;overflow: auto">
+                <p:remoteCommand name="updateRowCount" update="mainForm:table:table_table:footer"/>
+                <framework:datatable paginator="#{userMBean.paginator}" id="table" widgetVar="tableVar"
+                                     emptyMessage="#{msg['user.notfound']}"
+                                     rows="5" onFilter="updateRowCount()">
+                    <p:column sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.user}">
+                        <h:link value="#{row.name}" outcome="addUser.faces?id=#{row.id}"/>
+                    </p:column>
+                    <p:column headerText="Password">
+                        #{row.password}
+                    </p:column>
+                    <p:column sortBy="#{row.groups}" filterOptions="#{comboMBean.groupList}" filterBy="#{row.groups}"
+                              headerText="#{msg.groups}">
+                        <p:dataList value="#{row.groups}" var="r" rendered="#{not empty row.groups}">
+                            <p:column>
+                                #{r.name}
+                            </p:column>
+                        </p:dataList>
+                        <h:outputText rendered="#{empty row.groups}" value="#{msg['group.notAssociated']}"/>
+                    </p:column>
+                    <p:column headerText="Remove">
+                        <framework:removeLink modal="removeUserModal" mbean="#{userMBean}" row="#{row}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <framework:tableFooter ajax="false" id="footer" mbean="#{userMBean}" renderAddButton="true"
+                                               addButtonValue="#{msg['user.new']}" buttonClass="ui-priority-primary"/>
+                    </f:facet>
+                </framework:datatable>
+            </p:panel>
+        </center>
+        <framework:modalRemoval mbean="#{userMBean}"
+                                update="#{g} :mainForm:pageControl"
+                                header="Remove User"
+                                id="removeUserModal"
+                                widgetVar="removeUserModal">
+            <p:inputText value="#{userMBean.entityAux.name}" disabled="true"/>
+        </framework:modalRemoval>
+
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,76 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building arquillian-experience
+[INFO]    task-segment: [dependency:tree]
+[INFO] ------------------------------------------------------------------------
+[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from snapshots
+[WARNING] repository metadata for: 'snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT' could not be retrieved from repository: snapshots due to an error: Error transferring file: maven.procergs.reders
+[INFO] Repository 'snapshots' will be blacklisted
+[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from JBOSS_NEXUS
+[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from prime-repo
+[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from sonatype snapshots
+[WARNING] *** CHECKSUM FAILED - Checksum failed on download: local = 'a12b949fa4111617e2cfbb1a6b781e4c6cfde564'; remote = '731ea770122e24cb34bcde96da4d1445bfcd8ec9' - RETRYING
+[WARNING] *** CHECKSUM FAILED - Checksum failed on download: local = 'a12b949fa4111617e2cfbb1a6b781e4c6cfde564'; remote = '731ea770122e24cb34bcde96da4d1445bfcd8ec9' - IGNORING
+[INFO] [dependency:tree {execution: default-cli}]
+[INFO] org.rmpestano:arquillian-experience:war:1.0-SNAPSHOT
+[INFO] +- org.conventionsframework:conventions-core:jar:1.0.0-SNAPSHOT:compile
+[INFO] +- org.primefaces:primefaces:jar:3.5:compile
+[INFO] +- org.apache.myfaces.extensions.cdi.bundles:myfaces-extcdi-bundle-jsf20:jar:1.0.5:compile
+[INFO] +- org.primefaces.extensions:all-themes:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:afterdark:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:afternoon:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:afterwork:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:black-tie:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:blitzer:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:bluesky:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:bootstrap:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:casablanca:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:cruze:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:cupertino:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:dark-hive:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:dot-luv:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:eggplant:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:excite-bike:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:flick:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:glass-x:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:hot-sneaks:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:humanity:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:le-frog:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:midnight:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:mint-choc:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:overcast:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:pepper-grinder:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:redmond:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:rocket:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:sam:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:smoothness:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:south-street:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:start:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:sunny:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:swanky-purse:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:trontastic:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:ui-darkness:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:ui-lightness:jar:1.0.8:runtime
+[INFO] |  +- org.primefaces.themes:vader:jar:1.0.8:runtime
+[INFO] |  \- org.primefaces.themes:home:jar:1.0.8:runtime
+[INFO] +- org.apache.commons:commons-lang3:jar:3.1:compile
+[INFO] +- commons-codec:commons-codec:jar:1.8:compile
+[INFO] +- javax:javaee-web-api:jar:6.0:provided
+[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.1.5.Final:provided
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:provided
+[INFO] |  +- org.hibernate:hibernate-core:jar:4.1.5.Final:provided
+[INFO] |  |  \- antlr:antlr:jar:2.7.7:provided
+[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.0.Final:provided
+[INFO] |  +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |  +- org.javassist:javassist:jar:3.14.0-GA:provided
+[INFO] |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.1.Final:provided
+[INFO] +- org.hibernate:hibernate-validator:jar:4.3.0.Final:provided
+[INFO] |  \- javax.validation:validation-api:jar:1.0.0.GA:provided
+[INFO] \- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:provided
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 13 seconds
+[INFO] Finished at: Sun Dec 01 22:48:46 BRST 2013
+[INFO] Final Memory: 24M/299M
+[INFO] ------------------------------------------------------------------------

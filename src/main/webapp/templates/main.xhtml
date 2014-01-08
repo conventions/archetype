@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:framework="http://java.sun.com/jsf/composite/components/conventions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view contentType="text/html">
+    <h:head>
+        <f:loadBundle
+                basename="messages_#{(resourceBundleProvider.currentLocale ne 'en' and resourceBundleProvider.currentLocale ne 'pt') ? 'en': resourceBundleProvider.currentLocale}"
+                var="msg"/>
+        <title>#{msg['title']}</title>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+    </h:head>
+    <h:body>
+        <h:form id="mainForm">
+            <center>
+                <p:panel id="mainPanel" header="Conventions Archetype" style="height: 600px;width: 800px">
+                    &nbsp;
+                    <h:outputText style="float: right;text-decoration: underline;font-weight: bold" value="Logged as #{security.user.name}"
+                                  rendered="#{loggedIn}"/>
+                    <p:menubar>
+                        <p:menuitem id="homeMenu" action="/home.faces?faces-redirect=true" value="#{msg['home']}"
+                                    ajax="false" immediate="true"/>
+                        <p:menuitem url="/user/userHome.faces" value="#{msg.user}s" ajax="false" immediate="true"/>
+                        <p:menuitem action="/group/groupHome.faces?faces-redirect=true" value="#{msg.groups}"
+                                    ajax="false">
+                        </p:menuitem>
+                        <p:menuitem action="/role/roleHome.faces?faces-redirect=true" value="#{msg.roles}" ajax="false"
+                                    immediate="true"/>
+                        <p:menuitem value=""/>
+                        <p:menuitem value=""/>
+                        <p:menuitem value=""/>
+                        <p:menuitem value=""/>
+                        <p:menuitem value=""/>
+                        <p:menuitem value="Logout" rendered="#{loggedIn}" action="#{logoutMBean.doLogout}" immediate="true"
+                                    style="float: right"/>
+
+                    </p:menubar>
+
+                    <div style="float: right;margin-top: -30px">
+                        <p:selectOneMenu value="#{localeMBean.selectedLocale}" style="width:100px;text-align: left;">
+                            <f:selectItem itemValue="en" itemLabel="English"/>
+                            <f:selectItem itemValue="pt" itemLabel="Português"/>
+                            <p:ajax listener="#{localeMBean.changeLocale}" update="@all"/>
+                        </p:selectOneMenu>
+                        <p:themeSwitcher value="#{themeMBean.theme}"
+                                         style="width:158px;text-align: left;margin-left: 10px" effect="fade" var="t"
+                                         converter="themeConverter">
+                            <f:selectItems value="#{themeMBean.themeList}" var="theme" itemLabel="#{theme.name}"
+                                           itemValue="#{theme}"/>
+                            <p:ajax update="mainForm:evenRowPanel"/>
+
+                            <p:column>
+                                <h:graphicImage library="images/themes" name="#{t.image}" width="40" height="30"/>
+                            </p:column>
+
+                            <p:column>
+                                #{t.name}
+                            </p:column>
+                        </p:themeSwitcher>
+                    </div>
+                    <framework:stateItens/>
+                    <framework:statePuller/>
+                    <p:growl id="growl" escape="false" sticky="true" autoUpdate="true" globalOnly="true"/>
+                    <p:outputPanel id="pageControl">
+                        <ui:insert name="content"/>
+                    </p:outputPanel>
+                    <h:outputLink target="_blank"
+                                  style="width:200px;top: 30px;position:relative;left:20px;  float: left;font-size: 10px!important;text-decoration: underline"
+                                  value="https://github.com/conventions/archetype/">
+                        Conventions Archetype source code
+                    </h:outputLink>
+                    <h:outputLink target="_blank"
+                                  style="width:200px;top: 30px;position:relative;left:-20px;  float: right;font-size: 10px!important;text-decoration: underline"
+                                  value="http://conventions.github.io/home/">
+                        Powered by conventions-1.0.0-RC2
+                    </h:outputLink>
+                </p:panel>
+            </center>
+            <p:outputPanel id="evenRowPanel">
+                <style type="text/css">
+                    .back {
+                        background-image: url(#{resource[ 'images:back.png' ]})
+                    }
+
+                    .even-row {
+                        background-color: #{themeMBean.evenRow} !important;
+                        background-image: none;
+                    }
+                </style>
+            </p:outputPanel>
+        </h:form>
+        <h:inputHidden value="#{initAppBean}"/>
+        <ui:insert name="popup"/>
+        <p:dialog id="logonDialog" visible="#{not loggedIn}" header="#{msg['logon.header']}" modal="true"
+                  closable="false">
+            <h:form id="loginForm">
+                <p:focus for="loginForm"/>
+                <p:messages id="loginMessages"/>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="inptUser" value="#{msg['logon.username']}"/>
+                    <p:inputText id="inptUser" value="#{security.username}" style="cursor: pointer"
+                                 required="true" requiredMessage="#{msg['logon.usernameRequired']}"/>
+                    <p:outputLabel for="inptPass" value="#{msg['logon.password']}"/>
+                    <p:password id="inptPass" value="#{security.password}" style="cursor: pointer"
+                                required="true" requiredMessage="#{msg['logon.passwordRequired']}"/>
+                </h:panelGrid>
+                <center>
+                    <p:commandButton value="Login" action="#{security.doLogon}"
+                                     update=":logonDialog loginMessages" ajax="false" styleClass="ui-priority-primary">
+                        <f:param name="includeViewParams" value="true"/>
+                    </p:commandButton>
+                </center>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</f:view>
+</html>
