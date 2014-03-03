@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.conventionsframework.model.VersionatedEntityLong;
 
 @Entity
@@ -20,6 +22,7 @@ import org.conventionsframework.model.VersionatedEntityLong;
 public class Role extends VersionatedEntityLong {
     
     private String name;
+    @JsonIgnore
     private List<Group> groups;
 
 

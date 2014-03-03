@@ -4,14 +4,12 @@
  */
 package org.conventions.archetype.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.conventionsframework.model.VersionatedEntityLong;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import org.conventionsframework.model.VersionatedEntityLong;
 
 @Entity
 @SequenceGenerator(allocationSize = 1, name = "seq_group", sequenceName = "seq_group")
@@ -20,6 +18,7 @@ public class Group extends VersionatedEntityLong{
     
     private String name;
     private List<Role> roles;
+    @JsonIgnore
     private List<User> users;
 
 

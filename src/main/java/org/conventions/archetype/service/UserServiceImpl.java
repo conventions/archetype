@@ -89,6 +89,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         MessagesController.addInfo(resourceBundle.getString("test.permission",currentUser.getName(),currentUser.getUserRoles()));
     }
 
+
+
     @Override
     @SecurityMethod(rolesAllowed= AppConstants.Role.ADMIN)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)

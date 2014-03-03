@@ -36,10 +36,10 @@ import java.util.logging.Logger;
 @ViewAccessScoped
 @PersistentClass(User.class)
 @BeanStates({
-        @BeanState(beanState = Constants.State.FIND_STATE, link = "user.find", outcome = Pages.FIND_USER, ajax = false),//dont need callback cause listUser uses StatePusher
-        @BeanState(beanState = Constants.State.INSERT_STATE, link = "user.new", outcome = Pages.EDIT_USER,ajax = false,callback = "#{userMBean.setInsertState}"),
-        @BeanState(beanState = Constants.State.UPDATE_STATE, link = "user.edit", outcome = Pages.EDIT_USER, ajax = false,callback = "#{userMBean.setUpdateState}", resetValues = true, addViewParam = true),
-        @BeanState(beanState = "manageGroup", link = "user.manageGroup", outcome = Pages.MANAGE_GROUP, callback = "#{userMBean.setGroupState}",addViewParam = true)})//add viewParam to reload group view f:viewParam in page, see manageGroup.xhtml
+        @BeanState(beanState = Constants.State.FIND_STATE, value = "user.find", outcome = Pages.FIND_USER, ajax = false),//dont need callback cause listUser uses StatePusher
+        @BeanState(beanState = Constants.State.INSERT_STATE, value = "user.new", outcome = Pages.EDIT_USER,ajax = false,callback = "#{userMBean.setInsertState}"),
+        @BeanState(beanState = Constants.State.UPDATE_STATE, value = "user.edit", outcome = Pages.EDIT_USER, ajax = false,callback = "#{userMBean.setUpdateState}", resetValues = true, addEntityIdParam = true),
+        @BeanState(beanState = "manageGroup", value = "user.manageGroup", outcome = Pages.MANAGE_GROUP, callback = "#{userMBean.setGroupState}",addEntityIdParam = true)})//add viewParam to reload group view f:viewParam in page, see manageGroup.xhtml
 public class UserMBean extends StateMBean<User> {
 
     private Group groupSelected;

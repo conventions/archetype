@@ -8,12 +8,17 @@ import org.conventionsframework.model.VersionatedEntityLong;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @SequenceGenerator(allocationSize = 1, name = "seq_user", sequenceName = "seq_user")
 @Table(name = "user_")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class User extends VersionatedEntityLong {
 
 	@NotNull

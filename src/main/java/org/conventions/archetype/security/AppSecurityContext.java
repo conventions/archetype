@@ -3,6 +3,7 @@ package org.conventions.archetype.security;
 import org.conventions.archetype.event.UpdateUserRoles;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.service.UserService;
+import org.conventions.archetype.util.Utils;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.qualifier.Config;
 import org.conventionsframework.qualifier.Log;
@@ -36,28 +37,37 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     private String username;
     private String password;
     private String pageRecovery;
+
     @Inject
     @Config
     transient Instance<ExternalContext> externalContext;
+
     @Inject
     @Config
     transient Instance<FacesContext> facesContext;
+
     @Inject
     @Config
     transient Instance<HttpServletRequest> request;
+
     @Inject
     UserService userService;
+
     @Inject
     ResourceBundle bundle;
+
     @Inject
     @Log
     transient Logger log;
+
+    @Inject
+    Utils utils;;
 
     @Produces
     @LoggedIn
     @SessionScoped
     public User getUser() {
-        return user == null ? new User():user;
+        return user == null ? new User() : user;
     }
 
 
@@ -90,13 +100,23 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
     public void doLogon() {
-        user = userService.findUser(username, password);
-        if (user == null) {
-            throw new BusinessException(bundle.getString("logon.be.incorrect"));
+        if(!alreadyLoggedIn(username, utils.encrypt(password))){
+            user = userService.findUser(username, password);
+            if (user == null) {
+                throw new BusinessException(bundle.getString("logon.be.incorrect"));
+            }
+            userRolesCache = user.getUserRoles();
+            if(facesContext.get() != null){
+                restorePageOnLogon();
+                MessagesController.addInfo(bundle.getString("logon.info.successful"));
+            }
+
         }
-        userRolesCache = user.getUserRoles();
-        restorePageOnLogon();
-        MessagesController.addInfo(bundle.getString("logon.info.successful"));
+
+    }
+
+    private boolean alreadyLoggedIn(String username, String password) {
+        return user != null && user.getName().equals(username) && user.getPassword().equals(password);
     }
 
     private void restorePageOnLogon() {
@@ -128,7 +148,6 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
 
-
     public void updateUserRolesEvent(@Observes UpdateUserRoles updateUserRoles) {
         userRolesCache = updateUserRoles.getUserRoles();
     }
@@ -147,14 +166,14 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     @LoggedIn
     @Named
     public Boolean loggedIn() {
-        log.info("logged in:"+(user != null && user.getId() != null));
+        log.info("logged in:" + (user != null && user.getId() != null));
         return user != null && user.getId() != null;
     }
 
     @Override
     public Boolean hasAnyRole(String... roleName) {
         for (String r : roleName) {
-            if(user != null && userRolesCache != null && userRolesCache.contains(r)){
+            if (user != null && userRolesCache != null && userRolesCache.contains(r)) {
                 return Boolean.TRUE;
             }
         }
@@ -162,7 +181,7 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
     @Override
-    public Boolean hasRole(String role){
+    public Boolean hasRole(String role) {
         return hasAnyRole(role);
     }
 
