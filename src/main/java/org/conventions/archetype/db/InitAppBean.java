@@ -2,16 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.conventions.archetype.bean;
+package org.conventions.archetype.db;
 
-import org.conventionsframework.qualifier.Config;
-import org.conventionsframework.qualifier.Log;
-import org.conventionsframework.qualifier.Service;
-import org.conventionsframework.service.BaseService;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.util.Utils;
+import org.conventionsframework.qualifier.Config;
+import org.conventionsframework.qualifier.Log;
+import org.conventionsframework.qualifier.Service;
+import org.conventionsframework.service.BaseService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;

@@ -104,10 +104,10 @@
                 <p:messages id="loginMessages"/>
                 <h:panelGrid columns="2">
                     <p:outputLabel for="inptUser" value="#{msg['logon.username']}"/>
-                    <p:inputText id="inptUser" value="#{security.username}" style="cursor: pointer"
+                    <p:inputText id="inptUser" value="#{security.user.name}" style="cursor: pointer"
                                  required="true" requiredMessage="#{msg['logon.usernameRequired']}"/>
                     <p:outputLabel for="inptPass" value="#{msg['logon.password']}"/>
-                    <p:password id="inptPass" value="#{security.password}" style="cursor: pointer"
+                    <p:password id="inptPass" value="#{security.user.password}" style="cursor: pointer"
                                 required="true" requiredMessage="#{msg['logon.passwordRequired']}"/>
                 </h:panelGrid>
                 <center>

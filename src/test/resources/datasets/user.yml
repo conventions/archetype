@@ -1,0 +1,49 @@
+user_:
+  - id: 1
+    name: "arun"
+    password: "42"
+    version: 1
+    createDate: 20-01-14
+    updateDate: 20-01-14
+  - id: 2
+    name: "user"
+    password: "user"
+    version: 1
+    createDate: 20-01-14
+    updateDate: 20-01-14
+
+group_:
+  - id: 1
+    name: "group1"
+    version: 1
+    createDate: 20-01-14
+    updateDate: 20-01-14
+  - id: 2
+    name: "group2"
+    version: 1
+    createDate: 20-01-14
+    updateDate: 20-01-14
+
+role_:
+  - id: 1
+    name: "administrator"
+    version: 1
+    createDate: 20-01-14
+    updateDate: 20-01-14
+  - id: 2
+    name: "operator"
+    version: 1
+    createDate: 20-01-14
+    updateDate: 20-01-14
+
+user__group_:
+  - users_id: 1
+    groups_id: 1
+  - users_id: 1
+    groups_id: 2
+
+group__role_:
+  - groups_id: 1
+    roles_id: 1
+  - groups_id: 2
+    roles_id: 2

@@ -12,6 +12,7 @@ import org.conventionsframework.security.DefaultSecurityContext;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Instance;
@@ -32,10 +33,8 @@ import java.util.logging.Logger;
 @Named("security")
 public class AppSecurityContext extends DefaultSecurityContext implements Serializable {
 
-    protected User user;
+    private User user;
     private List<String> userRolesCache;//avoid quering user roles on each permission check
-    private String username;
-    private String password;
     private String pageRecovery;
 
     @Inject
@@ -61,34 +60,23 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     transient Logger log;
 
     @Inject
-    Utils utils;;
+    Utils utils;
+
+    @PostConstruct
+    public void initUser(){
+        user = new User();
+    }
 
     @Produces
     @LoggedIn
     @SessionScoped
     public User getUser() {
-        return user == null ? new User() : user;
+        return user;
     }
 
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getPageRecovery() {
@@ -100,8 +88,8 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
     public void doLogon() {
-        if(!alreadyLoggedIn(username, utils.encrypt(password))){
-            user = userService.findUser(username, password);
+        if(!loggedIn()){
+            user = userService.findUser(user.getName(), user.getPassword());
             if (user == null) {
                 throw new BusinessException(bundle.getString("logon.be.incorrect"));
             }
@@ -113,10 +101,6 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
 
         }
 
-    }
-
-    private boolean alreadyLoggedIn(String username, String password) {
-        return user != null && user.getName().equals(username) && user.getPassword().equals(password);
     }
 
     private void restorePageOnLogon() {
@@ -184,6 +168,8 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     public Boolean hasRole(String role) {
         return hasAnyRole(role);
     }
+
+
 
     /** @Override
      @Produces

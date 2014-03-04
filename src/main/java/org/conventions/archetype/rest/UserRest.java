@@ -59,9 +59,14 @@ public class UserRest implements Serializable {
     @Produces({MediaType.APPLICATION_JSON})
     public Response removeUser(@Context HttpHeaders headers, @PathParam("id") String id) {
         if(headers.getRequestHeaders().containsKey("username") && headers.getRequestHeaders().containsKey("password")){
-            appSecurityContext.setUsername(headers.getRequestHeader("username").get(0));
-            appSecurityContext.setPassword(headers.getRequestHeader("password").get(0));
-            appSecurityContext.doLogon();
+            User user = userService.findUser(headers.getRequestHeader("username").get(0),headers.getRequestHeader("password").get(0));
+            if(user != null)   {
+                appSecurityContext.setUser(user);
+                appSecurityContext.doLogon();
+            }
+             else{
+                return Response.status(Response.Status.BAD_REQUEST).entity("invalid user credentials").build();
+            }
             if (id != null) {
                 try {
                     Long userId = Long.parseLong(id);
@@ -101,7 +106,7 @@ public class UserRest implements Serializable {
         try {
             userService.store(user);
         } catch (Exception e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("problema ao incluir turma json:" + e.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("problema ao incluir user json:" + e.getMessage()).build();
         }
 
         return Response.ok().entity(user.getId()).build();

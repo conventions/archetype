@@ -25,7 +25,7 @@ public class SecurityInterceptor extends BaseSecurityInterceptor {
 
 
 
-    /**uncomment if your CDI implementation/or CDI server integration(in case of glassfish)  doesnt allow interceptor inheritence
+    /**uncomment if your CDI implementation/or CDI server it(in case of glassfish)  doesnt allow interceptor inheritence
     @Override
     @AroundInvoke
     public Object checkPermission(InvocationContext ic) throws Exception {
