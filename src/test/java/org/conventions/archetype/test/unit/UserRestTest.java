@@ -6,7 +6,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventions.archetype.util.AppConstants;
-import org.conventions.archetype.util.Utils;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
@@ -142,7 +141,7 @@ public class UserRestTest {
             password = "pass";
         }
         request.header("username",username);
-        request.header("password"password);
+        request.header("password",password);
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
         try{
