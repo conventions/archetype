@@ -142,7 +142,7 @@ public class UserRestTest {
             password = "pass";
         }
         request.header("username",username);
-        request.header("password",new Utils().encrypt(password));
+        request.header("password"password);
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
         try{
