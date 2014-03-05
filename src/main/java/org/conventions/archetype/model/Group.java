@@ -17,8 +17,10 @@ import java.util.List;
 public class Group extends VersionatedEntityLong{
     
     private String name;
+    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Role> roles;
     @JsonIgnore
+    @ManyToMany(mappedBy="groups")
     private List<User> users;
 
 
@@ -38,7 +40,7 @@ public class Group extends VersionatedEntityLong{
         this.name = name;
     }
     
-    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+
     public List<Role> getRoles() {
         return roles;
     }
@@ -47,7 +49,6 @@ public class Group extends VersionatedEntityLong{
         this.roles = roles;
     }
 
-    @ManyToMany(mappedBy="groups")
     public List<User> getUsers() {
         return users;
     }

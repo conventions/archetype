@@ -23,6 +23,7 @@ public class Role extends VersionatedEntityLong {
     
     private String name;
     @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
     private List<Group> groups;
 
 
@@ -42,7 +43,6 @@ public class Role extends VersionatedEntityLong {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "roles")
     public List<Group> getGroups() {
         return groups;
     }

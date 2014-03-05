@@ -453,6 +453,9 @@
                             <includes>
                                 <include>**/*IT.java</include>
                             </includes>
+                            <excludes>
+                                <exclude>**/*BaseIT.java</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>

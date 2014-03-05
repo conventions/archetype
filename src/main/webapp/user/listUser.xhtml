@@ -17,7 +17,7 @@ and open the template in the editor.
     <ui:define name="content">
         <framework:statePusher state="#{findState}" mbean="#{userMBean}"/>
         <center>
-            <p:panel header="#{msg.user}s" style="margin: 15px;width: 700px;text-align: left;overflow: auto">
+            <p:panel header="#{msg.user}s" style="margin: 15px; height:450px; width: 700px;text-align: left;overflow: auto">
                 <p:remoteCommand name="updateRowCount" update="mainForm:table:table_table:footer"/>
                 <framework:datatable paginator="#{userMBean.paginator}" id="table" widgetVar="tableVar"
                                      emptyMessage="#{msg['user.notfound']}"
@@ -41,8 +41,10 @@ and open the template in the editor.
                         <framework:removeLink modal="removeUserModal" mbean="#{userMBean}" row="#{row}"/>
                     </p:column>
                     <f:facet name="footer">
-                        <framework:tableFooter ajax="false" id="footer" mbean="#{userMBean}" renderAddButton="true"
-                                               addButtonValue="#{msg['user.new']}" buttonClass="ui-priority-primary"/>
+                        <framework:tableFooter id="footer" mbean="#{userMBean}" renderAddButton="false"
+                                                >
+                            <p:button value="#{msg['user.new']}" outcome="/user/addUser.faces" styleClass="ui-priority-primary"/>
+                                </framework:tableFooter>
                     </f:facet>
                 </framework:datatable>
             </p:panel>

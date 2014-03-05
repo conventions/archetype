@@ -26,6 +26,7 @@ public class User extends VersionatedEntityLong {
 
 	@NotNull
 	private String password;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<Group> groups;
 
 	public User() {
@@ -51,7 +52,7 @@ public class User extends VersionatedEntityLong {
 		this.name = name;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+
 	public List<Group> getGroups() {
 		return groups;
 	}
