@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventions.archetype.util.AppConstants;
+import org.conventions.archetype.util.Utils;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
@@ -141,7 +142,7 @@ public class UserRestTest {
             password = "pass";
         }
         request.header("username",username);
-        request.header("password",password);
+        request.header("password",new Utils().encrypt(password));
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
         try{
@@ -149,8 +150,6 @@ public class UserRestTest {
             Assert.assertNotNull(response);
             Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
             Assert.assertEquals(response.getEntity(), TestMessageProvider.getMessage("be.user.remove"));
-            response = request.get(String.class);
-
         }catch (Exception ex){
             ex.printStackTrace();
             Assert.fail(ex.getMessage());

@@ -1,40 +1,40 @@
 user_:
   - id: 1
     name: "arun"
-    password: "42"
+    password: "a1d0c6e83f027327d8461063f4ac58a6"
     version: 1
-    createDate: 20-01-14
-    updateDate: 20-01-14
+    createDate: 2014-01-01
+    updateDate: 2014-01-01
   - id: 2
     name: "user"
     password: "user"
     version: 1
-    createDate: 20-01-14
-    updateDate: 20-01-14
+    createDate: 2014-01-01
+    updateDate: 2014-01-01
 
 group_:
   - id: 1
     name: "group1"
     version: 1
-    createDate: 20-01-14
-    updateDate: 20-01-14
+    createDate: 2014-01-01
+    updateDate: 2014-01-01
   - id: 2
     name: "group2"
     version: 1
-    createDate: 20-01-14
-    updateDate: 20-01-14
+    createDate: 2014-01-01
+    updateDate: 2014-01-01
 
 role_:
   - id: 1
     name: "administrator"
     version: 1
-    createDate: 20-01-14
-    updateDate: 20-01-14
+    createDate: 2014-01-01
+    updateDate: 2014-01-01
   - id: 2
     name: "operator"
     version: 1
-    createDate: 20-01-14
-    updateDate: 20-01-14
+    createDate: 2014-01-01
+    updateDate: 2014-01-01
 
 user__group_:
   - users_id: 1

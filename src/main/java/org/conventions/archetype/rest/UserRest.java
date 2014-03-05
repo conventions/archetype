@@ -106,7 +106,7 @@ public class UserRest implements Serializable {
         try {
             userService.store(user);
         } catch (Exception e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("problema ao incluir user json:" + e.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("problem to persist user" + e.getMessage()).build();
         }
 
         return Response.ok().entity(user.getId()).build();

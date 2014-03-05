@@ -32,9 +32,14 @@
 		</configuration>
 	</container>
 
-	<extension qualifier="persistence-dbunit">
-		<property name="schema">sa</property>
-	</extension>
+    <extension qualifier="persistence">
+        <property name="defaultDataSource">java:jboss/datasources/ExampleDS2</property>
+        <!--<property name="defaultDataSeedStrategy">CLEAN_INSERT</property>-->
+    </extension>
+
+    <!--extension qualifier="persistence-dbunit">
+        <property name="schema">sa</property>
+    </extension-->
 	
 <!-- 	<extension qualifier="systemproperties"> -->
 <!--         <property name="prefix">*</property> -->

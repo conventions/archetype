@@ -4,15 +4,13 @@
  */
 package org.conventions.archetype.security;
 
+import org.conventions.archetype.model.User;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.security.BaseSecurityInterceptor;
-import org.conventions.archetype.model.User;
 
 import javax.inject.Inject;
-import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
 import java.util.List;
 
 @SecurityMethod
@@ -44,9 +42,10 @@ public class SecurityInterceptor extends BaseSecurityInterceptor {
      */
     @Override
     public boolean checkUserPermissions(String[] rolesAllowed) {
-        if (user != null && user.getId() != null && user.getGroups() == null || user.getGroups().isEmpty() || !userHasRoles()) {
+        if (user == null || user.getId() == null || user.getGroups() == null || user.getGroups().isEmpty() || !userHasRoles()) {
             return false;
         }
+
 
         List<String> userRoles = user.getUserRoles();
 

@@ -18,9 +18,8 @@ import javax.inject.Inject;
 @RunWith(Arquillian.class)
 public class BaseIT {
 
-
     @Inject
-    AppSecurityContext appSecurityContext;
+    AppSecurityContext securityContext;
 
     @Inject
     UserService userService;
@@ -40,13 +39,13 @@ public class BaseIT {
     }
 
     protected void login(String username, String password) {
-        if (appSecurityContext == null || userService == null) {//in client mode(RunAsClient) will be null
+        if (securityContext == null || userService == null) {//in client mode(RunAsClient) will be null
             return;
         }
         User user = userService.findUser(username,password);
         if(user != null)   {
-            appSecurityContext.setUser(user);
-            appSecurityContext.doLogon();
+            securityContext.setUser(user);
+            securityContext.doLogon();
         }
     }
 

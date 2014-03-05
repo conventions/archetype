@@ -55,7 +55,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     EntityManager em;
 
-    //change super entityManager which is type=Transaction
+//    //change super entityManager which is type=Transaction
     @Override
     @TransactionAttribute(TransactionAttributeType.NEVER)
     public EntityManager getEntityManager() {

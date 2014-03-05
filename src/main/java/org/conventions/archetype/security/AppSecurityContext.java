@@ -50,7 +50,7 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     transient Instance<HttpServletRequest> request;
 
     @Inject
-    UserService userService;
+    private UserService userService;
 
     @Inject
     ResourceBundle bundle;
@@ -89,16 +89,17 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
 
     public void doLogon() {
         if(!loggedIn()){
-            user = userService.findUser(user.getName(), user.getPassword());
-            if (user == null) {
-                throw new BusinessException(bundle.getString("logon.be.incorrect"));
+            if(user != null){
+                user = userService.findUser(user.getName(), user.getPassword());
+                if (user == null) {
+                    throw new BusinessException(bundle.getString("logon.be.incorrect"));
+                }
+                userRolesCache = user.getUserRoles();
+                if(facesContext.get() != null){
+                    restorePageOnLogon();
+                    MessagesController.addInfo(bundle.getString("logon.info.successful"));
+                }
             }
-            userRolesCache = user.getUserRoles();
-            if(facesContext.get() != null){
-                restorePageOnLogon();
-                MessagesController.addInfo(bundle.getString("logon.info.successful"));
-            }
-
         }
 
     }
@@ -169,7 +170,9 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
         return hasAnyRole(role);
     }
 
-
+    public UserService getUserService() {
+        return userService;
+    }
 
     /** @Override
      @Produces
