@@ -16,7 +16,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.conventionsframework.model.VersionatedEntityLong;
 
 @Entity
-@SequenceGenerator(allocationSize = 1, name = "seq_role", sequenceName = "seq_role")
+@SequenceGenerator(allocationSize = 10, name = "seq_role", sequenceName = "seq_role")
 @NamedQuery(name="Role.findRoleNotInGroup",query="SELECT r from Role r where r.id NOT IN :roleIds")
 @Table(name="role_")
 public class Role extends VersionatedEntityLong {

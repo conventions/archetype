@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(allocationSize = 1, name = "seq_user", sequenceName = "seq_user")
 @Table(name = "user_")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@SequenceGenerator(allocationSize = 1, name = "seq_group", sequenceName = "seq_group")
+@SequenceGenerator(allocationSize = 10, name = "seq_group", sequenceName = "seq_group")
 @Table(name="group_")
 public class Group extends VersionatedEntityLong{
     

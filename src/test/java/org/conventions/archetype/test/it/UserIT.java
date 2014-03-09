@@ -31,7 +31,6 @@ public class UserIT extends BaseIT {
     }
 
     @Test
-    @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldInsertUser() {
         int userCountBefore = userService.getDao().countAll();

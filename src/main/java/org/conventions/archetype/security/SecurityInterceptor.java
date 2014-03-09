@@ -8,6 +8,7 @@ import org.conventions.archetype.model.User;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.security.BaseSecurityInterceptor;
+import javax.interceptor.*;
 
 import javax.inject.Inject;
 import javax.interceptor.Interceptor;
@@ -23,12 +24,12 @@ public class SecurityInterceptor extends BaseSecurityInterceptor {
 
 
 
-    /**uncomment if your CDI implementation/or CDI server it(in case of glassfish)  doesnt allow interceptor inheritence
+    //need by glassfish which doesnt handle interceptor inheritance
     @Override
     @AroundInvoke
     public Object checkPermission(InvocationContext ic) throws Exception {
         return super.checkPermission(ic);
-    }  */
+    }
     
     
     

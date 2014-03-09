@@ -97,27 +97,7 @@
         </h:form>
         <h:inputHidden value="#{initAppBean}"/>
         <ui:insert name="popup"/>
-        <p:dialog id="logonDialog" visible="#{not loggedIn}" header="#{msg['logon.header']}" modal="true"
-                  closable="false">
-            <h:form id="loginForm">
-                <p:focus for="loginForm"/>
-                <p:messages id="loginMessages"/>
-                <h:panelGrid columns="2">
-                    <p:outputLabel for="inptUser" value="#{msg['logon.username']}"/>
-                    <p:inputText id="inptUser" value="#{security.user.name}" style="cursor: pointer"
-                                 required="true" requiredMessage="#{msg['logon.usernameRequired']}"/>
-                    <p:outputLabel for="inptPass" value="#{msg['logon.password']}"/>
-                    <p:password id="inptPass" value="#{security.user.password}" style="cursor: pointer"
-                                required="true" requiredMessage="#{msg['logon.passwordRequired']}"/>
-                </h:panelGrid>
-                <center>
-                    <p:commandButton value="Login" action="#{security.doLogon}"
-                                     update=":logonDialog loginMessages" ajax="false" styleClass="ui-priority-primary">
-                        <f:param name="includeViewParams" value="true"/>
-                    </p:commandButton>
-                </center>
-            </h:form>
-        </p:dialog>
+        <ui:include src="logon.xhtml"/>
     </h:body>
 </f:view>
 </html>
