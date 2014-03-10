@@ -1,8 +1,14 @@
 package org.conventions.archetype.test.ft;
 
 import org.conventions.archetype.test.ft.pages.HomePage;
+import org.conventions.archetype.test.ft.pages.common.Menu;
+import org.conventions.archetype.test.ft.pages.group.GroupHome;
+import org.conventions.archetype.test.ft.pages.role.RoleHome;
+import org.conventions.archetype.test.ft.pages.user.UserHome;
 import org.conventions.archetype.test.util.TestMessageProvider;
+import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.InitialPage;
+import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.InSequence;
 import org.junit.Test;
 
@@ -13,7 +19,17 @@ import static org.junit.Assert.assertTrue;
  */
 public class UserFT extends BaseFT {
 
+    @FindByJQuery("div[id$=menuBar]")
+    private Menu menu;
 
+    @Page
+    private UserHome userHome;
+
+    @Page
+    private RoleHome roleHome;
+
+    @Page
+    private GroupHome groupHome;
 
     @Test
     @InSequence(1)
@@ -21,5 +37,11 @@ public class UserFT extends BaseFT {
         assertTrue(home.getLogonDialog().isPresent());
         home.getLogonDialog().doLogon("admin", "admin");
         home.verifyMessage(TestMessageProvider.getMessage("logon.info.successful"));
+    }
+
+    @Test
+    @InSequence(2)
+    public void insertRole(){
+       menu.gotoRoleHome();
     }
 }

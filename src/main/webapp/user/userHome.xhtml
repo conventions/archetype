@@ -24,8 +24,8 @@ and open the template in the editor.
         </p:dialog>
 
         <h:panelGrid columns="2" cellpadding="30px">
-            <p:button value="#{msg['user.find']}" outcome="/user/listUser.faces" style="font-size: 16px!important;"/>
-            <p:button value="#{msg['user.new']}" outcome="/user/addUser.faces" style="font-size: 16px!important;"/>
+            <p:button id="btListUser" value="#{msg['user.find']}" outcome="/user/listUser.faces" style="font-size: 16px!important;"/>
+            <p:button id="btNewUser" value="#{msg['user.new']}" outcome="/user/addUser.faces" style="font-size: 16px!important;"/>
         </h:panelGrid>
     </ui:define>
 </ui:composition>

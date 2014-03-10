@@ -23,14 +23,13 @@
                     &nbsp;
                     <h:outputText style="float: right;text-decoration: underline;font-weight: bold" value="Logged as #{security.user.name}"
                                   rendered="#{loggedIn}"/>
-                    <p:menubar>
+                    <p:menubar id="menuBar">
                         <p:menuitem id="homeMenu" action="/home.faces?faces-redirect=true" value="#{msg['home']}"
                                     ajax="false" immediate="true"/>
-                        <p:menuitem url="/user/userHome.faces" value="#{msg.user}s" ajax="false" immediate="true"/>
-                        <p:menuitem action="/group/groupHome.faces?faces-redirect=true" value="#{msg.groups}"
-                                    ajax="false">
-                        </p:menuitem>
-                        <p:menuitem action="/role/roleHome.faces?faces-redirect=true" value="#{msg.roles}" ajax="false"
+                        <p:menuitem id="userMenu" url="/user/userHome.faces" value="#{msg.user}s" ajax="false" immediate="true"/>
+                        <p:menuitem id="groupMenu" action="/group/groupHome.faces?faces-redirect=true" value="#{msg.groups}" immediate="true"
+                                    ajax="false"/>
+                        <p:menuitem id="roleMenu"  action="/role/roleHome.faces?faces-redirect=true" value="#{msg.roles}" ajax="false"
                                     immediate="true"/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
