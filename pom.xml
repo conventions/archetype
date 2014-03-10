@@ -53,6 +53,12 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- rest -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -374,24 +380,11 @@
                 <!-- end Logging -->
             </dependencies>
         </profile>
-        <profile>
-            <id>jboss-remote</id>
-            <properties>
-                <arquillian.testContainer>jboss-remote</arquillian.testContainer>
-                <!--referenciado pelo arquillian.launch e usado pel arquillian.xml para escolher qual container o deploy do arquillian sera feito-->
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.jboss.as</groupId>
-                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
-                    <scope>test</scope>
-                    <version>7.2.0.Final</version>
-                    <!--deve ser igual a versao do server onde
-                                    os testes irão executar -->
-                </dependency>
-            </dependencies>
-            <build>
 
+        <!-- testing profiles -->
+        <profile>
+            <id>full-tests</id>
+            <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -401,20 +394,106 @@
                             <skipTests>false</skipTests>
                             <runOrder>reversealphabetical</runOrder>
                             <includes>
-                                <include>**/*FunctionalTests.java</include>
-                                <include>**/*IntegrationTests.java</include>
-                                <!--<include>**/*UnitTests.java</include>-->
-                                <include>**/*TurmaIncluirBehave.java</include>
+                                <include>**/*IT.java</include>
+                                <include>**/*FT.java</include>
+                                <include>**/*BDD.java</include>
                             </includes>
-                            <!--<excludes>-->
-                            <!--<exclude>-->
-                            <!--**/*BaseFunctionalTest.java-->
-                            <!--</exclude>-->
-                            <!--</excludes>-->
+                            <excludes>
+                                <exclude>**/*BaseIT.java</exclude>
+                                <exclude>**/*BaseFT.java</exclude>
+                                <exclude>**/*BaseBDD.java</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>it-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <runOrder>reversealphabetical</runOrder>
+                            <includes>
+                                <include>**/*IT.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*BaseIT.java</exclude>
+                                <exclude>**/*BaseFT.java</exclude>
+                                <exclude>**/*BaseBDD.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>ft-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <runOrder>reversealphabetical</runOrder>
+                            <includes>
+                                <include>**/*FT.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*BaseIT.java</exclude>
+                                <exclude>**/*BaseFT.java</exclude>
+                                <exclude>**/*BaseBDD.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>bdd-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <runOrder>reversealphabetical</runOrder>
+                            <includes>
+                                <include>**/*BDD.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*BaseIT.java</exclude>
+                                <exclude>**/*BaseFT.java</exclude>
+                                <exclude>**/*BaseBDD.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>jboss-remote</id>
+            <properties>
+                <arquillian.testContainer>jboss-remote</arquillian.testContainer>
+                <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.as</groupId>
+                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
+                    <scope>test</scope>
+                    <version>7.2.0.Final</version>
+                </dependency>
+            </dependencies>
         </profile>
         <profile>
             <id>jboss-managed</id>
@@ -430,25 +509,21 @@
                     <version>7.2.0.Final</version>
                 </dependency>
             </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.16</version>
-                        <configuration>
-                            <skipTests>false</skipTests>
-                            <runOrder>reversealphabetical</runOrder>
-                            <includes>
-                                <include>**/*IT.java</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/*BaseIT.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+        </profile>
+        <profile>
+            <id>wildfy-managed</id>
+            <properties>
+                <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
+                <arquillian.testContainer>jboss-managed</arquillian.testContainer>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>8.0.0.Final</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
         </profile>
         <!-- tests coverage-->
         <profile>
