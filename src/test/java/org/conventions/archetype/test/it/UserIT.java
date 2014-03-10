@@ -2,6 +2,7 @@ package org.conventions.archetype.test.it;
 
 import junit.framework.Assert;
 import org.conventions.archetype.model.User;
+import org.conventions.archetype.test.it.role.RoleIT;
 import org.conventions.archetype.test.unit.UserRestTest;
 import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
@@ -13,6 +14,7 @@ import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.junit.Test;
 
+import javax.inject.Inject;
 import java.net.URL;
 
 import static junit.framework.Assert.assertEquals;
@@ -20,7 +22,8 @@ import static org.junit.Assert.assertNotNull;
 
 public class UserIT extends BaseIT {
 
-
+    @Inject
+    RoleIT roleIT;
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
@@ -94,6 +97,33 @@ public class UserIT extends BaseIT {
         userService.remove(user);
         user = userService.getDao().get(2L);
         org.junit.Assert.assertNull(user);
+    }
+
+    @Test
+    @UsingDataSet(value = "datasets/role.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldListRoles(){
+        roleIT.shouldListRoles();
+    }
+
+    @Test
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldInsertRoler() {
+        roleIT.shouldInsertRole();
+    }
+
+    @Test
+    @UsingDataSet(value = "datasets/role.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldFindRole() {
+        roleIT.shouldFindRole();
+    }
+
+    @Test
+    @UsingDataSet(value = "datasets/role.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldremoveRole() {
+        roleIT.shouldremoveRole();
     }
 
     //REST
