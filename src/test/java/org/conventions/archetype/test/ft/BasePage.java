@@ -25,6 +25,6 @@ public abstract class BasePage implements Serializable {
 
     public void verifyMessage(String msg) {
         Graphene.waitAjax().until().element(growl).is().present();
-        Assert.assertEquals(msg, growl.getText());
+        Assert.assertEquals(msg.trim(), growl.getText().trim());
     }
 }
