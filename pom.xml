@@ -515,6 +515,7 @@
             <properties>
                 <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
                 <arquillian.testContainer>jboss-managed</arquillian.testContainer>
+                <arquillian.jbossHome>/home/rmpestano/servidores/wildfly-8.0.0.Final</arquillian.jbossHome>
             </properties>
             <dependencies>
                 <dependency>

@@ -22,7 +22,7 @@
                             required="true" requiredMessage="#{msg['logon.passwordRequired']}"/>
             </h:panelGrid>
             <center>
-                <p:commandButton value="Login" action="#{security.doLogon}"
+                <p:commandButton id="btLogon" value="Login" action="#{security.doLogon}"
                                  update=":logonDialog loginMessages" ajax="false" styleClass="ui-priority-primary">
                     <f:param name="includeViewParams" value="true"/>
                 </p:commandButton>
