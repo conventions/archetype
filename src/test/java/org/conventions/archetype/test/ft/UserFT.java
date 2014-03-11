@@ -43,5 +43,6 @@ public class UserFT extends BaseFT {
     @InSequence(2)
     public void insertRole(){
        menu.gotoRoleHome();
+       roleHome.newRole("test role");
     }
 }

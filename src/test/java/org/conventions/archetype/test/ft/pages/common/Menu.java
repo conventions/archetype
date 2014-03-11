@@ -4,6 +4,7 @@ import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.fragment.Root;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
@@ -15,30 +16,30 @@ public class Menu {
     @Root
     private GrapheneElement menuBar;
 
-    private GrapheneElement userMenu;
+    private WebElement userMenu;
 
-    private GrapheneElement groupMenu;
+    private WebElement groupMenu;
 
-    private GrapheneElement roleMenu;
+    private WebElement roleMenu;
 
 
-    private GrapheneElement getUserMenu() {
+    private WebElement getUserMenu() {
         if (userMenu == null) {
-            userMenu = menuBar.findElement(By.linkText(TestMessageProvider.getMessage("user") + "s"));
+            userMenu = findItemByText(TestMessageProvider.getMessage("user") + "s");
         }
         return userMenu;
     }
 
-    private GrapheneElement getGroupMenu() {
+    private WebElement getGroupMenu() {
         if (groupMenu == null) {
-            groupMenu = menuBar.findElement(By.linkText(TestMessageProvider.getMessage("groups")));
+            groupMenu = findItemByText(TestMessageProvider.getMessage("groups"));
         }
         return groupMenu;
     }
 
-    private GrapheneElement getRoleMenu() {
+    private WebElement getRoleMenu() {
         if (roleMenu == null) {
-            roleMenu = menuBar.findElement(By.linkText(TestMessageProvider.getMessage("roles")));
+            roleMenu = findItemByText(TestMessageProvider.getMessage("roles"));
         }
         return roleMenu;
     }
@@ -53,6 +54,10 @@ public class Menu {
 
     public void gotoRoleHome() {
         guardHttp(getRoleMenu()).click();
+    }
+
+    private WebElement findItemByText(String text){
+        return menuBar.findElement(By.xpath("//span[@class='ui-menuitem-text' and text() = '" + text +"']"));
     }
 
 }

@@ -43,6 +43,12 @@ public class TestService implements Serializable {
         em.persist(admin);
         em.flush();
 
+        User user = new User();
+        user.setName("user");
+        user.setPassword(new Utils().encrypt("user"));
+        em.persist(user);
+        em.flush();
+
     }
 
     public void clearDatabase() {
