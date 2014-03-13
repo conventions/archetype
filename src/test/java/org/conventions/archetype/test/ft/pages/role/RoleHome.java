@@ -43,7 +43,6 @@ public class RoleHome extends BasePage {
             GrapheneElement btSave = panel.findElement(By.xpath("//button"));
             guardAjax(btSave).click();
             verifyMessage(TestMessageProvider.getMessage("role.create.message"));
-
         }
     }
 

@@ -51,6 +51,7 @@ public class BaseFT {
         WebArchive war = Deployments.getBaseDeployment();
         war.addPackages(true, UserMBean.class.getPackage()); //managed beans
         war.addPackages(true,"org.conventions.archetype.converter");
+        war.addClass(BaseFT.class);
         //web resources
         war.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class).importDirectory(WEBAPP_SRC).as(GenericArchive.class), "/", Filters.include(".*\\.(xhtml|css|js|png)$"));
         war.addAsWebResource(new File(TEST_RESOURCES, "/pages/test-logon.xhtml"), "/templates/logon.xhtml");//test logon clears the database on each logon

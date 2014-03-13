@@ -45,4 +45,18 @@ public class UserFT extends BaseFT {
        menu.gotoRoleHome();
        roleHome.newRole("test role");
     }
+
+    @Test
+    @InSequence(3)
+    public void insertGroup(){
+        menu.gotoGroupHome();
+        groupHome.newGroup("test group");
+    }
+
+    @Test
+    @InSequence(4)
+    public void insertUser(){
+        menu.gotoUserHome();
+        userHome.newUser("test user", "test");
+    }
 }

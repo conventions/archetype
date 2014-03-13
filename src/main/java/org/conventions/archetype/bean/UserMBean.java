@@ -80,10 +80,10 @@ public class UserMBean extends StateMBean<User> {
     public void init() {
         log.info("myConfig:" + myConfig);
         setBaseService(userService);
+        super.init();
         setCreateMessage(getResourceBundle().getString("user.create.message"));
         setUpdateMessage(getResourceBundle().getString("user.update.message"));
         setDeleteMessage(getResourceBundle().getString("user.delete.message"));
-        super.init();
     }
 
     /**
