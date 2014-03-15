@@ -21,8 +21,11 @@ and open the template in the editor.
         </f:metadata>
         <f:event type="preRenderView" listener="#{userMBean.initManageGroupsPage}"/>
         <center>
-            <p:panel id="panelGroups" header="#{msg.userGroups} #{userMBean.entity.name}"
+            <p:panel id="panelGroups"
                      style="width: 700px;min-height:200px ">
+                <f:facet name="header">
+                    #{msg.userGroups} #{userMBean.entity.name}
+                </f:facet>
                 <h:panelGrid columns="2">
                     <p:commandButton value="#{msg.save}" action="#{userMBean.saveUser}" process=":mainForm:panelGroups"
                                      ajax="true"
@@ -31,7 +34,7 @@ and open the template in the editor.
                 </h:panelGrid>
 
                 <center>
-                    <p:commandButton value="#{msg['user.associateGroup']}"
+                    <p:commandButton id="btManageGroup" value="#{msg['user.associateGroup']}"
                                      update=":findGroupDlg:findGroupDlg_panel"
                                      action="#{userMBean.preLoadDialog}"
                                      oncomplete="findGroupDlg.show()"/>

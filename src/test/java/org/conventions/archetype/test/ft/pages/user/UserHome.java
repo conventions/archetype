@@ -41,6 +41,9 @@ public class UserHome extends BasePage {
     @FindByJQuery("div[id$=footer]")
     private GrapheneElement footer;
 
+    @FindByJQuery("button[id$=btManageGroup]")
+    GrapheneElement manageGroup;
+
     public GrapheneElement getBtListUser() {
         return btListUser;
     }

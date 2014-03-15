@@ -91,6 +91,12 @@ public class UserMBean extends StateMBean<User> {
      */
     public void initManageGroupsPage() {
         if (!facesContext.get().isPostback()) {
+            if (currentUserId == null){
+                BusinessException be = new BusinessException();
+                be.setRedirectPage(new RedirectPage("/user/userHome.faces"));
+                be.setSummary("Provide user id to manage groups");
+                throw be;
+            }
             setBeanState(States.MANAGE_GROUP);
             //tell groupService which user it is working on @see GroupServiceImpl#configFindPaginated
             groupPaginator.getFilter().put("currentUser", currentUserId);
