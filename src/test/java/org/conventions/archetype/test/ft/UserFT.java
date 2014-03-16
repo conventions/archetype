@@ -11,7 +11,9 @@ import org.jboss.arquillian.graphene.page.InitialPage;
 import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.InSequence;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -67,6 +69,17 @@ public class UserFT extends BaseFT {
         userHome.manageGroups();
     }
 
+
+    @Test
+    @InSequence(5)
+    public void shouldSearchUserWithSuccess(){
+        menu.gotoUserHome();
+        userHome.goToList();
+        userHome.filterByName("test user");
+        assertEquals(userHome.getDatatable().findElements(By.xpath("//tbody//tr[@role='row']")).size(), 1);
+        userHome.filterByName("zzzzx");
+        assertTrue(userHome.getDatatable().findElements(By.xpath("//tbody//tr[@role='row']")).isEmpty());
+    }
 
     @Test
     @InSequence(99)

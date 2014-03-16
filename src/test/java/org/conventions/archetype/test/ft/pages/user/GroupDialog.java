@@ -48,7 +48,7 @@ public class GroupDialog {
 
 
     public void addAllGroups() {
-        List<GrapheneElement> rows = groupsTable.findGrapheneElements(By.xpath("//tr//td[@role='gridcell']"));
+        List<GrapheneElement> rows = groupsTable.findGrapheneElements(By.xpath("//tbody//tr[@role='row']"));
         assertTrue(!rows.isEmpty());
         assertTrue(rows.size() == 2);
         CompositeAction ca = new CompositeAction();
@@ -56,9 +56,11 @@ public class GroupDialog {
         for (GrapheneElement row : rows) {
             ca.addAction(new Actions(browser).click(row).build());
         }
+        ca.addAction(new Actions(browser).keyUp(Keys.CONTROL).build());
         ca.perform();
         Graphene.waitGui();
         guardAjax(btAdd).click();
+
     }
 
     private void searchGroups(String name) {

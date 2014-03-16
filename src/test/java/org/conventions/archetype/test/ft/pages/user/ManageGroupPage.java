@@ -42,7 +42,7 @@ public class ManageGroupPage extends BasePage {
 
     public void selectGroups(){
         groupDialog.addAllGroups();
-        List<GrapheneElement> rows = selectedGroupsTable.findGrapheneElements(By.tagName("tr"));
+        List<GrapheneElement> rows = selectedGroupsTable.findGrapheneElements(By.xpath("//tbody//tr[@role='row']"));
         assertTrue(!rows.isEmpty());
         assertTrue(rows.size() == 2);
     }

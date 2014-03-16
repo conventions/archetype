@@ -22,7 +22,7 @@ and open the template in the editor.
                 <framework:datatable paginator="#{userMBean.paginator}" id="table" widgetVar="tableVar"
                                      emptyMessage="#{msg['user.notfound']}"
                                      rows="5" onFilter="updateRowCount()">
-                    <p:column sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.user}">
+                    <p:column id="colName" sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.user}">
                         <h:link value="#{row.name}" outcome="addUser.faces?id=#{row.id}"/>
                     </p:column>
                     <p:column headerText="Password">

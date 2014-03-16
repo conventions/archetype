@@ -8,6 +8,7 @@ import org.jboss.arquillian.graphene.page.Location;
 import org.jboss.arquillian.graphene.page.Page;
 import org.openqa.selenium.By;
 
+import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
 /**
@@ -43,6 +44,9 @@ public class UserHome extends BasePage {
 
     @FindByJQuery("button[id$=btManageGroup]")
     private GrapheneElement manageGroup;
+
+    @FindByJQuery("input[id*=colName]")
+    private GrapheneElement filterName;
 
     @Page
     private ManageGroupPage manageGroupPage;
@@ -95,6 +99,12 @@ public class UserHome extends BasePage {
 
     public void goToList(){
          guardHttp(btListUser).click();
+    }
+
+    public void filterByName(String query){
+        filterName.clear();
+        guardAjax(filterName).sendKeys(query);
+
     }
 
 }
