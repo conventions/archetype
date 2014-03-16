@@ -3,6 +3,7 @@ package org.conventions.archetype.test.it;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.security.AppSecurityContext;
 import org.conventions.archetype.service.UserService;
+import org.conventions.archetype.test.it.role.RoleIT;
 import org.conventions.archetype.test.util.Deployments;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -33,7 +34,12 @@ public class BaseIT {
 
     @Deployment(testable = true, order = 1)
     public static Archive<?> createDeployment() {
-        WebArchive war = Deployments.getBaseDeployment();
+        WebArchive war = Deployments.getBaseDeployment().
+        addClass(RoleIT.class).
+        addClass(BaseIT.class).
+        addClass(UserIT.class);
+
+
         System.out.println(war.toString(true));
         return war;
     }

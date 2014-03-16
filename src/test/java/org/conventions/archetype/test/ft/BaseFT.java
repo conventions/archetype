@@ -48,10 +48,10 @@ public class BaseFT {
 
     @Deployment(testable = false)
     public static Archive<?> createDeployment() {
-        WebArchive war = Deployments.getBaseDeployment();
-        war.addPackages(true, UserMBean.class.getPackage()); //managed beans
-        war.addPackages(true,"org.conventions.archetype.converter");
-        war.addClass(BaseFT.class);
+        WebArchive war = Deployments.getBaseDeployment()
+        .addPackages(true, UserMBean.class.getPackage()) //managed beans
+        .addPackages(true,"org.conventions.archetype.converter");
+
         //web resources
         war.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class).importDirectory(WEBAPP_SRC).as(GenericArchive.class), "/", Filters.include(".*\\.(xhtml|html|css|js|png)$"));
         war.addAsWebResource(new File(TEST_RESOURCES, "/pages/test-logon.xhtml"), "/templates/logon.xhtml");//test logon clears the database on each logon

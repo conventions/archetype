@@ -25,9 +25,9 @@ public class Deployments {
         war.addPackages(true, "org.conventions.archetype.event");
         war.addPackages(true, "org.conventions.archetype.configuration");
         war.addPackages(true, "org.conventions.archetype.security");
-        war.addPackages(true, "org.conventions.archetype.util");
-        war.addPackages(true, "org.conventions.archetype.test");
-        war.addClass(ComboMBean.class);
+        war.addPackages(true, "org.conventions.archetype.util").
+        addClass(ComboMBean.class).addClass(TestMessageProvider.class).
+        addClass(TestResourceBundle.class).addClass(TestService.class);
         //LIBS
         MavenResolverSystem resolver = Maven.resolver();
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.0.0-SNAPSHOT").withoutTransitivity().asFile());
