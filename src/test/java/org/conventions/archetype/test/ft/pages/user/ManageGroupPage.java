@@ -5,7 +5,7 @@ import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.Location;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class ManageGroupPage extends BasePage {
 
     public void selectGroups(){
         groupDialog.addAllGroups();
-        List<GrapheneElement> rows = selectedGroupsTable.findGrapheneElements(By.xpath("//tbody//tr[@role='row']"));
+        List<WebElement> rows = super.getTableRows("groupTable_table_data");
         assertTrue(!rows.isEmpty());
         assertTrue(rows.size() == 2);
     }
