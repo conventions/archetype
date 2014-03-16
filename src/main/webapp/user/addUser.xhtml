@@ -50,7 +50,7 @@ and open the template in the editor.
                     <framework:backButton update=":mainForm:pageControl" value="#{msg['back']}"/>
                 </h:panelGrid>
                 <center>
-                    <p:commandButton ajax="false" value="#{msg['user.manageGroup']}"
+                    <p:commandButton id="btManageGroup" ajax="false" value="#{msg['user.manageGroup']}"
                                      action="#{userMBean.manageGroups}"
                             />
                 </center>

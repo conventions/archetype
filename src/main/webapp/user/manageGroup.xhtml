@@ -27,10 +27,10 @@ and open the template in the editor.
                     #{msg.userGroups} #{userMBean.entity.name}
                 </f:facet>
                 <h:panelGrid columns="2">
-                    <p:commandButton value="#{msg.save}" action="#{userMBean.saveUser}" process=":mainForm:panelGroups"
-                                     ajax="true"
+                    <p:commandButton id="btSave" value="#{msg.save}" action="#{userMBean.saveUser}"
+                                     ajax="true" process=":mainForm:panelGroups"
                                      update=":mainForm:pageControl #{g}" styleClass="ui-priority-primary"/>
-                    <framework:backButton update=":mainForm:pageControl" value="#{msg['back']}"/>
+                    <framework:backButton id="btBack" update=":mainForm:pageControl" value="#{msg['back']}"/>
                 </h:panelGrid>
 
                 <center>
@@ -69,7 +69,7 @@ and open the template in the editor.
                         <framework:tableFooter value="#{userMBean.groupPaginator.dataModel.rowCount}" id="footer"/>
                     </f:facet>
                 </framework:datatable>
-            </p:panel>
+                </p:panel>
         </center>
         <framework:modalRemoval mbean="#{userMBean}"
                                 update=":mainForm:pageControl #{g}"

@@ -33,7 +33,7 @@
                                  rowsPerPageTemplate="5,10,15">
 
                       <p:ajax event="filter" oncomplete="updateRowCount();"/>
-                        <p:column sortBy="#{row.name}" filterBy="#{row.name}" 
+                        <p:column id="colName" sortBy="#{row.name}" filterBy="#{row.name}"
                                   filterMatchMode="contains">
                             <f:facet name="header">
                                 Name

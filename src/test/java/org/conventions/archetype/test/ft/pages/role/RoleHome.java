@@ -29,6 +29,9 @@ public class RoleHome extends BasePage {
     @FindByJQuery("input[id$=inpTxt]")
     private GrapheneElement inputName;
 
+    @FindByJQuery("button[id$=btBack]")
+    private GrapheneElement backButton;
+
 
     public GrapheneElement getDatatable() {
         return datatable;
@@ -43,6 +46,7 @@ public class RoleHome extends BasePage {
             GrapheneElement btSave = panel.findElement(By.xpath("//button"));
             guardAjax(btSave).click();
             verifyMessage(TestMessageProvider.getMessage("role.create.message"));
+            guardAjax(backButton).click();
         }
     }
 

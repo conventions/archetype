@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
+import java.util.Random;
 
 import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 
@@ -37,8 +38,11 @@ public class GroupHome extends BasePage {
     @FindByJQuery(".ui-picklist-source")
     private GrapheneElement picklistSource;
 
+    @FindByJQuery("button[id$=btBack]")
+    private GrapheneElement btBack;
+
     @Drone
-    WebDriver browser;
+    private WebDriver browser;
 
 
     public GrapheneElement getDatatable() {
@@ -55,6 +59,7 @@ public class GroupHome extends BasePage {
             selectRoles();
             guardAjax(btSave).click();
             verifyMessage(TestMessageProvider.getMessage("group.create.message"));
+            guardAjax(btBack).click();
         }
     }
 
@@ -68,11 +73,10 @@ public class GroupHome extends BasePage {
 
     public void selectRoles() {
         Actions actions = new Actions(browser);
-        List<WebElement> roles = picklistSource.findElements(By.xpath("//li[contains(@class,'ui-picklist-item')]"));
-        for (WebElement role : roles) {
-            actions.dragAndDrop(role,browser.findElement(By.className("ui-picklist-target"))).perform();
-        }
+        List<WebElement> roles = picklistSource.findElements(By.xpath("//ul//li[contains(@class,'ui-picklist-item')]"));
+        actions.dragAndDrop(roles.get(new Random().nextInt(roles.size())), browser.findElement(By.className("ui-picklist-target"))).perform();
     }
+
 
 
 }

@@ -27,7 +27,7 @@ and open the template in the editor.
                 <framework:saveButton  mbean="#{roleMBean}" process=":mainForm:panelAdd" styleClass="ui-priority-primary"
                                        update=":mainForm:pageControl #{g}" value="#{msg.save}"/>
                 <framework:resetButton mbean="#{roleMBean}" update=":mainForm:panelAdd"/>
-                <p:commandButton action="#{roleMBean.setFindState}" update=":mainForm:pageControl" value="#{msg['back']}" icon="ui-icon back" immediate="true"/>
+                <p:commandButton id="btBack" action="#{roleMBean.setFindState}" update=":mainForm:pageControl" value="#{msg['back']}" icon="ui-icon back" immediate="true"/>
             </h:panelGrid>
         </p:panel>
     </center>

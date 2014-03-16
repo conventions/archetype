@@ -31,32 +31,47 @@ public class UserFT extends BaseFT {
     @Page
     private GroupHome groupHome;
 
+    @Page
+    private HomePage home;
+
     @Test
     @InSequence(1)
-    public void doLogon(@InitialPage HomePage home){
+    public void shouldLogonWithSuccess(@InitialPage HomePage home){
         assertTrue(home.getLogonDialog().isPresent());
         home.getLogonDialog().doLogon("admin", "admin");
         home.verifyMessage(TestMessageProvider.getMessage("logon.info.successful"));
     }
 
+
     @Test
     @InSequence(2)
-    public void insertRole(){
+    public void shouldInsertRoleWithSuccess(){
        menu.gotoRoleHome();
        roleHome.newRole("test role");
+       roleHome.newRole("test role2");
     }
 
     @Test
     @InSequence(3)
-    public void insertGroup(){
+    public void shouldInsertGroupWithSuccess(){
         menu.gotoGroupHome();
-        groupHome.newGroup("test group");
+        groupHome.newGroup("testgroup");
+        groupHome.newGroup("another");
     }
 
     @Test
     @InSequence(4)
-    public void insertUser(){
+    public void shouldInsertUserWithSuccess(){
         menu.gotoUserHome();
         userHome.newUser("test user", "test");
+        userHome.manageGroups();
+    }
+
+
+    @Test
+    @InSequence(99)
+    public void shouldLogoutSuccessfully(){
+        menu.doLogout();
+        assertTrue(home.getLogonDialog().isPresent());
     }
 }

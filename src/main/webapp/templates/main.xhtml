@@ -36,7 +36,7 @@
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
-                        <p:menuitem value="Logout" id="logout" rendered="#{loggedIn}" action="#{logoutMBean.doLogout}" immediate="true"
+                        <p:menuitem value="#{msg.logout}" id="logout" ajax="false" rendered="#{loggedIn}" action="#{logoutMBean.doLogout}" immediate="true"
                                     style="float: right"/>
 
                     </p:menubar>
@@ -94,6 +94,12 @@
                 </style>
             </p:outputPanel>
         </h:form>
+        <p:ajaxStatus onstart="loading.show()"
+                      oncomplete="loading.hide()"
+                />
+        <p:dialog widgetVar="loading"  modal="true" height="30px" width="150px" closable="false">
+            loading...
+        </p:dialog>
         <h:inputHidden value="#{initAppBean}"/>
         <ui:insert name="popup"/>
         <ui:include src="logon.xhtml"/>

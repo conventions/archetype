@@ -5,9 +5,9 @@ import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.Location;
+import org.jboss.arquillian.graphene.page.Page;
 import org.openqa.selenium.By;
 
-import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
 /**
@@ -42,7 +42,11 @@ public class UserHome extends BasePage {
     private GrapheneElement footer;
 
     @FindByJQuery("button[id$=btManageGroup]")
-    GrapheneElement manageGroup;
+    private GrapheneElement manageGroup;
+
+    @Page
+    private ManageGroupPage manageGroupPage;
+
 
     public GrapheneElement getBtListUser() {
         return btListUser;
@@ -78,12 +82,15 @@ public class UserHome extends BasePage {
         this.username.sendKeys(name);
         this.password.clear();
         this.password.sendKeys(password);
-        guardAjax(btSave).click();
+        btSave.click();
         verifyMessage(TestMessageProvider.getMessage("user.create.message"));
     }
 
     public void manageGroups(){
-        //TODO add all available groups to added user
+        password.sendKeys("pass");
+        guardHttp(manageGroup).click();
+        manageGroupPage.openGroupDialog();
+        manageGroupPage.selectGroups();
     }
 
     public void goToList(){

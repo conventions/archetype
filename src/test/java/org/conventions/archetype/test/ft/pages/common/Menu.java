@@ -22,6 +22,8 @@ public class Menu {
 
     private WebElement roleMenu;
 
+    private WebElement logoutMenu;
+
 
     private WebElement getUserMenu() {
         if (userMenu == null) {
@@ -44,6 +46,13 @@ public class Menu {
         return roleMenu;
     }
 
+    public WebElement getLogoutMenu() {
+        if(logoutMenu == null){
+            logoutMenu = findItemByText(TestMessageProvider.getMessage("logout"));
+        }
+        return logoutMenu;
+    }
+
     public void gotoUserHome() {
         guardHttp(getUserMenu()).click();
     }
@@ -56,8 +65,15 @@ public class Menu {
         guardHttp(getRoleMenu()).click();
     }
 
+
     private WebElement findItemByText(String text){
         return menuBar.findElement(By.xpath("//span[@class='ui-menuitem-text' and text() = '" + text +"']"));
     }
+
+    public void doLogout() {
+        guardHttp(getLogoutMenu()).click();
+    }
+
+
 
 }
