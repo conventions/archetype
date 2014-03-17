@@ -245,7 +245,7 @@
     </dependencyManagement>
     <profiles>
         <profile>
-            <id>jboss</id>
+            <id>wildfly</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -256,6 +256,41 @@
                 <hibernate.platform>
                     org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform
                 </hibernate.platform>
+                <hibernate.provider>
+                    org.hibernate.jpa.HibernatePersistenceProvider
+                </hibernate.provider>
+            </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate.javax.persistence</groupId>
+                    <artifactId>hibernate-jpa-2.0-api</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>jboss</id>
+            <properties>
+                <datasource>
+                    java:jboss/datasources/ExampleDS
+                </datasource>
+                <hibernate.platform>
+                    org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform
+                </hibernate.platform>
+                <hibernate.provider>
+                    org.hibernate.ejb.HibernatePersistence
+                </hibernate.provider>
             </properties>
 
             <dependencies>
@@ -383,7 +418,7 @@
 
         <!-- testing profiles -->
         <profile>
-            <id>full-tests</id>
+            <id>all-tests</id>
             <build>
                 <plugins>
                     <plugin>

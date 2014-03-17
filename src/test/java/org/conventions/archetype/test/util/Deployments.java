@@ -9,12 +9,12 @@ import org.jboss.shrinkwrap.resolver.api.maven.MavenResolverSystem;
 /**
  * @author rafael-pestano 20/07/2013 16:49:34
  *         <p/>
- *         Fábrica de WebArchives para arquillian
+ *         Arquillian WebArchive factory
  */
 public class Deployments {
 
     /**
-     * @return WebArchive base para todos testes baseados em arquillian
+     * @return base WebArchive for all arquillian tests
      */
     public static WebArchive getBaseDeployment() {
         WebArchive war = ShrinkWrap.create(WebArchive.class);

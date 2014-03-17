@@ -57,7 +57,7 @@ public class UserIT extends BaseIT {
     @Test
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
-    public void shouldFailToRemoveUser() {
+    public void shouldFailToRemoveUserWithoutPermission() {
         securityContext.setUser(userService.getDao().get(2L));
         securityContext.doLogon();
         //looged in user has no permition to remove user
@@ -135,9 +135,8 @@ public class UserIT extends BaseIT {
         Assert.assertNotNull(contextPath);
         try {
             //leverage rest unit test
-            UserRestTest userRestTest = new UserRestTest();
-            userRestTest.setCONTEXT(contextPath.toString());
-            userRestTest.shouldInsertUser();
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
+            userRestTest.shouldInsertUserWithGroups();;
         } catch (Throwable e) {
             e.printStackTrace();
             throw new RuntimeException("Problem to insert user:" + e.getMessage());
@@ -147,30 +146,45 @@ public class UserIT extends BaseIT {
     @Test
     @RunAsClient
     @InSequence(2)
-    public void shouldFindUserViaRest(@ArquillianResource
+    public void shouldInsertUserWithoutGroupsViaRest(@ArquillianResource
                                         URL contextPath) {
         Assert.assertNotNull(contextPath);
         try {
             //leverage rest unit test
-            UserRestTest userRestTest = new UserRestTest();
-            userRestTest.setCONTEXT(contextPath.toString());
-            userRestTest.shouldFindUser();
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
+            userRestTest.shouldInsertUserWithoutGroup();
         } catch (Throwable e) {
             e.printStackTrace();
-            throw new RuntimeException("Problem to find user:" + e.getMessage());
+            throw new RuntimeException("Problem to insert user:" + e.getMessage());
+        }
+    }
+
+
+    @Test
+    @RunAsClient
+    @InSequence(3)
+    public void shouldFindUserByNameViaRest(@ArquillianResource
+                                        URL contextPath) {
+        Assert.assertNotNull(contextPath);
+        try {
+            //leverage rest unit test
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
+            userRestTest.shouldFindUserByName("name");
+        } catch (Throwable e) {
+            e.printStackTrace();
+            throw new RuntimeException("Problem to find user by name:" + e.getMessage());
         }
     }
 
     @Test
     @RunAsClient
-    @InSequence(3)
+    @InSequence(4)
     public void shouldListUsersViaRest(@ArquillianResource
                                       URL contextPath) {
         Assert.assertNotNull(contextPath);
         try {
             //leverage rest unit test
-            UserRestTest userRestTest = new UserRestTest();
-            userRestTest.setCONTEXT(contextPath.toString());
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
             userRestTest.shouldListUsersWithSuccess();
         } catch (Throwable e) {
             e.printStackTrace();
@@ -180,15 +194,41 @@ public class UserIT extends BaseIT {
 
     @Test
     @RunAsClient
-    @InSequence(4)
-    public void shouldNotDeleteUserWithGroups(@ArquillianResource
+    @InSequence(5)
+    public void shouldNotRemoveUserWithGroups(@ArquillianResource
                                        URL contextPath) {
         Assert.assertNotNull(contextPath);
         try {
-            //leverage rest unit test
-            UserRestTest userRestTest = new UserRestTest();
-            userRestTest.setCONTEXT(contextPath.toString());
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
             userRestTest.shouldNotDeleteUserWithGroups();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            throw new RuntimeException("Problem to delete user:" + e.getMessage());
+        }
+    }
+
+    @Test
+    @RunAsClient
+    @InSequence(6)
+    public void shouldNotRemoveUserWithNoPermission(@ArquillianResource URL contextPath){
+        Assert.assertNotNull(contextPath);
+        try {
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
+            userRestTest.shouldNotDeleteUserWithNoPermission();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            throw new RuntimeException("Problem to delete user:" + e.getMessage());
+        }
+    }
+
+    @Test
+    @RunAsClient
+    @InSequence(7)
+    public void shouldRemoveUserWithoutGroups(@ArquillianResource URL contextPath){
+        Assert.assertNotNull(contextPath);
+        try {
+            UserRestTest userRestTest = new UserRestTest(contextPath.toString());
+            userRestTest.shouldDeleteUserWithoutGroups();
         } catch (Throwable e) {
             e.printStackTrace();
             throw new RuntimeException("Problem to delete user:" + e.getMessage());

@@ -8,13 +8,7 @@ import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventions.archetype.util.AppConstants;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
-import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
-import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -25,29 +19,14 @@ import java.util.List;
 /**
  * Created by rmpestano on 3/1/14.
  */
-@RunWith(value = JUnit4.class)
 public class UserRestTest {
-    private String CONTEXT = "http://localhost:8080/archetype/";
-    private Long userId;
-    private String username;
-    private String password;
+    private final String CONTEXT;
 
-    public UserRestTest() {
+    public UserRestTest(String context) {
+        this.CONTEXT = context;
     }
 
-    public void setCONTEXT(String CONTEXT) {
-        this.CONTEXT = CONTEXT;
-    }
-
-    @BeforeClass
-    public static void init() {
-        ResteasyProviderFactory providerFactory = ResteasyProviderFactory.getInstance();
-        RegisterBuiltin.register(providerFactory);
-    }
-
-
-    @Test
-    public void shouldInsertUser(){
+    public void shouldInsertUserWithGroups() {
         SimpleUser user = new SimpleUser();
         user.setName("name");
         user.setPassword("pass");
@@ -64,57 +43,74 @@ public class UserRestTest {
         group1.setRoles(roles);
         SimpleGroup group2 = new SimpleGroup();
         group2.setName("group2");
-        group2.setRoles(new ArrayList<SimpleRole>(){{add(new SimpleRole("r3"));}});
+        group2.setRoles(new ArrayList<SimpleRole>() {{
+            add(new SimpleRole("r3"));
+        }});
         groups.add(group1);
         groups.add(group2);
         user.setGroups(groups);
         ClientRequest request = new ClientRequest(CONTEXT + "rest/user/add/");
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
-        try{
+        try {
             Gson g = new Gson();
-            response = request.body(MediaType.APPLICATION_JSON,g.toJson(user)).post(String.class);
+            response = request.body(MediaType.APPLICATION_JSON, g.toJson(user)).post(String.class);
             Assert.assertTrue(response.getStatus() == Response.Status.OK.getStatusCode());
-            this.userId = Long.parseLong(response.getEntity(String.class));
+            Long userId = Long.parseLong(response.getEntity(String.class));
             Assert.assertNotNull(userId);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Assert.fail(e.getMessage());
         }
     }
 
-    @Test
-    public void shouldFindUser(){
-        if(userId == null){
-            userId = 1L;
-        }
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/find/"+userId);
+    public void shouldInsertUserWithoutGroup() {
+        SimpleUser user = new SimpleUser();
+        user.setName("userWithoutGroups");
+        user.setPassword("pass");
+        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/add/");
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
-        try{
+        try {
+            Gson g = new Gson();
+            response = request.body(MediaType.APPLICATION_JSON, g.toJson(user)).post(String.class);
+            Assert.assertTrue(response.getStatus() == Response.Status.OK.getStatusCode());
+            Long userId = Long.parseLong(response.getEntity(String.class));
+            Assert.assertNotNull(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
+
+    public void shouldFindUserByName(String name) {
+        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/findByName/" + name);
+        request.accept(MediaType.APPLICATION_JSON);
+        ClientResponse<String> response;
+        try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
+            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
             String json = response.getEntity(String.class);
             Gson gson = new Gson();
             JsonElement jsonElement = new JsonParser().parse(json);
             SimpleUser simpleUser = gson.fromJson(jsonElement, SimpleUser.class);
             Assert.assertNotNull(simpleUser);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
         }
     }
 
-    @Test
-    public void shouldListUsersWithSuccess(){
+
+    public void shouldListUsersWithSuccess() {
         ClientRequest request = new ClientRequest(CONTEXT + "rest/user/list/");
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
-        try{
+        try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
+            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
             String json = response.getEntity(String.class);
             Gson gson = new Gson();
             JsonElement jsonElement = new JsonParser().parse(json);
@@ -122,65 +118,89 @@ public class UserRestTest {
             }.getType();
             List<SimpleUser> simpleUsers = gson.fromJson(jsonElement, userListType);
             Assert.assertNotNull(simpleUsers);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
         }
     }
 
-    @Test
-    public void shouldNotDeleteUserWithGroups(){
-        if(userId == null){
-            userId = 1L;
-        }
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/"+userId);
-        if(username == null){
-            username = "name";
-        }
-        if(password == null){
-            password = "pass";
-        }
-        request.header("username",username);
-        request.header("password",password);
+    public void shouldNotDeleteUserWithGroups() {
+
+        SimpleUser adminUser = findUserByNameViaRest("name");
+        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + adminUser.getId());
+        //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
+        request.header("username", adminUser.getName());
+        request.header("password", "pass");//TODO decript adminUser.getPassword()
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
-        try{
+        try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
             Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+            //will fail to remove cause user has groups
             Assert.assertEquals(response.getEntity(), TestMessageProvider.getMessage("be.user.remove"));
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
         }
     }
 
+    public void shouldNotDeleteUserWithNoPermission() {
 
-    public Long getUserId() {
-        return userId;
+        SimpleUser nonAdminUser = findUserByNameViaRest("userWithoutGroups");
+        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + nonAdminUser.getId());
+        //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
+        request.header("username", nonAdminUser.getName());
+        request.header("password", "pass");//TODO decript adminUser.getPassword()
+        request.accept(MediaType.APPLICATION_JSON);
+        ClientResponse<String> response;
+        try {
+            response = request.get(String.class);
+            Assert.assertNotNull(response);
+            Assert.assertEquals(Response.Status.UNAUTHORIZED.getStatusCode(), response.getStatus());
+            //will fail to remove cause user has groups
+            Assert.assertEquals(response.getEntity(), TestMessageProvider.getMessage("default-security-message"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Assert.fail(ex.getMessage());
+        }
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void shouldDeleteUserWithoutGroups(){
+        SimpleUser userWithoutGroup = findUserByNameViaRest("userWithoutGroups");
+        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + userWithoutGroup.getId());
+        SimpleUser adminUser = findUserByNameViaRest("name");
+        //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
+        request.header("username", adminUser.getName());
+        request.header("password", "pass");//TODO decript adminUser.getPassword()        request.accept(MediaType.APPLICATION_JSON);
+        ClientResponse<String> response;
+        try {
+            response = request.get(String.class);
+            Assert.assertNotNull(response);
+            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Assert.fail(ex.getMessage());
+        }
     }
 
-    public String getCONTEXT() {
-        return CONTEXT;
+    private SimpleUser findUserByNameViaRest(String username) {
+        Assert.assertNotNull(username);
+        SimpleUser user = null;
+        try {
+            ClientResponse<String> response = new ClientRequest(CONTEXT + "rest/user/findByName/" + username).accept(MediaType.APPLICATION_JSON).get(String.class);
+            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+            String json = response.getEntity(String.class);
+            Assert.assertNotNull(json);
+            JsonElement jsonElement = new JsonParser().parse(json);
+            Gson gson = new Gson();
+            user = gson.fromJson(jsonElement, SimpleUser.class);
+            Assert.assertNotNull(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }

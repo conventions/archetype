@@ -7,6 +7,7 @@ import org.conventions.archetype.service.UserService;
 import org.conventionsframework.exception.BusinessException;
 
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -55,6 +56,24 @@ public class UserRest implements Serializable {
     }
 
     @GET
+    @Path("/findByName/{name}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findByName(@PathParam("name") String name) {
+        if (name != null) {
+            try {
+                User userQuery = new User();
+                userQuery.setName(name);
+                User user = userService.getDao().findOneByExample(userQuery);
+                return Response.ok(user).build();
+            } catch (NoResultException nre) {
+                return Response.status(Response.Status.NO_CONTENT).entity("user not found with name:" + name).build();
+            }
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).entity("provide user name").build();
+        }
+    }
+
+    @GET
     @Path("/delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response removeUser(@Context HttpHeaders headers, @PathParam("id") String id) {
@@ -76,7 +95,12 @@ public class UserRest implements Serializable {
                     return Response.status(Response.Status.BAD_REQUEST).entity("invalid id to delete user:" + id).build();
                 }
                 catch (BusinessException be){
-                    return Response.status(Response.Status.BAD_REQUEST).entity(be.getMessage()).build();
+                    if(be.getSeverity() == null){
+                        return Response.status(Response.Status.BAD_REQUEST).entity(be.getMessage()).build();
+                    }
+                    else{
+                        return Response.status(Response.Status.UNAUTHORIZED).entity(be.getMessage()).build();
+                    }
                 }
             } else {
                 return Response.status(Response.Status.BAD_REQUEST).entity("provide user id").build();

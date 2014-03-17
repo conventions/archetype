@@ -21,7 +21,7 @@ public abstract class BasePage implements Serializable {
 
     public String getLocation() {
         if (!getClass().isAnnotationPresent(Location.class)) {
-            throw new RuntimeException("Provide @Location annotation for class:" + getClass().getSimpleName() + " informando sua localização");
+            throw new RuntimeException("Provide @Location annotation for class:" + getClass().getSimpleName());
         }
         Location location = getClass().getAnnotation(Location.class);
         return location.value();
