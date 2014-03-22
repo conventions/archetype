@@ -368,6 +368,9 @@
                 <hibernate.platform>
                     org.hibernate.service.jta.platform.internal.SunOneJtaPlatform
                 </hibernate.platform>
+                <hibernate.provider>
+                    org.hibernate.jpa.HibernatePersistenceProvider
+                </hibernate.provider>
             </properties>
             <dependencies>
                 <dependency>
