@@ -204,10 +204,16 @@
         </dependency>
         <!-- end test dependencies -->
 
-        <dependency>
+        <!--dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>6.0</version>
+            <scope>provided</scope>
+        </dependency-->
+        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>3.1.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -538,6 +544,15 @@
             <properties>
                 <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
                 <arquillian.testContainer>jboss-managed</arquillian.testContainer>
+                <datasource>
+                    java:jboss/datasources/ExampleDS
+                </datasource>
+                <hibernate.platform>
+                    org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform
+                </hibernate.platform>
+                <hibernate.provider>
+                    org.hibernate.ejb.HibernatePersistence
+                </hibernate.provider>
             </properties>
             <dependencies>
                 <dependency>
@@ -554,6 +569,9 @@
                 <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
                 <arquillian.testContainer>jboss-managed</arquillian.testContainer>
                 <arquillian.serverHome>/home/rmpestano/servidores/wildfly-8.0.0.Final</arquillian.serverHome>
+                <datasource>java:jboss/datasources/ExampleDS2</datasource>
+                <hibernate.platform>org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform</hibernate.platform>
+                <hibernate.provider>org.hibernate.jpa.HibernatePersistenceProvider</hibernate.provider>
             </properties>
             <dependencies>
                 <dependency>
@@ -564,6 +582,56 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>glassfish-managed</id>
+            <properties>
+                <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
+                <arquillian.testContainer>glassfish-managed</arquillian.testContainer>
+                <arquillian.serverHome>/home/rmpestano/glassfish-4.01</arquillian.serverHome>
+                <datasource>
+                    jdbc/__default
+                </datasource>
+                <hibernate.platform>
+                    org.hibernate.service.jta.platform.internal.SunOneJtaPlatform
+                </hibernate.platform>
+                <hibernate.provider>
+                    org.hibernate.jpa.HibernatePersistenceProvider
+                </hibernate.provider>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+                    <version>1.0.0.CR4</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate.javax.persistence</groupId>
+                    <artifactId>hibernate-jpa-2.0-api</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss</groupId>
+                    <artifactId>jandex</artifactId>
+                    <version>1.2.0.Beta1</version>
+                </dependency>
+
+            </dependencies>
+        </profile>
+
         <!-- tests coverage-->
         <profile>
             <id>jacoco</id>
@@ -642,7 +710,6 @@
     </profiles>
 
     <repositories>
-
         <repository>
             <id>prime-repo</id>
             <name>Prime Technology Maven Repository</name>

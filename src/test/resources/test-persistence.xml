@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence
-    xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-    version="2.0">
-	 
-	<persistence-unit name="archetypeTestPU" transaction-type="JTA">
-		<jta-data-source>java:jboss/datasources/ExampleDS2</jta-data-source>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="archetypeTestPU" transaction-type="JTA">
+        <description>Archetype Unit</description>
+        <provider>${hibernate.provider}</provider>
+        <jta-data-source>${datasource}</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="false"/>
-			<property name="hibernate.use_sql_comments" value="false" />
+            <property name="hibernate.transaction.jta.platform" value="${hibernate.platform}" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+    </persistence-unit>
 
-            <!-- 			<property name="hibernate.use_identifier_rollback" value="true"/>  -->
-<!-- 			<property name="jboss.as.jpa.providerModule" value="procergs.eclipselink" /> -->
-<!-- 			<property name="eclipselink.target-server" value="${application.eclipselink.target-server}" /> -->
-<!-- 			<property name="eclipselink.logging.level" value="INFO" /> -->
-<!-- 			<property name="eclipselink.session.customizer" value="com.procergs.arqjava.lazyload.CustomSerializeSession" /> -->
-		</properties>
-	</persistence-unit>
-	
+
 </persistence>

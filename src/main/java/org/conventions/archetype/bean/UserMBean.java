@@ -191,7 +191,7 @@ public class UserMBean extends StateMBean<User> {
             }
         }
         getPaginator().getFilter().put("userGroups", myGroups);
-        super.initModal(getPaginator().getFilter()); //pass the map as parameter so GroupModalMBean can access @see GroupModalMBean#onOpen() 
+        super.initModal(getPaginator().getFilter()); //pass the map as parameter so GroupModalMBean can access @see GroupModalMBean#onOpen()
     }
 
     public void removeGroup() {
