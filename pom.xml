@@ -12,11 +12,11 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <conventions.version>1.0.0-SNAPSHOT</conventions.version>
-        <version.selenium>2.39.0</version.selenium>
-        <version.drone>1.2.4.Final</version.drone>
+        <conventions.version>1.0.0-RC2</conventions.version>
+        <version.selenium>2.40.0</version.selenium>
+        <version.drone>1.3.0.Final</version.drone>
         <version.arquillian>1.1.3.Final</version.arquillian>
-        <version.graphene>2.0.1.Final</version.graphene>
+        <version.graphene>2.0.2.Final</version.graphene>
         <arquillian.serverHome>/home/rmpestano/jboss-eap-6.1</arquillian.serverHome>
         <arquillian.browser>firefox</arquillian.browser>
         <arquillian.debug>false</arquillian.debug>
@@ -25,6 +25,9 @@
         <arquillian.localAddress>localhost</arquillian.localAddress>
         <arquillian.remoteAddress>http://remote-selenium-hub:1035/wd/hub</arquillian.remoteAddress>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+ 	    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath> 
         <maven.build.timestamp.format>dd/MM/yyyy HH:mm</maven.build.timestamp.format>
     </properties>
 
@@ -636,14 +639,14 @@
         <profile>
             <id>jacoco</id>
             <properties>
-                <jacoco.version>0.6.0.201210061924</jacoco.version>
+                <jacoco.version>version>0.6.5.201403032054</jacoco.version>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.jboss.arquillian.extension</groupId>
                     <artifactId>arquillian-jacoco</artifactId>
                     <scope>test</scope>
-                    <version>1.0.0.Alpha5</version>
+                    <version>1.0.0.Alpha6</version>
                 </dependency>
                 <dependency>
                     <groupId>org.jacoco</groupId>
@@ -710,6 +713,11 @@
     </profiles>
 
     <repositories>
+	    <repository>
+            <id>arquillian jbehave UNofficial maven repo</id>
+            <url>http://arquillian-jbehave-repo.googlecode.com/git/</url>
+			<layout>default</layout>		
+        </repository>
         <repository>
             <id>prime-repo</id>
             <name>Prime Technology Maven Repository</name>
@@ -723,8 +731,9 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-
+       
     </repositories>
+ 
     <build>
         <resources>
             <resource>

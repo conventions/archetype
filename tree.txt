@@ -1,76 +1,204 @@
 [INFO] Scanning for projects...
+[INFO] 
+[INFO] Using the builder org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder with a thread count of 1
+[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building arquillian-experience
-[INFO]    task-segment: [dependency:tree]
+[INFO] Building conventions-archetype 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
-[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from snapshots
-[WARNING] repository metadata for: 'snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT' could not be retrieved from repository: snapshots due to an error: Error transferring file: maven.procergs.reders
-[INFO] Repository 'snapshots' will be blacklisted
-[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from JBOSS_NEXUS
-[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from prime-repo
-[INFO] snapshot org.conventionsframework:conventions-core:1.0.0-SNAPSHOT: checking for updates from sonatype snapshots
-[WARNING] *** CHECKSUM FAILED - Checksum failed on download: local = 'a12b949fa4111617e2cfbb1a6b781e4c6cfde564'; remote = '731ea770122e24cb34bcde96da4d1445bfcd8ec9' - RETRYING
-[WARNING] *** CHECKSUM FAILED - Checksum failed on download: local = 'a12b949fa4111617e2cfbb1a6b781e4c6cfde564'; remote = '731ea770122e24cb34bcde96da4d1445bfcd8ec9' - IGNORING
-[INFO] [dependency:tree {execution: default-cli}]
-[INFO] org.rmpestano:arquillian-experience:war:1.0-SNAPSHOT
-[INFO] +- org.conventionsframework:conventions-core:jar:1.0.0-SNAPSHOT:compile
-[INFO] +- org.primefaces:primefaces:jar:3.5:compile
-[INFO] +- org.apache.myfaces.extensions.cdi.bundles:myfaces-extcdi-bundle-jsf20:jar:1.0.5:compile
-[INFO] +- org.primefaces.extensions:all-themes:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:afterdark:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:afternoon:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:afterwork:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:black-tie:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:blitzer:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:bluesky:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:bootstrap:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:casablanca:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:cruze:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:cupertino:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:dark-hive:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:dot-luv:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:eggplant:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:excite-bike:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:flick:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:glass-x:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:hot-sneaks:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:humanity:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:le-frog:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:midnight:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:mint-choc:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:overcast:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:pepper-grinder:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:redmond:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:rocket:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:sam:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:smoothness:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:south-street:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:start:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:sunny:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:swanky-purse:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:trontastic:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:ui-darkness:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:ui-lightness:jar:1.0.8:runtime
-[INFO] |  +- org.primefaces.themes:vader:jar:1.0.8:runtime
-[INFO] |  \- org.primefaces.themes:home:jar:1.0.8:runtime
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ archetype ---
+[INFO] org.rmpestano:archetype:war:1.0-SNAPSHOT
+[INFO] +- org.conventionsframework:conventions-core:jar:1.0.0-RC2:compile
+[INFO] +- org.primefaces:primefaces:jar:4.0:compile
+[INFO] +- org.apache.myfaces.extensions.cdi.bundles:myfaces-extcdi-bundle-jsf20:jar:1.0.6:compile
+[INFO] +- org.primefaces.themes:all-themes:jar:1.0.10:runtime
 [INFO] +- org.apache.commons:commons-lang3:jar:3.1:compile
-[INFO] +- commons-codec:commons-codec:jar:1.8:compile
-[INFO] +- javax:javaee-web-api:jar:6.0:provided
-[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.1.5.Final:provided
-[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.0.GA:provided
-[INFO] |  +- org.hibernate:hibernate-core:jar:4.1.5.Final:provided
-[INFO] |  |  \- antlr:antlr:jar:2.7.7:provided
-[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.0.Final:provided
+[INFO] +- org.hibernate:hibernate-core:jar:4.3.4.Final:provided
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.1.3.GA:provided
+[INFO] |  +- org.jboss.logging:jboss-logging-annotations:jar:1.2.0.Beta1:provided
+[INFO] |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:jar:1.0.0.Final:provided
 [INFO] |  +- dom4j:dom4j:jar:1.6.1:provided
+[INFO] |  +- org.hibernate.common:hibernate-commons-annotations:jar:4.0.4.Final:provided
+[INFO] |  +- org.hibernate.javax.persistence:hibernate-jpa-2.1-api:jar:1.0.0.Final:provided
 [INFO] |  +- org.javassist:javassist:jar:3.14.0-GA:provided
-[INFO] |  \- org.hibernate.common:hibernate-commons-annotations:jar:4.0.1.Final:provided
-[INFO] +- org.hibernate:hibernate-validator:jar:4.3.0.Final:provided
-[INFO] |  \- javax.validation:validation-api:jar:1.0.0.GA:provided
+[INFO] |  +- antlr:antlr:jar:2.7.7:provided
+[INFO] |  \- org.jboss:jandex:jar:1.1.0.Final:provided
+[INFO] +- org.jboss.resteasy:resteasy-jaxrs:jar:2.3.3.Final:provided
+[INFO] |  +- org.jboss.resteasy:jaxrs-api:jar:2.3.3.Final:provided
+[INFO] |  +- org.scannotation:scannotation:jar:1.0.3:provided
+[INFO] |  |  \- javassist:javassist:jar:3.12.1.GA:provided
+[INFO] |  +- javax.annotation:jsr250-api:jar:1.0:provided
+[INFO] |  +- javax.activation:activation:jar:1.1:provided
+[INFO] |  +- commons-httpclient:commons-httpclient:jar:3.1:provided
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.1.1:provided
+[INFO] |  |  \- commons-codec:commons-codec:jar:1.2:provided
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.1.2:provided
+[INFO] |  \- net.jcip:jcip-annotations:jar:1.0:provided
+[INFO] +- org.jboss.resteasy:resteasy-jackson-provider:jar:2.3.5.Final:provided
+[INFO] |  +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9:provided
+[INFO] |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.9:provided
+[INFO] |  \- org.codehaus.jackson:jackson-xc:jar:1.9.9:provided
+[INFO] +- org.jboss.resteasy:resteasy-multipart-provider:jar:2.3.3.Final:provided
+[INFO] |  +- javax.mail:mail:jar:1.4.4:provided
+[INFO] |  +- org.apache.james:apache-mime4j:jar:0.6:provided
+[INFO] |  \- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- org.codehaus.jackson:jackson-core-asl:jar:1.5.5:provided
+[INFO] +- org.jboss.resteasy:resteasy-jaxb-provider:jar:2.3.3.Final:provided
+[INFO] |  \- com.sun.xml.bind:jaxb-impl:jar:2.2.4:provided
+[INFO] |     \- javax.xml.bind:jaxb-api:jar:2.2.3:provided
+[INFO] |        \- javax.xml.stream:stax-api:jar:1.0-2:provided
+[INFO] +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] +- junit:junit:jar:4.8.2:test
+[INFO] +- org.jboss.arquillian.junit:arquillian-junit-container:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.junit:arquillian-junit-core:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.test:arquillian-test-api:jar:1.1.3.Final:test
+[INFO] |  |  \- org.jboss.arquillian.core:arquillian-core-api:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.test:arquillian-test-spi:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.container:arquillian-container-test-api:jar:1.1.3.Final:test
+[INFO] |  |  \- org.jboss.shrinkwrap:shrinkwrap-api:jar:1.2.1:test
+[INFO] |  +- org.jboss.arquillian.container:arquillian-container-test-spi:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.core:arquillian-core-impl-base:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.test:arquillian-test-impl-base:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.container:arquillian-container-impl-base:jar:1.1.3.Final:test
+[INFO] |  |  +- org.jboss.arquillian.config:arquillian-config-api:jar:1.1.3.Final:test
+[INFO] |  |  \- org.jboss.arquillian.config:arquillian-config-impl-base:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.container:arquillian-container-test-impl-base:jar:1.1.3.Final:test
+[INFO] |  \- org.jboss.shrinkwrap:shrinkwrap-impl-base:jar:1.2.1:test
+[INFO] |     \- org.jboss.shrinkwrap:shrinkwrap-spi:jar:1.2.1:test
+[INFO] +- org.jboss.arquillian.extension:arquillian-persistence-api:jar:1.0.0.Alpha6:test
+[INFO] +- org.jboss.arquillian.extension:arquillian-persistence-impl:jar:1.0.0.Alpha6:test
+[INFO] |  +- org.jboss.arquillian.extension:arquillian-transaction-spi:jar:1.0.0.Alpha3:test
+[INFO] |  |  \- org.jboss.arquillian.extension:arquillian-transaction-api:jar:1.0.0.Alpha3:test
+[INFO] |  +- org.jboss.arquillian.extension:arquillian-transaction-jta:jar:1.0.0.Alpha3:test
+[INFO] |  |  \- org.jboss.arquillian.extension:arquillian-transaction-impl-base:jar:1.0.0.Alpha3:test
+[INFO] |  +- org.dbunit:dbunit:jar:2.4.9:test
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.2:test
+[INFO] |  +- org.yaml:snakeyaml:jar:1.10:test
+[INFO] |  +- org.apache.poi:poi:jar:3.2-FINAL:test
+[INFO] |  \- org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:jar:2.0.0-alpha-5:test
+[INFO] +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-depchain:pom:2.0.2:test
+[INFO] |  +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api:jar:2.0.2:test
+[INFO] |  +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-spi:jar:2.0.2:test
+[INFO] |  +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api-maven:jar:2.0.2:test
+[INFO] |  +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-spi-maven:jar:2.0.2:test
+[INFO] |  +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven:jar:2.0.2:test
+[INFO] |  |  +- org.sonatype.aether:aether-api:jar:1.13.1:test
+[INFO] |  |  +- org.sonatype.aether:aether-impl:jar:1.13.1:test
+[INFO] |  |  +- org.sonatype.aether:aether-spi:jar:1.13.1:test
+[INFO] |  |  +- org.sonatype.aether:aether-util:jar:1.13.1:test
+[INFO] |  |  +- org.sonatype.aether:aether-connector-wagon:jar:1.13.1:test
+[INFO] |  |  +- org.apache.maven:maven-aether-provider:jar:3.0.5:test
+[INFO] |  |  +- org.apache.maven:maven-model:jar:3.0.5:test
+[INFO] |  |  +- org.apache.maven:maven-model-builder:jar:3.0.5:test
+[INFO] |  |  +- org.apache.maven:maven-repository-metadata:jar:3.0.5:test
+[INFO] |  |  +- org.apache.maven:maven-settings:jar:3.0.5:test
+[INFO] |  |  +- org.apache.maven:maven-settings-builder:jar:3.0.5:test
+[INFO] |  |  +- org.codehaus.plexus:plexus-interpolation:jar:1.14:test
+[INFO] |  |  +- org.codehaus.plexus:plexus-utils:jar:2.0.6:test
+[INFO] |  |  +- org.sonatype.plexus:plexus-sec-dispatcher:jar:1.4:test
+[INFO] |  |  |  \- org.sonatype.plexus:plexus-cipher:jar:1.4:test
+[INFO] |  |  +- org.apache.maven.wagon:wagon-provider-api:jar:2.4:test
+[INFO] |  |  +- org.apache.maven.wagon:wagon-file:jar:2.4:test
+[INFO] |  |  \- org.apache.maven.wagon:wagon-http-lightweight:jar:2.4:test
+[INFO] |  |     \- org.apache.maven.wagon:wagon-http-shared4:jar:2.4:test
+[INFO] |  |        \- org.jsoup:jsoup:jar:1.7.1:test
+[INFO] |  \- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven-archive:jar:2.0.2:test
+[INFO] |     +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api-maven-archive:jar:2.0.2:test
+[INFO] |     +- org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-spi-maven-archive:jar:2.0.2:test
+[INFO] |     +- org.codehaus.plexus:plexus-compiler-javac:jar:2.1:test
+[INFO] |     |  \- org.codehaus.plexus:plexus-compiler-api:jar:2.1:test
+[INFO] |     \- org.codehaus.plexus:plexus-component-api:jar:1.0-alpha-33:test
+[INFO] |        \- org.codehaus.plexus:plexus-classworlds:jar:1.2-alpha-10:test
+[INFO] +- org.jboss.arquillian.graphene:graphene-webdriver:pom:2.0.2.Final:test
+[INFO] |  +- org.jboss.arquillian.graphene:graphene-webdriver-api:jar:2.0.2.Final:test
+[INFO] |  +- org.jboss.arquillian.graphene:graphene-webdriver-spi:jar:2.0.2.Final:test
+[INFO] |  +- org.jboss.arquillian.graphene:graphene-webdriver-impl:jar:2.0.2.Final:test
+[INFO] |  |  +- org.jboss.arquillian.extension:arquillian-drone-impl:jar:1.3.0.Final:test
+[INFO] |  |  \- org.jboss.arquillian.extension:arquillian-drone-configuration:jar:1.3.0.Final:test
+[INFO] |  +- org.jboss.arquillian.extension:arquillian-drone-webdriver-depchain:pom:1.3.0.Final:test
+[INFO] |  |  +- org.jboss.arquillian.extension:arquillian-drone-api:jar:1.3.0.Final:test
+[INFO] |  |  +- org.jboss.arquillian.extension:arquillian-drone-spi:jar:1.3.0.Final:test
+[INFO] |  |  +- org.jboss.arquillian.extension:arquillian-drone-webdriver:jar:1.3.0.Final:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-api:jar:2.40.0:test
+[INFO] |  |  |  +- com.google.guava:guava:jar:15.0:test
+[INFO] |  |  |  \- org.json:json:jar:20080701:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-support:jar:2.40.0:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-chrome-driver:jar:2.40.0:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-firefox-driver:jar:2.40.0:test
+[INFO] |  |  |  \- org.apache.commons:commons-exec:jar:1.1:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.40.0:test
+[INFO] |  |  |  \- net.sourceforge.htmlunit:htmlunit:jar:2.13:test
+[INFO] |  |  |     +- xalan:xalan:jar:2.7.1:test
+[INFO] |  |  |     |  \- xalan:serializer:jar:2.7.1:test
+[INFO] |  |  |     +- org.apache.httpcomponents:httpmime:jar:4.3.1:test
+[INFO] |  |  |     +- net.sourceforge.htmlunit:htmlunit-core-js:jar:2.13:test
+[INFO] |  |  |     +- xerces:xercesImpl:jar:2.11.0:test
+[INFO] |  |  |     +- net.sourceforge.nekohtml:nekohtml:jar:1.9.19:test
+[INFO] |  |  |     +- net.sourceforge.cssparser:cssparser:jar:0.9.11:test
+[INFO] |  |  |     |  \- org.w3c.css:sac:jar:1.3:test
+[INFO] |  |  |     \- org.eclipse.jetty:jetty-websocket:jar:8.1.12.v20130726:test
+[INFO] |  |  |        +- org.eclipse.jetty:jetty-util:jar:8.1.12.v20130726:test
+[INFO] |  |  |        +- org.eclipse.jetty:jetty-io:jar:8.1.12.v20130726:test
+[INFO] |  |  |        \- org.eclipse.jetty:jetty-http:jar:8.1.12.v20130726:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-ie-driver:jar:2.40.0:test
+[INFO] |  |  |  +- net.java.dev.jna:jna:jar:3.4.0:test
+[INFO] |  |  |  \- net.java.dev.jna:platform:jar:3.4.0:test
+[INFO] |  |  +- org.seleniumhq.selenium:selenium-remote-driver:jar:2.40.0:test
+[INFO] |  |  |  \- cglib:cglib-nodep:jar:2.1_3:test
+[INFO] |  |  \- com.opera:operadriver:jar:1.5:test
+[INFO] |  |     +- com.opera:operalaunchers:jar:1.1:test
+[INFO] |  |     +- com.google.protobuf:protobuf-java:jar:2.4.1:test
+[INFO] |  |     +- commons-jxpath:commons-jxpath:jar:1.3:test
+[INFO] |  |     \- org.ini4j:ini4j:jar:0.5.2:test
+[INFO] |  \- org.seleniumhq.selenium:selenium-java:jar:2.40.0:test
+[INFO] |     +- org.seleniumhq.selenium:selenium-safari-driver:jar:2.40.0:test
+[INFO] |     \- org.webbitserver:webbit:jar:0.4.14:test
+[INFO] |        \- io.netty:netty:jar:3.5.2.Final:test
+[INFO] +- org.jboss.arquillian.extension:arquillian-phantom-driver:jar:1.1.0.Final:test
+[INFO] |  \- com.github.detro.ghostdriver:phantomjsdriver:jar:1.1.0:test
+[INFO] |     \- org.seleniumhq.selenium:selenium-server:jar:2.40.0:test
+[INFO] |        +- org.bouncycastle:bcprov-jdk15on:jar:1.48:test
+[INFO] |        +- org.bouncycastle:bcpkix-jdk15on:jar:1.48:test
+[INFO] |        +- mx4j:mx4j-tools:jar:3.0.1:test
+[INFO] |        +- org.mortbay.jetty:servlet-api-2.5:jar:6.1.9:test
+[INFO] |        \- org.seleniumhq.selenium:jetty-repacked:jar:7.6.1:test
+[INFO] +- org.jboss.arquillian.jbehave:arquillian-jbehave-core:jar:1.0.2:test
+[INFO] |  +- org.jboss.arquillian.core:arquillian-core-spi:jar:1.1.3.Final:test
+[INFO] |  +- org.jbehave:jbehave-core:zip:resources:3.7:test
+[INFO] |  |  +- junit:junit-dep:jar:4.8.2:test
+[INFO] |  |  +- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] |  |  +- org.hamcrest:hamcrest-library:jar:1.1:test
+[INFO] |  |  +- org.hamcrest:hamcrest-integration:jar:1.1:test
+[INFO] |  |  +- commons-io:commons-io:jar:1.4:test
+[INFO] |  |  +- commons-lang:commons-lang:jar:2.5:test
+[INFO] |  |  +- org.freemarker:freemarker:jar:2.3.16:test
+[INFO] |  |  +- com.thoughtworks.paranamer:paranamer:jar:2.4:test
+[INFO] |  |  \- com.thoughtworks.xstream:xstream:jar:1.3.1:test
+[INFO] |  |     \- xpp3:xpp3_min:jar:1.1.4c:test
+[INFO] |  +- org.jbehave:jbehave-core:jar:3.7:test
+[INFO] |  \- org.jbehave.site:jbehave-site-resources:zip:3.1.1:test
+[INFO] +- org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:jar:1.0.1.Final:test
+[INFO] +- org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec:jar:1.0.2.Final:test
+[INFO] +- org.jboss.arquillian.protocol:arquillian-protocol-servlet:jar:1.1.3.Final:test
+[INFO] |  +- org.jboss.arquillian.container:arquillian-container-spi:jar:1.1.3.Final:test
+[INFO] |  \- org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:jar:2.0.0-alpha-5:test
+[INFO] |     \- org.easytesting:fest-assert:jar:1.4:test
+[INFO] |        \- org.easytesting:fest-util:jar:1.1.6:test
+[INFO] +- org.apache.httpcomponents:httpcore:jar:4.2.5:test
+[INFO] +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- xml-apis:xml-apis:jar:1.4.01:test
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:test
+[INFO] |  \- log4j:log4j:jar:1.2.17:test
+[INFO] +- org.glassfish.main.extras:glassfish-embedded-all:jar:3.1.2:provided
+[INFO] +- org.hibernate:hibernate-entitymanager:jar:4.3.4.Final:provided
+[INFO] +- org.hibernate:hibernate-validator:jar:5.1.0.Final:provided
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:provided
+[INFO] |  \- com.fasterxml:classmate:jar:1.0.0:provided
 [INFO] \- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:provided
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESSFUL
+[INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 13 seconds
-[INFO] Finished at: Sun Dec 01 22:48:46 BRST 2013
-[INFO] Final Memory: 24M/299M
+[INFO] Total time: 3.274 s
+[INFO] Finished at: 2014-03-27T16:57:45-03:00
+[INFO] Final Memory: 15M/222M
 [INFO] ------------------------------------------------------------------------
