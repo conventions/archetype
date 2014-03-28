@@ -532,7 +532,7 @@
             <properties>
                 <arquillian.testContainer>jboss-remote</arquillian.testContainer>
                 <datasource>java:jboss/datasources/ExampleDS2</datasource>
-                <hibernate.platform>  org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform</hibernate.platform>
+                <hibernate.platform>org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform</hibernate.platform>
                 <hibernate.provider>org.hibernate.ejb.HibernatePersistence</hibernate.provider>
                 <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
             </properties>
@@ -636,19 +636,20 @@
         <profile>
             <id>jacoco</id>
             <properties>
-                <jacoco.version>version>0.6.5.201403032054</jacoco.version>
+                <jacoco.version>0.7.0.201403182114</jacoco.version>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.jboss.arquillian.extension</groupId>
                     <artifactId>arquillian-jacoco</artifactId>
+		            <version>1.0.0.Alpha6</version>
                     <scope>test</scope>
-                    <version>1.0.0.Alpha6</version>
                 </dependency>
                 <dependency>
                     <groupId>org.jacoco</groupId>
                     <artifactId>org.jacoco.core</artifactId>
                     <version>${jacoco.version}</version>
+ 	                <scope>test</scope>
                 </dependency>
             </dependencies>
             <build>
