@@ -77,14 +77,13 @@ public class UserRest implements Serializable {
     @Path("/delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response removeUser(@Context HttpHeaders headers, @PathParam("id") String id) {
-        if(headers.getRequestHeaders().containsKey("username") && headers.getRequestHeaders().containsKey("password")){
-            User user = userService.findUser(headers.getRequestHeader("username").get(0),headers.getRequestHeader("password").get(0));
-            if(user != null)   {
-                appSecurityContext.setUser(user);
-                appSecurityContext.doLogon();
-            }
-             else{
-                return Response.status(Response.Status.BAD_REQUEST).entity("invalid user credentials").build();
+        if(headers.getRequestHeaders().containsKey("username") && headers.getRequestHeaders().containsKey("password")) {
+            String username = headers.getRequestHeader("username").get(0);
+            String password = headers.getRequestHeader("password").get(0);
+            try {
+                appSecurityContext.doLogon(username, password);
+            } catch (BusinessException be) {
+                return Response.status(Response.Status.UNAUTHORIZED).entity(be.getMessage()).build();
             }
             if (id != null) {
                 try {

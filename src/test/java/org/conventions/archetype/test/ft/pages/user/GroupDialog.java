@@ -50,7 +50,7 @@ public class GroupDialog extends BasePage{
 
     public void addAllGroups() {
         List<WebElement> rows =  super.getTableRowsWithTDs("selectionTable_data");
-        assertTrue(!rows.isEmpty());
+         assertTrue(!rows.isEmpty());
         assertTrue(rows.size() == 2);
         CompositeAction ca = new CompositeAction();
         ca.addAction(new Actions(browser).keyDown(Keys.CONTROL).build());

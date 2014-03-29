@@ -439,16 +439,17 @@
                         <version>2.16</version>
                         <configuration>
                             <skipTests>false</skipTests>
-                            <runOrder>reversealphabetical</runOrder>
                             <includes>
                                 <include>**/*IT.java</include>
                                 <include>**/*FT.java</include>
                                 <include>**/*BDD.java</include>
+                                <include>**/*AT.java</include>
                             </includes>
                             <excludes>
                                 <exclude>**/*BaseIT.java</exclude>
                                 <exclude>**/*BaseFT.java</exclude>
                                 <exclude>**/*BaseBDD.java</exclude>
+                                <exclude>**/*BaseAT.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -456,6 +457,7 @@
             </build>
         </profile>
         <profile>
+            <!-- integration -->
             <id>it-tests</id>
             <build>
                 <plugins>
@@ -465,7 +467,6 @@
                         <version>2.16</version>
                         <configuration>
                             <skipTests>false</skipTests>
-                            <runOrder>reversealphabetical</runOrder>
                             <includes>
                                 <include>**/*IT.java</include>
                             </includes>
@@ -473,6 +474,7 @@
                                 <exclude>**/*BaseIT.java</exclude>
                                 <exclude>**/*BaseFT.java</exclude>
                                 <exclude>**/*BaseBDD.java</exclude>
+                                <exclude>**/*BaseAT.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -480,6 +482,7 @@
             </build>
         </profile>
         <profile>
+            <!-- functional -->
             <id>ft-tests</id>
             <build>
                 <plugins>
@@ -489,7 +492,6 @@
                         <version>2.16</version>
                         <configuration>
                             <skipTests>false</skipTests>
-                            <runOrder>reversealphabetical</runOrder>
                             <includes>
                                 <include>**/*FT.java</include>
                             </includes>
@@ -504,6 +506,7 @@
             </build>
         </profile>
         <profile>
+            <!-- behaviour -->
             <id>bdd-tests</id>
             <build>
                 <plugins>
@@ -513,7 +516,6 @@
                         <version>2.16</version>
                         <configuration>
                             <skipTests>false</skipTests>
-                            <runOrder>reversealphabetical</runOrder>
                             <includes>
                                 <include>**/*BDD.java</include>
                             </includes>
@@ -521,6 +523,32 @@
                                 <exclude>**/*BaseIT.java</exclude>
                                 <exclude>**/*BaseFT.java</exclude>
                                 <exclude>**/*BaseBDD.java</exclude>
+                                <exclude>**/*BaseAT.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- acceptance -->
+            <id>at-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <includes>
+                                <include>**/*AT.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*BaseIT.java</exclude>
+                                <exclude>**/*BaseFT.java</exclude>
+                                <exclude>**/*BaseBDD.java</exclude>
+                                <exclude>**/*BaseAT.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -649,7 +677,7 @@
                     <groupId>org.jacoco</groupId>
                     <artifactId>org.jacoco.core</artifactId>
                     <version>${jacoco.version}</version>
- 	                <scope>test</scope>
+ 	            <scope>test</scope>
                 </dependency>
             </dependencies>
             <build>
@@ -677,7 +705,7 @@
             </build>
         </profile>
 
-        <!-- profiles de navegadores(selenium web drivers) apenas para informar configuração da propriedade arquillian.browser do pom.xml via profile-->
+        <!-- selenium web drivers -->
         <profile>
             <id>webdriver-firefox</id>
             <activation>

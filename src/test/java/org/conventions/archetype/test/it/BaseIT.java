@@ -2,9 +2,9 @@ package org.conventions.archetype.test.it;
 
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.security.AppSecurityContext;
-import org.conventions.archetype.service.UserService;
 import org.conventions.archetype.test.it.role.RoleIT;
 import org.conventions.archetype.test.util.Deployments;
+import org.conventionsframework.service.BaseService;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
@@ -20,10 +20,10 @@ import javax.inject.Inject;
 public class BaseIT {
 
     @Inject
-    AppSecurityContext securityContext;
+    protected AppSecurityContext securityContext;
 
     @Inject
-    UserService userService;
+    protected BaseService<User, Long> userService;
 
     @BeforeClass
     public static void initClass() {
@@ -45,14 +45,10 @@ public class BaseIT {
     }
 
     protected void login(String username, String password) {
-        if (securityContext == null || userService == null) {//in client mode(RunAsClient) will be null
+        if (securityContext == null) {//in client mode(RunAsClient) will be null
             return;
         }
-        User user = userService.findUser(username,password);
-        if(user != null)   {
-            securityContext.setUser(user);
-            securityContext.doLogon();
-        }
+        securityContext.doLogon(username,password);
     }
 
 }

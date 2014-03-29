@@ -18,6 +18,7 @@ import java.util.List;
 @Table(name = "user_")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
+@NamedQuery(name = "User.findByNameAndPass", query = "select u from User u where u.name = :name and u.password = :pass")
 public class User extends VersionatedEntityLong {
 
 	@NotNull
@@ -43,6 +44,11 @@ public class User extends VersionatedEntityLong {
 		this.password = password;
 	}
 
+    public User password(String pass){
+        setPassword(pass);
+        return this;
+    }
+
 	public String getName() {
 		return name;
 	}
@@ -50,6 +56,11 @@ public class User extends VersionatedEntityLong {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+    public User name(String name){
+        setName(name);
+        return this;
+    }
 
 
 	public List<Group> getGroups() {

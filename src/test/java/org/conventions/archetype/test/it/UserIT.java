@@ -25,6 +25,7 @@ public class UserIT extends BaseIT {
     @Inject
     RoleIT roleIT;
 
+
     @Test
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
@@ -58,10 +59,9 @@ public class UserIT extends BaseIT {
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldFailToRemoveUserWithoutPermission() {
-        securityContext.setUser(userService.getDao().get(2L));
-        securityContext.doLogon();
-        //looged in user has no permition to remove user
         User user = userService.getDao().get(2L);
+        securityContext.doLogon(user.getName(),user.getPassword());
+        //looged in user has no permition to remove user
         assertNotNull(user);
         try{
             userService.remove(user);

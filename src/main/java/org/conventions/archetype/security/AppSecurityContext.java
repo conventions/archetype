@@ -9,6 +9,7 @@ import org.conventionsframework.qualifier.Config;
 import org.conventionsframework.qualifier.Log;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.security.DefaultSecurityContext;
+import org.conventionsframework.service.BaseService;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
 
@@ -22,6 +23,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.net.URLDecoder;
@@ -50,7 +53,7 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     transient Instance<HttpServletRequest> request;
 
     @Inject
-    private UserService userService;
+    private BaseService<User,Long> userService;
 
     @Inject
     ResourceBundle bundle;
@@ -75,7 +78,11 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
 
-    public void setUser(User user) {
+    /**
+     *
+     * must be set by login method
+     */
+    private void setUser(User user) {
         this.user = user;
     }
 
@@ -90,8 +97,13 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     public void doLogon() {
         if(!loggedIn()){
             if(user != null){
-                user = userService.findUser(user.getName(), user.getPassword());
-                if (user == null) {
+                Query q = userService.getEntityManager().createNamedQuery("User.findByNameAndPass");
+                q.setParameter("name",user.getName());
+                q.setParameter("pass", utils.encrypt(user.getPassword()));
+
+                try{
+                    user = (User) q.getSingleResult();
+                }catch (NoResultException nre){
                     throw new BusinessException(bundle.getString("logon.be.incorrect"));
                 }
                 userRolesCache = user.getUserRoles();
@@ -102,6 +114,11 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
             }
         }
 
+    }
+
+    public void doLogon(String username, String password){
+        setUser(new User().name(username).password(password));
+        this.doLogon();
     }
 
     private void restorePageOnLogon() {
@@ -170,9 +187,6 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
         return hasAnyRole(role);
     }
 
-    public UserService getUserService() {
-        return userService;
-    }
 
     /** @Override
      @Produces

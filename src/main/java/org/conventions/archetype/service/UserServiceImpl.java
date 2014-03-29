@@ -151,8 +151,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @Override
     public User findUser(String username, String pass) {
         Criteria criteria = dao.getSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("name",username));
-        criteria.add(Restrictions.eq("password",utils.encrypt(pass)));
+        criteria.add(Restrictions.eq("name",username)).
+        add(Restrictions.eq("password",utils.encrypt(pass)));
         return (User)dao.findOneByCriteria(criteria);
     }
 }
