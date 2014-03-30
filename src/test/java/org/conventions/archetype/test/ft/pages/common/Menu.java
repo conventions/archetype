@@ -74,6 +74,8 @@ public class Menu {
         guardHttp(getLogoutMenu()).click();
     }
 
-
+    public boolean isPresent(){
+        return menuBar.isPresent();
+    }
 
 }

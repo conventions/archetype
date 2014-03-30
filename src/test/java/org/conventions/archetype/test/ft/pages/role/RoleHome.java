@@ -41,21 +41,29 @@ public class RoleHome extends BasePage {
         if(isListPage()){
             WebElement newButton = footer.findElement(By.xpath("//button"));
             newButton.click();
-            inputName.clear();
-            inputName.sendKeys(name);
-            GrapheneElement btSave = panel.findElement(By.xpath("//button"));
-            guardAjax(btSave).click();
-            verifyMessage(TestMessageProvider.getMessage("role.create.message"));
+            insertRole(name);
             guardAjax(backButton).click();
         }
+    }
+
+    public void insertRole(String name) {
+        inputName.clear();
+        inputName.sendKeys(name);
+        GrapheneElement btSave = panel.findElement(By.xpath("//button"));
+        guardAjax(btSave).click();
+        verifyMessage(TestMessageProvider.getMessage("role.create.message"));
     }
 
     public boolean isListPage(){
         return datatable.isPresent();
     }
 
-    public boolean isEditPage(){
-       return panel.isPresent() && panel.findElement(By.partialLinkText(TestMessageProvider.getMessage("edit"))).isPresent();
+    public GrapheneElement getFooter() {
+        return footer;
+    }
+
+    public boolean isFormPage(){
+       return panel.isPresent();
     }
 
 
