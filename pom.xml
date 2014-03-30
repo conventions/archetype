@@ -592,7 +592,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>wildfy-managed</id>
+            <id>wildfly-managed</id>
             <properties>
                 <!--referenced by arquillian.launch and used in arquillian.xml to choice which container arquillian will use-->
                 <arquillian.testContainer>jboss-managed</arquillian.testContainer>

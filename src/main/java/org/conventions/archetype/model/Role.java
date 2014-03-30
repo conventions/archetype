@@ -43,6 +43,11 @@ public class Role extends VersionatedEntityLong {
         this.name = name;
     }
 
+    public Role name(String name){
+        setName(name);
+        return this;
+    }
+
     public List<Group> getGroups() {
         return groups;
     }

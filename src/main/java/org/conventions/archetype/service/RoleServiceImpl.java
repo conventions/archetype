@@ -4,13 +4,18 @@
  */
 package org.conventions.archetype.service;
 
+import org.conventions.archetype.bean.ComboMBean;
+import org.conventions.archetype.model.Group;
+import org.conventions.archetype.model.Role;
+import org.conventions.archetype.util.AppConstants;
+import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.service.impl.BaseServiceImpl;
+import org.conventionsframework.util.ResourceBundle;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.conventions.archetype.bean.ComboMBean;
-import org.conventions.archetype.model.Role;
 
 import javax.inject.Inject;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +29,9 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements Role
 
     @Inject
     ComboMBean comboMBean;
+
+    @Inject
+    ResourceBundle resourceBundle;
     
     @Override
     public DetachedCriteria configFindPaginated(Map<String, String> columnFilters, Map<String, Object> externalFilter) {
@@ -48,8 +56,21 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements Role
     public void afterRemove(Role entity) {
          comboMBean.updateRoleList();
     }
-    
-    
 
-    
+    @Override
+    public void beforeRemove(Role entity) {
+        if(entity.getName().equals(AppConstants.Role.ADMIN)){
+            throw new BusinessException(resourceBundle.getString("role.be.admin"));
+        }
+        if(roleIsAssociatedWithGroups(entity)){
+            throw new BusinessException(resourceBundle.getString("role.be.groups"));
+        }
+    }
+
+    private boolean roleIsAssociatedWithGroups(Role entity) {
+        Query q = getEntityManager().createNamedQuery("Group.findGroupsWithrole");
+        q.setParameter("roleId",entity.getId());
+        List<Group> groupsFound = q.getResultList();
+        return !groupsFound.isEmpty();
+    }
 }

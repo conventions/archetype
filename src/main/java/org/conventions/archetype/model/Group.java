@@ -13,14 +13,18 @@ import java.util.*;
 @Entity
 @SequenceGenerator(allocationSize = 10, name = "seq_group", sequenceName = "seq_group")
 @Table(name="group_")
-@NamedQuery(name = "Group.findByUser", query = "select g from Group g left join fetch g.users u where u.id = :userId")
+@NamedQueries({
+        @NamedQuery(name = "Group.findByUser", query = "select g from Group g left join fetch g.users u where u.id = :userId"),
+        @NamedQuery(name = "Group.findGroupsWithrole", query = "select g from Group g left join g.roles r where r.id = :roleId"),
+
+})
 public class Group extends VersionatedEntityLong{
     
     private String name;
     @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Role> roles;
     @JsonIgnore
-    @ManyToMany(mappedBy="groups")
+    @ManyToMany(mappedBy = "groups")
     private List<User> users;
 
 

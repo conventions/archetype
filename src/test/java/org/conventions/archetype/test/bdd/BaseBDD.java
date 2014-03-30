@@ -22,11 +22,11 @@ import static org.jbehave.core.reporters.Format.*;
  * Classe base dos testes BDD com arquillian
  */
 
-public abstract class BaseBehaveTest extends JUnitStory{
+public abstract class BaseBDD extends JUnitStory{
 	private Object[] steps;
 	
 
-    public BaseBehaveTest() {
+    public BaseBDD() {
         configuredEmbedder().useExecutorService(MoreExecutors.sameThreadExecutor());
     }
 

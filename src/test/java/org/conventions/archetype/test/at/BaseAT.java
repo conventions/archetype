@@ -1,7 +1,7 @@
 package org.conventions.archetype.test.at;
 
 import org.conventions.archetype.bean.UserMBean;
-import org.conventions.archetype.test.bdd.BaseBehaveTest;
+import org.conventions.archetype.test.bdd.BaseBDD;
 import org.conventions.archetype.test.ft.BasePage;
 import org.conventions.archetype.test.ft.ScreenshotTestRule;
 import org.conventions.archetype.test.util.Deployments;
@@ -29,7 +29,7 @@ import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 /**
  * Created by rmpestano on 3/30/14.
  */
-public abstract class BaseAT extends BaseBehaveTest{
+public abstract class BaseAT extends BaseBDD {
 
     protected static final String WEBAPP_SRC = "src/main/webapp";
 

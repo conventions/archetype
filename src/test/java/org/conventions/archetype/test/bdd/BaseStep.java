@@ -17,10 +17,10 @@ import java.io.Serializable;
 public class BaseStep implements Serializable{
 
     @Inject
-    AppSecurityContext securityContext;
+    protected AppSecurityContext securityContext;
 
     @Inject
-    UserService userService;
+    protected UserService userService;
 
     protected void login(String username, String password) {
         if (securityContext == null) {//in client mode(RunAsClient) will be null
