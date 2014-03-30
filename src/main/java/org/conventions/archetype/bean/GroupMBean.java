@@ -5,20 +5,18 @@
 package org.conventions.archetype.bean;
 
 import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
+import org.conventions.archetype.model.Group;
+import org.conventions.archetype.model.Role;
+import org.conventions.archetype.service.GroupService;
 import org.conventionsframework.bean.BaseMBean;
 import org.conventionsframework.qualifier.PersistentClass;
 import org.conventionsframework.qualifier.Service;
 import org.primefaces.model.DualListModel;
-import org.conventions.archetype.model.Group;
-import org.conventions.archetype.model.Role;
-import org.conventions.archetype.service.GroupService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -64,7 +62,7 @@ public class GroupMBean extends BaseMBean<Group> implements Serializable{
     
     @Override
     public void save() {
-        List<Role> roles = new ArrayList<Role>();
+        List<Role> roles = new ArrayList<>();
         for (Iterator<Role> i = groupRoles.getTarget().iterator(); i.hasNext(); ) {
             roles.add(getBaseService().getEntityManager().find(Role.class, i.next().getId()));
         }

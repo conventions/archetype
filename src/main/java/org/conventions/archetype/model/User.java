@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name = "user_")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-@NamedQuery(name = "User.findByNameAndPass", query = "select u from User u where u.name = :name and u.password = :pass")
+@NamedQuery(name = "User.findByNameAndPass", query = "select u from User u left join fetch u.groups g where u.name = :name and u.password = :pass")
 public class User extends VersionatedEntityLong {
 
 	@NotNull
@@ -26,6 +26,7 @@ public class User extends VersionatedEntityLong {
 
 	@NotNull
 	private String password;
+
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<Group> groups;
 

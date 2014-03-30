@@ -8,12 +8,12 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.conventionsframework.model.VersionatedEntityLong;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @SequenceGenerator(allocationSize = 10, name = "seq_group", sequenceName = "seq_group")
 @Table(name="group_")
+@NamedQuery(name = "Group.findByUser", query = "select g from Group g left join fetch g.users u where u.id = :userId")
 public class Group extends VersionatedEntityLong{
     
     private String name;
@@ -39,7 +39,6 @@ public class Group extends VersionatedEntityLong{
     public void setName(String name) {
         this.name = name;
     }
-    
 
     public List<Role> getRoles() {
         return roles;

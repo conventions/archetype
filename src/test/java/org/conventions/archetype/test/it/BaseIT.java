@@ -1,10 +1,9 @@
 package org.conventions.archetype.test.it;
 
-import org.conventions.archetype.model.User;
 import org.conventions.archetype.security.AppSecurityContext;
+import org.conventions.archetype.service.UserService;
 import org.conventions.archetype.test.it.role.RoleIT;
 import org.conventions.archetype.test.util.Deployments;
-import org.conventionsframework.service.BaseService;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
@@ -23,7 +22,7 @@ public class BaseIT {
     protected AppSecurityContext securityContext;
 
     @Inject
-    protected BaseService<User, Long> userService;
+    protected UserService userService;
 
     @BeforeClass
     public static void initClass() {
@@ -44,10 +43,13 @@ public class BaseIT {
         return war;
     }
 
+
     protected void login(String username, String password) {
         if (securityContext == null) {//in client mode(RunAsClient) will be null
             return;
         }
+        securityContext.setUserService(userService);//not allowed multiple extended persistenceContexts
+        //they must use same persistence context cause userService has extended persistence context
         securityContext.doLogon(username,password);
     }
 

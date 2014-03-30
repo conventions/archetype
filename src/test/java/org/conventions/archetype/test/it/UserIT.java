@@ -60,7 +60,8 @@ public class UserIT extends BaseIT {
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldFailToRemoveUserWithoutPermission() {
         User user = userService.getDao().get(2L);
-        securityContext.doLogon(user.getName(),user.getPassword());
+        //TODO decripty user pass
+        super.login(user.getName(),"user");
         //looged in user has no permition to remove user
         assertNotNull(user);
         try{

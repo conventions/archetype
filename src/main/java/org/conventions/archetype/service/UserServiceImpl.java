@@ -5,6 +5,7 @@
 package org.conventions.archetype.service;
 
 import org.conventions.archetype.event.UpdateUserRoles;
+import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.util.AppConstants;
 import org.conventions.archetype.util.Utils;
@@ -14,7 +15,6 @@ import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
-import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -25,9 +25,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -52,22 +51,22 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @Inject
     Event<UpdateUserRoles> updateUserRolesEvent;
 
+
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     EntityManager em;
 
-//    //change super entityManager which is type=Transaction
+    //change super entityManager which is type=Transaction
     @Override
-    @TransactionAttribute(TransactionAttributeType.NEVER)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public EntityManager getEntityManager() {
         return em;
     }
 
     @Override
-    @TransactionAttribute(TransactionAttributeType.NEVER)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public DetachedCriteria configFindPaginated(Map<String, String> columnFilters, Map<String, Object> externalFilter) {
 
         DetachedCriteria dc = getDetachedCriteria();
-
         if (columnFilters != null) {
             String group = columnFilters.get("groups");
             if (group != null && !"all".equalsIgnoreCase(group)) {
@@ -83,6 +82,15 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         return super.configFindPaginated(columnFilters, externalFilter, dc);
     }
 
+
+
+
+    private List<Group> fetchGroups(User user) {
+        Query q = getEntityManager().createNamedQuery("Group.findByUser");
+        q.setParameter("userId",user.getId());
+        return q.getResultList();
+    }
+
     @SecurityMethod(rolesAllowed = AppConstants.Role.OPERATOR, message = "Only operator can perform this task")
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public void testPermission(){
@@ -95,6 +103,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @SecurityMethod(rolesAllowed= AppConstants.Role.ADMIN)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void remove(User entity) {
+        entity = dao.get(entity.getId());
         if(entity.getGroups() != null && !entity.getGroups().isEmpty()){
             throw new BusinessException(resourceBundle.getString("be.user.remove"));
         }
@@ -149,10 +158,10 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     }
 
     @Override
-    public User findUser(String username, String pass) {
-        Criteria criteria = dao.getSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("name",username)).
-        add(Restrictions.eq("password",utils.encrypt(pass)));
-        return (User)dao.findOneByCriteria(criteria);
+    public User findUser(String username, String pass) throws NoResultException{
+        Query q = getEntityManager().createNamedQuery("User.findByNameAndPass");
+        q.setParameter("name", username);
+        q.setParameter("pass", pass);
+        return (User) q.getSingleResult();
     }
 }

@@ -32,7 +32,7 @@ public class TestService implements Serializable {
         admin.setName("admin");
         admin.setPassword(new Utils().encrypt("admin"));
         List<Group> groups = new ArrayList<Group>();
-        List<Role> roles = new ArrayList<Role>();
+        List<Role> roles = new ArrayList<>();
         Role  roleAdmin = new Role();
         roleAdmin.setName(AppConstants.Role.ADMIN);
         roles.add(roleAdmin);

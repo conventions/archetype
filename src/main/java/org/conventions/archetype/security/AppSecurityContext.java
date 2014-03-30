@@ -14,6 +14,8 @@ import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Instance;
@@ -53,7 +55,7 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     transient Instance<HttpServletRequest> request;
 
     @Inject
-    private BaseService<User,Long> userService;
+    private UserService userService;
 
     @Inject
     ResourceBundle bundle;
@@ -97,12 +99,8 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     public void doLogon() {
         if(!loggedIn()){
             if(user != null){
-                Query q = userService.getEntityManager().createNamedQuery("User.findByNameAndPass");
-                q.setParameter("name",user.getName());
-                q.setParameter("pass", utils.encrypt(user.getPassword()));
-
                 try{
-                    user = (User) q.getSingleResult();
+                    user = userService.findUser(user.getName(),utils.encrypt(user.getPassword()));
                 }catch (NoResultException nre){
                     throw new BusinessException(bundle.getString("logon.be.incorrect"));
                 }
@@ -160,6 +158,10 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
                 MessagesController.addWarn(bundle.getString("expire.message"));
             }
         }
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     //tells conventions whether user is logged or not

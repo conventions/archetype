@@ -7,7 +7,6 @@ import org.conventions.archetype.service.UserService;
 import org.conventionsframework.exception.BusinessException;
 
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -60,14 +59,13 @@ public class UserRest implements Serializable {
     @Produces({MediaType.APPLICATION_JSON})
     public Response findByName(@PathParam("name") String name) {
         if (name != null) {
-            try {
-                User userQuery = new User();
-                userQuery.setName(name);
-                User user = userService.getDao().findOneByExample(userQuery);
-                return Response.ok(user).build();
-            } catch (NoResultException nre) {
+            User userQuery = new User();
+            userQuery.setName(name);
+            User user = userService.getDao().findOneByExample(userQuery);
+            if (user == null) {
                 return Response.status(Response.Status.NO_CONTENT).entity("user not found with name:" + name).build();
             }
+            return Response.ok(user).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).entity("provide user name").build();
         }
@@ -77,34 +75,34 @@ public class UserRest implements Serializable {
     @Path("/delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response removeUser(@Context HttpHeaders headers, @PathParam("id") String id) {
-        if(headers.getRequestHeaders().containsKey("username") && headers.getRequestHeaders().containsKey("password")) {
+        if (headers.getRequestHeaders().containsKey("username") && headers.getRequestHeaders().containsKey("password")) {
             String username = headers.getRequestHeader("username").get(0);
             String password = headers.getRequestHeader("password").get(0);
             try {
                 appSecurityContext.doLogon(username, password);
             } catch (BusinessException be) {
-                return Response.status(Response.Status.UNAUTHORIZED).entity(be.getMessage()).build();
+                return Response.status(Response.Status.BAD_REQUEST).entity(be.getMessage()).build();
             }
             if (id != null) {
                 try {
                     Long userId = Long.parseLong(id);
-                    userService.remove(userService.getDao().get(userId));
+                    User u = new User();
+                    u.setId(userId);
+                    userService.remove(u);
                     return Response.ok().build();
                 } catch (NumberFormatException nfe) {
                     return Response.status(Response.Status.BAD_REQUEST).entity("invalid id to delete user:" + id).build();
-                }
-                catch (BusinessException be){
-                    if(be.getSeverity() == null){
+                } catch (BusinessException be) {
+                    if (be.getSeverity() == null) {
                         return Response.status(Response.Status.BAD_REQUEST).entity(be.getMessage()).build();
-                    }
-                    else{
+                    } else {
                         return Response.status(Response.Status.UNAUTHORIZED).entity(be.getMessage()).build();
                     }
                 }
             } else {
                 return Response.status(Response.Status.BAD_REQUEST).entity("provide user id").build();
             }
-        }else{
+        } else {
             return Response.status(Response.Status.FORBIDDEN).entity("provide username and password").build();
 
         }
