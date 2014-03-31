@@ -62,7 +62,7 @@ public class GroupMBean extends BaseMBean<Group> implements Serializable{
     
     @Override
     public void save() {
-        List<Role> roles = new ArrayList<>();
+        Set<Role> roles = new HashSet<>();
         for (Iterator<Role> i = groupRoles.getTarget().iterator(); i.hasNext(); ) {
             roles.add(getBaseService().getEntityManager().find(Role.class, i.next().getId()));
         }

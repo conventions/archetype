@@ -46,9 +46,9 @@ and open the template in the editor.
                     <p:column headerText="#{msg.group}" sortBy="#{row.name}" filterBy="#{row.name}">
                         #{row.name}
                     </p:column>
-                    <p:column sortBy="#{row.roles}" filterOptions="#{comboMBean.roleList}" filterBy="#{row.roles}"
+                    <p:column sortBy="#{row.rolesAsList}" filterOptions="#{comboMBean.roleList}" filterBy="#{row.roles}"
                               headerText="#{msg.roles}">
-                        <p:dataList value="#{row.roles}" var="r" rendered="#{not empty row.roles}">
+                        <p:dataList value="#{row.rolesAsList}" var="r" rendered="#{not empty row.roles}">
                             <p:column>
                                 #{r.name}
                             </p:column>

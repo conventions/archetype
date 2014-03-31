@@ -5,16 +5,17 @@ import org.conventions.archetype.model.Role;
 import org.conventions.archetype.service.RoleService;
 import org.conventions.archetype.test.bdd.BaseStep;
 import org.conventions.archetype.test.util.TestMessageProvider;
-import org.conventions.archetype.test.util.TestService;
 import org.conventionsframework.exception.BusinessException;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.BeforeStory;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 import javax.inject.Inject;
 import java.io.Serializable;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,9 +28,6 @@ public class RoleSteps extends BaseStep implements Serializable {
 
 
     @Inject
-    TestService testService;
-
-    @Inject
     RoleService roleService;
 
     private Integer rolesFound;
@@ -39,12 +37,6 @@ public class RoleSteps extends BaseStep implements Serializable {
     @BeforeStory
     public void setUpStory(){
         testService.initDatabaseWithUserAndGroups();
-    }
-
-    @BeforeScenario
-    public void setUpScenario(){
-        super.login("admin", "admin");
-        assertTrue(securityContext.loggedIn());
     }
 
     @When("i search roles with name $name")

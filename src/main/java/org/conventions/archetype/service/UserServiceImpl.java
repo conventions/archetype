@@ -6,6 +6,7 @@ package org.conventions.archetype.service;
 
 import org.conventions.archetype.event.UpdateUserRoles;
 import org.conventions.archetype.model.Group;
+import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.util.AppConstants;
 import org.conventions.archetype.util.Utils;
@@ -15,9 +16,11 @@ import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
@@ -163,5 +166,13 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         q.setParameter("name", username);
         q.setParameter("pass", pass);
         return (User) q.getSingleResult();
+    }
+
+    public List<User> findUserByRole(Role role){
+        Criteria criteria = getCriteria();
+        criteria.createAlias("groups","groups", JoinType.LEFT_OUTER_JOIN);
+        criteria.createAlias("groups.roles","roles", JoinType.LEFT_OUTER_JOIN);
+        criteria.add(Restrictions.eq("roles.name",role.getName()));
+        return criteria.list();
     }
 }

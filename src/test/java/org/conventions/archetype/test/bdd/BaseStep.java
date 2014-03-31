@@ -2,6 +2,7 @@ package org.conventions.archetype.test.bdd;
 
 import org.conventions.archetype.security.AppSecurityContext;
 import org.conventions.archetype.service.UserService;
+import org.conventions.archetype.test.util.TestService;
 
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -21,6 +22,9 @@ public class BaseStep implements Serializable{
 
     @Inject
     protected UserService userService;
+
+    @Inject
+    protected TestService testService;
 
     protected void login(String username, String password) {
         if (securityContext == null) {//in client mode(RunAsClient) will be null

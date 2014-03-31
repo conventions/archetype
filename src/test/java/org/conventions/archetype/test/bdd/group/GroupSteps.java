@@ -4,7 +4,6 @@ import org.conventions.archetype.model.Group;
 import org.conventions.archetype.service.GroupService;
 import org.conventions.archetype.test.bdd.BaseStep;
 import org.conventions.archetype.test.util.TestMessageProvider;
-import org.conventions.archetype.test.util.TestService;
 import org.conventionsframework.exception.BusinessException;
 import org.hibernate.criterion.MatchMode;
 import org.jbehave.core.annotations.*;
@@ -24,9 +23,6 @@ import static org.junit.Assert.assertNotNull;
  */
 public class GroupSteps extends BaseStep implements Serializable {
 
-
-    @Inject
-    TestService testService;
 
     @Inject
     GroupService groupService;

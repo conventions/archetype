@@ -49,7 +49,7 @@ public class GroupDialog extends BasePage{
 
 
     public void addAllGroups() {
-        Graphene.waitGui();
+        Graphene.waitAjax();
         List<WebElement> rows =  super.getTableRowsWithTDs("selectionTable_data");
         assertTrue(!rows.isEmpty());
         assertTrue(rows.size() == 2);

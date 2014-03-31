@@ -22,7 +22,7 @@ public class Group extends VersionatedEntityLong{
     
     private String name;
     @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Role> roles;
+    private Set<Role> roles;
     @JsonIgnore
     @ManyToMany(mappedBy = "groups")
     private List<User> users;
@@ -44,11 +44,18 @@ public class Group extends VersionatedEntityLong{
         this.name = name;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public List<Role> getRolesAsList() {
+        if(roles != null){
+            return new ArrayList<>(roles);
+        }
+        return null;
+    }
+
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -60,11 +67,10 @@ public class Group extends VersionatedEntityLong{
         this.users = users;
     }
     
-    
 
     public void addRole(Role role){
         if(getRoles() == null){
-            setRoles(new ArrayList<Role>());
+            setRoles(new HashSet<Role>());
         }
         getRoles().add(role);
     }

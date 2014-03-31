@@ -63,7 +63,6 @@ public class User extends VersionatedEntityLong {
         return this;
     }
 
-
 	public List<Group> getGroups() {
 		return groups;
 	}
