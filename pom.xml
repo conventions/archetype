@@ -440,16 +440,16 @@
                         <configuration>
                             <skipTests>false</skipTests>
                             <includes>
-                                <include>**/*IT.java</include>
-                                <include>**/*FT.java</include>
-                                <include>**/*BDD.java</include>
-                                <include>**/*AT.java</include>
+                                <include>**/*It.java</include>
+                                <include>**/*Ft.java</include>
+                                <include>**/*Bdd.java</include>
+                                <include>**/*At.java</include>
                             </includes>
                             <excludes>
-                                <exclude>**/*BaseIT.java</exclude>
-                                <exclude>**/*BaseFT.java</exclude>
-                                <exclude>**/*BaseBDD.java</exclude>
-                                <exclude>**/*BaseAT.java</exclude>
+                                <exclude>**/*BaseIt.java</exclude>
+                                <exclude>**/*BaseFt.java</exclude>
+                                <exclude>**/*BaseBdd.java</exclude>
+                                <exclude>**/*BaseAt.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -468,13 +468,10 @@
                         <configuration>
                             <skipTests>false</skipTests>
                             <includes>
-                                <include>**/*IT.java</include>
+                                <include>**/*It.java</include>
                             </includes>
                             <excludes>
-                                <exclude>**/*BaseIT.java</exclude>
-                                <exclude>**/*BaseFT.java</exclude>
-                                <exclude>**/*BaseBDD.java</exclude>
-                                <exclude>**/*BaseAT.java</exclude>
+                                <exclude>**/*BaseIt.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -493,12 +490,10 @@
                         <configuration>
                             <skipTests>false</skipTests>
                             <includes>
-                                <include>**/*FT.java</include>
+                                <include>**/*Ft.java</include>
                             </includes>
                             <excludes>
-                                <exclude>**/*BaseIT.java</exclude>
-                                <exclude>**/*BaseFT.java</exclude>
-                                <exclude>**/*BaseBDD.java</exclude>
+                                <exclude>**/*BaseFt.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -517,13 +512,10 @@
                         <configuration>
                             <skipTests>false</skipTests>
                             <includes>
-                                <include>**/*BDD.java</include>
+                                <include>**/*Bdd.java</include>
                             </includes>
                             <excludes>
-                                <exclude>**/*BaseIT.java</exclude>
-                                <exclude>**/*BaseFT.java</exclude>
-                                <exclude>**/*BaseBDD.java</exclude>
-                                <exclude>**/*BaseAT.java</exclude>
+                                <exclude>**/*BaseBdd.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -542,13 +534,10 @@
                         <configuration>
                             <skipTests>false</skipTests>
                             <includes>
-                                <include>**/*AT.java</include>
+                                <include>**/*At.java</include>
                             </includes>
                             <excludes>
-                                <exclude>**/*BaseIT.java</exclude>
-                                <exclude>**/*BaseFT.java</exclude>
-                                <exclude>**/*BaseBDD.java</exclude>
-                                <exclude>**/*BaseAT.java</exclude>
+                                <exclude>**/*BaseAt.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>

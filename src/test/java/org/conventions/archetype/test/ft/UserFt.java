@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by rmpestano on 3/9/14.
  */
-public class UserFT extends BaseFT {
+public class UserFt extends BaseFt {
 
     @FindByJQuery("div[id$=menuBar]")
     private Menu menu;

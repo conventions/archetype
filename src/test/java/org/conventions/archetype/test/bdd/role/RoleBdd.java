@@ -1,6 +1,6 @@
 package org.conventions.archetype.test.bdd.role;
 
-import org.conventions.archetype.test.bdd.BaseBDD;
+import org.conventions.archetype.test.bdd.BaseBdd;
 import org.conventions.archetype.test.bdd.Steps;
 import org.conventions.archetype.test.util.Deployments;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -19,17 +19,17 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 @Steps(RoleSteps.class)
-public class RoleStory extends BaseBDD {
+public class RoleBdd extends BaseBdd {
 
 
     @Deployment
     public static WebArchive createDeployment()
     {
         WebArchive archive = Deployments.getBaseDeployment()
-                .addPackage(BaseBDD.class.getPackage())
+                .addPackage(BaseBdd.class.getPackage())
                 .addClass(RoleSteps.class)
-                .addClass(RoleStory.class)
-                .addAsResource("org/conventions/archetype/test/bdd/role/role_story.story");
+                .addClass(RoleBdd.class)
+                .addAsResource("org/conventions/archetype/test/bdd/role/role_bdd.story");
         MavenResolverSystem resolver = Maven.resolver();
         archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("com.google.guava:guava:11.0.1").withoutTransitivity().asFile());
         archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.jbehave:jbehave-core:3.7.5").withTransitivity().asFile());

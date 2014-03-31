@@ -1,4 +1,4 @@
-package org.conventions.archetype.test.at.logon;
+package org.conventions.archetype.test.at;
 
 import org.conventions.archetype.test.ft.BasePage;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -14,7 +14,7 @@ import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 /**
  * Created by rmpestano on 3/30/14.
  */
-public abstract class BaseATStep {
+public abstract class BaseAtStep {
 
     @Drone
     WebDriver browser;

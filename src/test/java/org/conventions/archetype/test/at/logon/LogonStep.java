@@ -1,5 +1,6 @@
 package org.conventions.archetype.test.at.logon;
 
+import org.conventions.archetype.test.at.BaseAtStep;
 import org.conventions.archetype.test.ft.pages.HomePage;
 import org.conventions.archetype.test.ft.pages.common.Menu;
 import org.conventions.archetype.test.util.TestMessageProvider;
@@ -22,7 +23,7 @@ import java.net.URL;
  * Time: 8:49 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LogonStep extends BaseATStep implements Serializable {
+public class LogonStep extends BaseAtStep implements Serializable {
 
   @Drone
   private WebDriver       browser;

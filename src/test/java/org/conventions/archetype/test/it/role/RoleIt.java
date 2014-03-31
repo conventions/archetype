@@ -13,9 +13,9 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by rmpestano on 3/9/14.
- * injected in UserIT to avoid multiple arquillian deployments
+ * injected in UserIt to avoid multiple arquillian deployments
  */
-public class RoleIT implements Serializable{
+public class RoleIt implements Serializable{
 
     @Inject
     RoleService roleService;

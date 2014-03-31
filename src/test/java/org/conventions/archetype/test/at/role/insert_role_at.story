@@ -1,6 +1,6 @@
 Story: manage user roles
 
-GivenStories: org/conventions/archetype/test/at/logon/logon_story.story
+GivenStories: org/conventions/archetype/test/at/logon/logon_at.story
 
 Scenario: insert new role
 

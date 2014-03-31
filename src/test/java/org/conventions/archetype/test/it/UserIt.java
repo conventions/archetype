@@ -2,7 +2,7 @@ package org.conventions.archetype.test.it;
 
 import junit.framework.Assert;
 import org.conventions.archetype.model.User;
-import org.conventions.archetype.test.it.role.RoleIT;
+import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.unit.UserRestTest;
 import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
@@ -20,10 +20,10 @@ import java.net.URL;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class UserIT extends BaseIT {
+public class UserIt extends BaseIt {
 
     @Inject
-    RoleIT roleIT;
+    RoleIt roleIT;
 
 
     @Test

@@ -1,16 +1,16 @@
-package org.conventions.archetype.test.at;
+package org.conventions.archetype.test.ft;
 
 import org.conventions.archetype.bean.UserMBean;
-import org.conventions.archetype.test.bdd.BaseBDD;
-import org.conventions.archetype.test.ft.BasePage;
-import org.conventions.archetype.test.ft.ScreenshotTestRule;
 import org.conventions.archetype.test.util.Deployments;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Default;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.context.GrapheneContext;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.Filters;
 import org.jboss.shrinkwrap.api.GenericArchive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -18,6 +18,7 @@ import org.jboss.shrinkwrap.api.importer.ExplodedImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.BeforeClass;
 import org.junit.Rule;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
@@ -26,10 +27,8 @@ import java.net.URL;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
-/**
- * Created by rmpestano on 3/30/14.
- */
-public abstract class BaseAT extends BaseBDD {
+@RunWith(Arquillian.class)
+public class BaseFt {
 
     protected static final String WEBAPP_SRC = "src/main/webapp";
 
@@ -47,11 +46,11 @@ public abstract class BaseAT extends BaseBDD {
     @Rule
     public static ScreenshotTestRule screenshotTestRule;
 
-
-    public static WebArchive createBaseDeployment() {
+    @Deployment(testable = false)
+    public static Archive<?> createDeployment() {
         WebArchive war = Deployments.getBaseDeployment()
-                .addPackages(true, UserMBean.class.getPackage()) //managed beans
-                .addPackages(true,"org.conventions.archetype.converter");
+        .addPackages(true, UserMBean.class.getPackage()) //managed beans
+        .addPackages(true,"org.conventions.archetype.converter");
 
         //web resources
         war.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class).importDirectory(WEBAPP_SRC).as(GenericArchive.class), "/", Filters.include(".*\\.(xhtml|html|css|js|png)$"));
@@ -76,4 +75,3 @@ public abstract class BaseAT extends BaseBDD {
         browser.get(baseUrl.toString() + page.getLocation());
     }
 }
-
