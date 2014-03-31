@@ -9,13 +9,10 @@ import org.conventionsframework.qualifier.Config;
 import org.conventionsframework.qualifier.Log;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.security.DefaultSecurityContext;
-import org.conventionsframework.service.BaseService;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Instance;
@@ -26,7 +23,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.NoResultException;
-import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.net.URLDecoder;
@@ -36,7 +32,7 @@ import java.util.logging.Logger;
 @SessionScoped
 @Specializes
 @Named("security")
-public class AppSecurityContext extends DefaultSecurityContext implements Serializable {
+public class SecurityContextImpl extends DefaultSecurityContext implements Serializable {
 
     private User user;
     private List<String> userRolesCache;//avoid quering user roles on each permission check
@@ -68,7 +64,7 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     Utils utils;
 
     @PostConstruct
-    public void initUser(){
+    public void initUser() {
         user = new User();
     }
 
@@ -81,7 +77,6 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
 
 
     /**
-     *
      * must be set by login method
      */
     private void setUser(User user) {
@@ -97,26 +92,28 @@ public class AppSecurityContext extends DefaultSecurityContext implements Serial
     }
 
     public void doLogon() {
-        if(!loggedIn()){
-            if(user != null){
-                try{
-                    user = userService.findUser(user.getName(),utils.encrypt(user.getPassword()));
-                }catch (NoResultException nre){
-                    throw new BusinessException(bundle.getString("logon.be.incorrect"));
-                }
-                userRolesCache = user.getUserRoles();
-                if(facesContext.get() != null){
-                    restorePageOnLogon();
-                    MessagesController.addInfo(bundle.getString("logon.info.successful"));
-                }
+        if (!loggedIn()) {
+            try {
+                user = userService.findUser(user.getName(), utils.encrypt(user.getPassword()));
+            } catch (NoResultException nre) {
+                throw new BusinessException(bundle.getString("logon.be.incorrect"));
+            }
+            userRolesCache = user.getUserRoles();
+            if (facesContext.get() != null) {
+                restorePageOnLogon();
+                MessagesController.addInfo(bundle.getString("logon.info.successful"));
             }
         }
 
     }
 
-    public void doLogon(String username, String password){
+    public void doLogon(String username, String password) {
         setUser(new User().name(username).password(password));
         this.doLogon();
+    }
+
+    public void doLogoff() {
+        setUser(null);
     }
 
     private void restorePageOnLogon() {

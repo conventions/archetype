@@ -49,7 +49,7 @@ public class GroupDialog extends BasePage{
 
 
     public void addAllGroups() {
-        Graphene.waitAjax();
+        Graphene.waitModel();
         List<WebElement> rows =  super.getTableRowsWithTDs("selectionTable_data");
         assertTrue(!rows.isEmpty());
         assertTrue(rows.size() == 2);
@@ -62,7 +62,6 @@ public class GroupDialog extends BasePage{
         ca.perform();
         Graphene.waitGui();
         guardAjax(btAdd).click();
-
     }
 
     private void searchGroups(String name) {

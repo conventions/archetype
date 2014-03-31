@@ -1,6 +1,6 @@
 package org.conventions.archetype.test.bdd;
 
-import org.conventions.archetype.security.AppSecurityContext;
+import org.conventions.archetype.security.SecurityContextImpl;
 import org.conventions.archetype.service.UserService;
 import org.conventions.archetype.test.util.TestService;
 
@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class BaseStep implements Serializable{
 
     @Inject
-    protected AppSecurityContext securityContext;
+    protected SecurityContextImpl securityContext;
 
     @Inject
     protected UserService userService;

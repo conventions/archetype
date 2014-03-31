@@ -13,5 +13,20 @@ Examples:
 |secret|0|
 
 
+Scenario: remove users
+
+Given i login with user [user], [pass]
+
+When i try to remove user [name]
+
+Then i receive message [message]
+
+Examples:
+|user|pass|name|message|
+|admin|admin|developer|be.user.remove|
+|admin|admin|userWithoutGroups|user.delete.message|
+|developer|developer|admin|default-security-message|
+
+
 
 

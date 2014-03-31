@@ -104,6 +104,10 @@ public class TestService implements Serializable {
         developer.addGroup(groupWithoutRole);
         userService.store(developer);
 
+        User userWithoutGroups = new User("userWithoutGroups");
+        userWithoutGroups.setPassword("aPass");
+        userService.store(userWithoutGroups);
+
         groupService.store(groupWithoutUserAndRole);
     }
 

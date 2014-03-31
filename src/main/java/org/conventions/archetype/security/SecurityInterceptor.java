@@ -4,14 +4,13 @@
  */
 package org.conventions.archetype.security;
 
-import org.conventions.archetype.model.User;
-import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.security.BaseSecurityInterceptor;
-import javax.interceptor.*;
 
 import javax.inject.Inject;
+import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
+import javax.interceptor.InvocationContext;
 import java.util.List;
 
 @SecurityMethod
@@ -19,8 +18,7 @@ import java.util.List;
 public class SecurityInterceptor extends BaseSecurityInterceptor {
 
     @Inject
-    @LoggedIn
-    User user;
+    SecurityContextImpl securityContext;
 
 
 
@@ -43,12 +41,12 @@ public class SecurityInterceptor extends BaseSecurityInterceptor {
      */
     @Override
     public boolean checkUserPermissions(String[] rolesAllowed) {
-        if (user == null || user.getId() == null || user.getGroups() == null || user.getGroups().isEmpty() || !userHasRoles()) {
+        if (!securityContext.loggedIn() || securityContext.getUser().getGroups() == null || securityContext.getUser().getGroups().isEmpty() || !userHasRoles()) {
             return false;
         }
 
 
-        List<String> userRoles = user.getUserRoles();
+        List<String> userRoles = securityContext.getUser().getUserRoles();
 
         for (String role : rolesAllowed) {
             if (userRoles.contains(role)) {
@@ -61,6 +59,6 @@ public class SecurityInterceptor extends BaseSecurityInterceptor {
 
 
     private boolean userHasRoles() {
-        return !user.getUserRoles().isEmpty();
+        return !securityContext.getUser().getUserRoles().isEmpty();
     }
 }

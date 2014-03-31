@@ -1,6 +1,6 @@
 package org.conventions.archetype.test.it;
 
-import org.conventions.archetype.security.AppSecurityContext;
+import org.conventions.archetype.security.SecurityContextImpl;
 import org.conventions.archetype.service.UserService;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.util.Deployments;
@@ -19,7 +19,7 @@ import javax.inject.Inject;
 public class BaseIt {
 
     @Inject
-    protected AppSecurityContext securityContext;
+    protected SecurityContextImpl securityContext;
 
     @Inject
     protected UserService userService;

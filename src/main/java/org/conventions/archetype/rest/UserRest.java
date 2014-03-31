@@ -2,7 +2,7 @@ package org.conventions.archetype.rest;
 
 import com.google.gson.Gson;
 import org.conventions.archetype.model.User;
-import org.conventions.archetype.security.AppSecurityContext;
+import org.conventions.archetype.security.SecurityContextImpl;
 import org.conventions.archetype.service.UserService;
 import org.conventionsframework.exception.BusinessException;
 
@@ -27,7 +27,7 @@ public class UserRest implements Serializable {
 
 
     @Inject
-    AppSecurityContext appSecurityContext;
+    SecurityContextImpl appSecurityContext;
 
     @GET
     @Path("/list")
