@@ -3,6 +3,7 @@ package org.conventions.archetype.test.util;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
+import org.conventions.archetype.service.RoleService;
 import org.conventions.archetype.util.Utils;
 import org.conventionsframework.qualifier.Service;
 import org.conventionsframework.service.BaseService;
@@ -17,6 +18,7 @@ import java.io.Serializable;
  * Created by rmpestano on 3/9/14.
  *
  * used by functional tests as dbunit cant help (yet) on black boxed tests
+ * also used by acceptance and BDD tests as dbunit and jbehave doesnt integrate yet
  */
 @Stateless
 @Named
@@ -27,8 +29,11 @@ public class TestService implements Serializable {
     BaseService<User,Long> userService;
 
     @Inject
+    RoleService roleService;
+
+    @Inject
     @Service
-    BaseService<Role,Long> roleService;
+    BaseService<Group,Long> groupService;
 
     @Inject
     Utils utils;
@@ -55,7 +60,11 @@ public class TestService implements Serializable {
      *
      * User developer
      * |
-     * ----- Groups: Devs(developer, architect)
+     * ----- Groups: Devs(developer, architect,groupWithoutRole)
+     *
+     * Group: groupWithoutRole
+     * Group: groupWithoutUser
+     *
      *
      */
     public void initDatabaseWithUserAndGroups(){
@@ -64,6 +73,8 @@ public class TestService implements Serializable {
         //groups
         final Group groupManager = new Group("Manager");
         final Group groupDev = new Group("Devs");
+        final Group groupWithoutRole = new Group("groupWithoutRole");
+        final Group groupWithoutUserAndRole = new Group("groupWithoutUserAndRole");
 
 
         //roles
@@ -90,7 +101,10 @@ public class TestService implements Serializable {
         User developer = new User("developer");
         developer.setPassword(utils.encrypt("developer"));
         developer.addGroup(groupDev);
+        developer.addGroup(groupWithoutRole);
         userService.store(developer);
+
+        groupService.store(groupWithoutUserAndRole);
     }
 
     public void clearDatabase() {
