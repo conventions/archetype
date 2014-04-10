@@ -20,8 +20,20 @@ import java.io.Serializable;
  * used by functional tests as dbunit cant help (yet) on black boxed tests
  * also used by acceptance and BDD tests as dbunit and jbehave doesnt integrate yet
  */
-@Stateless
+
+/*@Singleton
+@Startup
+@DataSourceDefinition(
+        className="org.hsqldb.jdbcDriver",
+        name="ExampleDS2",
+        user="sa",
+        password="",
+        databaseName="testDB",
+        properties = {"connectionAttributes=;create=true;DB_CLOSE_DELAY=-1"},
+        url = "jdbc:hsqldb:mem:testDB"
+)*/
 @Named
+@Stateless
 public class TestService implements Serializable {
 
     @Inject
@@ -37,6 +49,7 @@ public class TestService implements Serializable {
 
     @Inject
     Utils utils;
+
 
     public void initDatabase(){
         clearDatabase();
@@ -84,6 +97,7 @@ public class TestService implements Serializable {
         Role simpleRole = new Role("simpleRole");
 
         roleService.store(simpleRole);
+        roleService.store(roleArch);
 
         groupManager.addRole(roleAdmin);
 

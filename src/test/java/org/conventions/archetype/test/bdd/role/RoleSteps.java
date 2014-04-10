@@ -6,6 +6,7 @@ import org.conventions.archetype.service.RoleService;
 import org.conventions.archetype.test.bdd.BaseStep;
 import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
+import org.hibernate.criterion.MatchMode;
 import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -41,8 +42,9 @@ public class RoleSteps extends BaseStep implements Serializable {
 
     @When("i search roles with name $name")
     public void searchRoleWithName(@Named("name") String name){
+        System.out.println(roleService.getDao().findAll());
         Role role = new Role().name(name);
-        rolesFound = roleService.getDao().findByExample(role).size();
+        rolesFound = roleService.getDao().findByExample(role, MatchMode.START).size();
     }
 
     @Then("roles found is equal to $total")
