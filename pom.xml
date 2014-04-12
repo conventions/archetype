@@ -587,6 +587,8 @@
         <profile>
             <id>jboss-managed</id>
             <properties>
+                <!--arquillian.serverHome>${project.build.directory}/jboss-as-${jboss.version}</arquillian.serverHome-->
+                <arquillian.serverHome>/home/rmpestano/jboss-eap-6.1</arquillian.serverHome>
                 <datasource>java:jboss/datasources/ExampleDS2</datasource>
                 <hibernate.platform>org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform
                 </hibernate.platform>
@@ -615,7 +617,7 @@
                             </environmentVariables>
                         </configuration>
                     </plugin>
-                    <plugin>
+                    <!--plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
                         <executions>
@@ -628,7 +630,7 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>org.jboss.as</groupId>
+                                            <groupId>com.googlecode</groupId>
                                             <artifactId>jboss-as-dist</artifactId>
                                             <version>${jboss.version}</version>
                                             <type>zip</type>
@@ -639,7 +641,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin-->
                 </plugins>
             </build>
         </profile>
@@ -809,6 +811,23 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <!-- only white box tests generate coverage data-->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <includes>
+                                <include>**/*It.java</include>
+                                <include>**/*Bdd.java</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*BaseIt.java</exclude>
+                                <exclude>**/*BaseBdd.java</exclude>
+                            </excludes>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

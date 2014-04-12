@@ -140,7 +140,7 @@ public class UserIt extends BaseIt {
             userRestTest.shouldInsertUserWithGroups();;
         } catch (Throwable e) {
             e.printStackTrace();
-            throw new RuntimeException("Problem to insert user:" + e.getMessage());
+            throw new RuntimeException("Problem to insert user:" + e.getMessage()+ " - "+e.getCause() + " - " + e.getLocalizedMessage());
         }
     }
 
@@ -170,7 +170,7 @@ public class UserIt extends BaseIt {
         try {
             //leverage rest unit test
             UserRestTest userRestTest = new UserRestTest(contextPath.toString());
-            userRestTest.shouldFindUserByName("name");
+            userRestTest.shouldFindUserByName("user rest");
         } catch (Throwable e) {
             e.printStackTrace();
             throw new RuntimeException("Problem to find user by name:" + e.getMessage());

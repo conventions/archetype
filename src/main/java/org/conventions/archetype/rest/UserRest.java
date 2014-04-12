@@ -122,11 +122,13 @@ public class UserRest implements Serializable {
             Gson gson = new Gson();
             user = gson.fromJson(userJson, User.class);
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.BAD_REQUEST).entity("problem at json conversion:" + e.getMessage()).build();
         }
         try {
             userService.store(user);
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.BAD_REQUEST).entity("problem to persist user" + e.getMessage()).build();
         }
 

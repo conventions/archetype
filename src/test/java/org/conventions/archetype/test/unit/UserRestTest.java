@@ -28,7 +28,7 @@ public class UserRestTest {
 
     public void shouldInsertUserWithGroups() {
         SimpleUser user = new SimpleUser();
-        user.setName("name");
+        user.setName("user rest");
         user.setPassword("pass");
         List<SimpleGroup> groups = new ArrayList<SimpleGroup>();
         List<SimpleRole> roles = new ArrayList<SimpleRole>();
@@ -51,7 +51,7 @@ public class UserRestTest {
         user.setGroups(groups);
         ClientRequest request = new ClientRequest(CONTEXT + "rest/user/add/");
         request.accept(MediaType.APPLICATION_JSON);
-        ClientResponse<String> response;
+        ClientResponse<String> response = null;
         try {
             Gson g = new Gson();
             response = request.body(MediaType.APPLICATION_JSON, g.toJson(user)).post(String.class);
@@ -60,7 +60,11 @@ public class UserRestTest {
             Assert.assertNotNull(userId);
         } catch (Exception e) {
             e.printStackTrace();
-            Assert.fail(e.getMessage());
+            String error = e.getMessage();
+            if(response != null){
+                error += response.getEntity();
+            }
+            Assert.fail(error);
         }
     }
 
@@ -126,7 +130,7 @@ public class UserRestTest {
 
     public void shouldNotDeleteUserWithGroups() {
 
-        SimpleUser adminUser = findUserByNameViaRest("name");
+        SimpleUser adminUser = findUserByNameViaRest("user rest");
         ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + adminUser.getId());
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
         request.header("username", adminUser.getName());
@@ -169,7 +173,7 @@ public class UserRestTest {
     public void shouldDeleteUserWithoutGroups(){
         SimpleUser userWithoutGroup = findUserByNameViaRest("userWithoutGroups");
         ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + userWithoutGroup.getId());
-        SimpleUser adminUser = findUserByNameViaRest("name");
+        SimpleUser adminUser = findUserByNameViaRest("user rest");
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
         request.header("username", adminUser.getName());
         request.header("password", "pass");//TODO decript adminUser.getPassword()        request.accept(MediaType.APPLICATION_JSON);
