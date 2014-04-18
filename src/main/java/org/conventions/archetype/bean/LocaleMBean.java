@@ -4,14 +4,15 @@
  */
 package org.conventions.archetype.bean;
 
+import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
 import org.conventionsframework.event.LocaleChangeEvent;
-import java.io.Serializable;
+import org.conventionsframework.producer.ResourceBundleProvider;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
-import org.conventionsframework.producer.ResourceBundleProvider;
+import java.io.Serializable;
 
 /**
  *
