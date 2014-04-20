@@ -25,7 +25,6 @@ import javax.inject.Named;
 @Service(RoleService.class)
 public class RoleMBean extends BaseMBean<Role> {
 
-
     @PostConstruct
     public void initBean(){
         setCreateMessage(getResourceBundle().getString("role.create.message"));
@@ -38,7 +37,5 @@ public class RoleMBean extends BaseMBean<Role> {
        //reatach entity to hibernate session, needed cause we are using a stateless/Non EJB service
         super.delete((Role) getBaseService().getDao().load(entity.getId()));
     }
-
-
 
 }

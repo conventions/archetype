@@ -3,9 +3,8 @@ package org.conventions.archetype.test.it;
 import junit.framework.Assert;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.test.it.role.RoleIt;
+import org.conventions.archetype.test.it.user.UserIt;
 import org.conventions.archetype.test.unit.UserRestTest;
-import org.conventions.archetype.test.util.TestMessageProvider;
-import org.conventionsframework.exception.BusinessException;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.persistence.Cleanup;
@@ -17,32 +16,27 @@ import org.junit.Test;
 import javax.inject.Inject;
 import java.net.URL;
 
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-public class UserIt extends BaseIt {
+public class ArchetypeIt extends BaseIt {
 
     @Inject
     RoleIt roleIT;
+
+    @Inject
+    UserIt userIt;
 
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldListUsers(){
-        //dataset has 2 users
-        assertEquals(2, userService.getDao().countAll());
+        userIt.shouldListUsers();
+
     }
 
     @Test
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldInsertUser() {
-        int userCountBefore = userService.getDao().countAll();
-        User user = new User();
-        user.setName("name");
-        user.setPassword("pass");
-        userService.store(user);
-        assertEquals(userCountBefore, userService.getDao().countAll() - 1);
+       userIt.shouldInsertUser();
     }
     
    
@@ -50,8 +44,7 @@ public class UserIt extends BaseIt {
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldFindUser() {
-        //dataset has user with id = 1
-        assertNotNull(userService.getDao().get(1L));
+        userIt.shouldFindUser();
     }
 
 
@@ -63,28 +56,17 @@ public class UserIt extends BaseIt {
         //TODO decripty user pass
         super.login(user.getName(),"user");
         //looged in user has no permition to remove user
-        assertNotNull(user);
-        try{
-            userService.remove(user);
-        }catch (BusinessException be){
-            assertEquals(be.getMessage(), TestMessageProvider.getMessage("default-security-message"));
-        }
+        userIt.shouldFailToRemoveUserWithoutPermission(user);
     }
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldFailToRemoveUserWithGroups() {
+        super.login("arun","42");//arun has permission
         //user with id 1 has groups
-        super.login("arun","42");
         User user = userService.getDao().get(1L);
-        assertNotNull(user);
-        try{
-            userService.remove(user);
-        }catch (BusinessException be){
-            assertEquals(be.getMessage(), TestMessageProvider.getMessage("be.user.remove"));
-        }
-        assertNotNull(user);
+        userIt.shouldFailToRemoveUserWithGroups(user);
     }
 
     @Test
@@ -94,10 +76,7 @@ public class UserIt extends BaseIt {
         //user 2 has no groups
         super.login("arun","42");
         User user = userService.getDao().get(2L);
-        assertNotNull(user);
-        userService.remove(user);
-        user = userService.getDao().get(2L);
-        org.junit.Assert.assertNull(user);
+        userIt.shouldRemoveUser(user);
     }
 
     @Test

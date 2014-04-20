@@ -12,7 +12,7 @@
     <p:dialog id="logonDialog" visible="#{not loggedIn}" header="#{msg['logon.header']}" modal="true"
               closable="false">
         <h:form id="loginForm">
-            <p:remoteCommand name="init" rendered="#{not loggedIn}" autoRun="true" immediate="true" process="@this" update="@none" partialSubmit="true" actionListener="#{testService.initDatabase}"/>
+            <p:remoteCommand name="init" rendered="#{not loggedIn}" autoRun="true" immediate="true" process="@this" update="@none" partialSubmit="true" actionListener="#{testService.initDatabaseWithUserAndGroups}"/>
             <p:focus for="loginForm"/>
             <p:messages id="loginMessages"/>
             <h:panelGrid columns="2">

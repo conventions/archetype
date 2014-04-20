@@ -24,7 +24,7 @@ public class Deployments {
         war.addPackages(true, "org.conventions.archetype.security");
         war.addPackages(true, "org.conventions.archetype.event");
         war.addPackages(true, "org.conventions.archetype.configuration");
-        war.addPackages(true, "org.conventions.archetype.security");
+        war.addPackages(true, "org.conventions.archetype.qualifier");
         war.addPackages(true, "org.conventions.archetype.util").
         addClass(ComboMBean.class).addClass(TestMessageProvider.class).
         addClass(TestResourceBundle.class).addClass(TestService.class);

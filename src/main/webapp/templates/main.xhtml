@@ -27,9 +27,9 @@
                         <p:menuitem id="homeMenu" action="/home.faces?faces-redirect=true" value="#{msg['home']}"
                                     ajax="false" immediate="true"/>
                         <p:menuitem id="userMenu" url="/user/userHome.faces" value="#{msg.user}s" ajax="false" immediate="true"/>
-                        <p:menuitem id="groupMenu" action="/group/groupHome.faces?faces-redirect=true" value="#{msg.groups}" immediate="true"
+                        <p:menuitem id="groupMenu" action="/group/groupHome.faces?faces-redirect=true&amp;resetBean=true" value="#{msg.groups}" immediate="true"
                                     ajax="false"/>
-                        <p:menuitem id="roleMenu"  action="/role/roleHome.faces?faces-redirect=true" value="#{msg.roles}" ajax="false"
+                        <p:menuitem id="roleMenu"  action="/role/roleHome.faces?faces-redirect=true&amp;resetBean=true" value="#{msg.roles}" ajax="false"
                                     immediate="true"/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>

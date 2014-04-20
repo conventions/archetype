@@ -12,6 +12,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 
 /**
@@ -35,6 +36,9 @@ import java.io.Serializable;
 @Named
 @Stateless
 public class TestService implements Serializable {
+
+    @PersistenceContext(unitName = "archetypeTestPU")
+    EntityManager em;
 
     @Inject
     @Service
@@ -125,8 +129,20 @@ public class TestService implements Serializable {
         groupService.store(groupWithoutUserAndRole);
     }
 
+
+    public void createRoleDataset(){
+
+        Role roleArch = new Role("architect");
+        Role roleAdmin = new Role("administrator");
+
+        em.persist(roleAdmin);
+        em.persist(roleArch);
+        em.flush();
+    }
+
+
     public void clearDatabase() {
-        EntityManager em = userService.getEntityManager();
+//        EntityManager em = userService.getEntityManager();
         em.createNativeQuery("delete from group__role_").executeUpdate();
         em.flush();
         em.createNativeQuery("delete from user__group_").executeUpdate();

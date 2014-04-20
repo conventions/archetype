@@ -32,6 +32,8 @@ public class RoleHome extends BasePage {
     @FindByJQuery("button[id$=btBack]")
     private GrapheneElement backButton;
 
+    @FindByJQuery("input[id*=colName]")
+    private GrapheneElement filterName;
 
     public GrapheneElement getDatatable() {
         return datatable;
@@ -52,6 +54,11 @@ public class RoleHome extends BasePage {
         GrapheneElement btSave = panel.findElement(By.xpath("//button"));
         guardAjax(btSave).click();
         verifyMessage(TestMessageProvider.getMessage("role.create.message"));
+    }
+
+    public void filterByName(String query){
+        filterName.clear();
+        guardAjax(filterName).sendKeys(query);
     }
 
     public boolean isListPage(){

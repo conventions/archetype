@@ -4,12 +4,15 @@
  */
 package org.conventions.archetype.bean;
 
+import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
+import org.conventions.archetype.qualifier.ListToUpdate;
 import org.conventionsframework.qualifier.Service;
 import org.conventionsframework.service.BaseService;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -64,8 +67,8 @@ public class ComboMBean implements Serializable {
         return roleList;
     }
     
-    public void updateGroupList(){
-        groupList = null;//force update
+    public void updateGroupList(@Observes @ListToUpdate(ListToUpdate.ListType.GROUP)UpdateList updateList){
+        groupList = null;//force update when a new group is added or removed @see GroupServiceImpl#afterStore
     }
 
     public void updateRoleList(){

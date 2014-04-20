@@ -15,6 +15,10 @@ and open the template in the editor.
     template="../templates/main.xhtml"
     >
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="resetBean"/>
+        </f:metadata>
+        <f:event type="preRenderView" listener="#{roleMBean.resetBean}"/>
         <f:event type="preRenderView" listener="#{stateController.clearState}"/>
         <p:outputPanel rendered="#{empty groupMBean.beanState or groupMBean.findState}">
             <ui:include src="listGroup.xhtml"/>

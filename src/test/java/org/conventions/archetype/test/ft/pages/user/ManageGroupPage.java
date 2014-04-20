@@ -43,9 +43,9 @@ public class ManageGroupPage extends BasePage {
     public void selectGroups(){
         groupDialog.addAllGroups();
         Graphene.waitModel();
-        List<WebElement> rows = super.getTableRows("groupTable_table_data");
+        List<WebElement> rows = super.getTableRows("groupTable");
         assertTrue(!rows.isEmpty());
-        assertTrue(rows.size() == 2);
+        assertTrue(rows.size() == 5);
     }
 
 

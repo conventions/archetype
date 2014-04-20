@@ -4,9 +4,10 @@
  */
 package org.conventions.archetype.service;
 
-import org.conventions.archetype.bean.ComboMBean;
+import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
+import org.conventions.archetype.qualifier.ListToUpdate;
 import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.service.impl.BaseServiceImpl;
@@ -14,6 +15,7 @@ import org.conventionsframework.util.ResourceBundle;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.Query;
 import java.util.List;
@@ -28,7 +30,8 @@ import java.util.Map;
 public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements RoleService {
 
     @Inject
-    ComboMBean comboMBean;
+    @ListToUpdate(ListToUpdate.ListType.ROLE)
+    Event<UpdateList> updateRoleList;
 
     @Inject
     ResourceBundle resourceBundle;
@@ -49,12 +52,12 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements Role
 
     @Override
     public void afterStore(Role entity) {
-        comboMBean.updateRoleList();
+        updateRoleList.fire(new UpdateList());
     }
 
     @Override
     public void afterRemove(Role entity) {
-         comboMBean.updateRoleList();
+        updateRoleList.fire(new UpdateList());
     }
 
     @Override

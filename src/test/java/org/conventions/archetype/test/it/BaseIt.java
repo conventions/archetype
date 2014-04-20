@@ -36,7 +36,7 @@ public class BaseIt {
         WebArchive war = Deployments.getBaseDeployment().
         addClass(RoleIt.class).
         addClass(BaseIt.class).
-        addClass(UserIt.class);
+        addClass(ArchetypeIt.class);
 
 
         System.out.println(war.toString(true));

@@ -52,7 +52,7 @@ public class GroupDialog extends BasePage{
         Graphene.waitModel();
         List<WebElement> rows =  super.getTableRowsWithTDs("selectionTable_data");
         assertTrue(!rows.isEmpty());
-        assertTrue(rows.size() == 2);
+        assertTrue(rows.size() == 5);
         CompositeAction ca = new CompositeAction();
         ca.addAction(new Actions(browser).keyDown(Keys.CONTROL).build());
         for (WebElement row : rows) {

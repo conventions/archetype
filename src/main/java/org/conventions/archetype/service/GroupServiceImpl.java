@@ -4,27 +4,29 @@
  */
 package org.conventions.archetype.service;
 
-import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventions.archetype.bean.ComboMBean;
+import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
+import org.conventions.archetype.qualifier.ListToUpdate;
+import org.conventionsframework.exception.BusinessException;
+import org.conventionsframework.service.impl.BaseServiceImpl;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
-import org.conventionsframework.exception.BusinessException;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -40,12 +42,13 @@ public class GroupServiceImpl extends BaseServiceImpl<Group, Long> implements Gr
     @Inject
     private ResourceBundle resourceBundle;
 
+    @Inject
+    @ListToUpdate(ListToUpdate.ListType.GROUP)
+    Event<UpdateList> updateGroupList;
+
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     EntityManager em;
     
-    @Inject
-    ComboMBean comboMBean;
-
 
     @Override
     public EntityManager getEntityManager() {
@@ -134,12 +137,14 @@ public class GroupServiceImpl extends BaseServiceImpl<Group, Long> implements Gr
 
     @Override
     public void afterStore(Group entity) {
-       comboMBean.updateGroupList();
+        updateGroupList.fire(new UpdateList());
+
+
     }
 
     @Override
     public void afterRemove(Group entity) {
-        comboMBean.updateGroupList();
+        updateGroupList.fire(new UpdateList());
     }
     
     

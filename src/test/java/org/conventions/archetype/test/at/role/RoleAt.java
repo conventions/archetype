@@ -15,17 +15,15 @@ import org.junit.runner.RunWith;
  * Time: 8:18 PM
  * To change this template use File | Settings | File Templates.
  */
-@Steps({ InsertRoleStep.class, LogonStep.class })
+@Steps({ RoleStep.class, LogonStep.class })
 @RunWith(Arquillian.class)
-public class InsertRoleAt extends BaseAt {
+public class RoleAt extends BaseAt {
 
 
 	@Deployment(testable = false)
     public static WebArchive createDeployment()
     {
-        WebArchive archive = createBaseDeployment()
-                .addAsResource("org/conventions/archetype/test/at/logon/logon_at.story")
-                .addAsResource("org/conventions/archetype/test/at/role/insert_role_at.story");
+        WebArchive archive = createBaseDeployment();
 
         System.out.println(archive.toString(true));
         return archive;
