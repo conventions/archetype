@@ -1,6 +1,7 @@
 package org.conventions.archetype.test.ft;
 
 import junit.framework.Assert;
+import org.conventionsframework.util.ResourceBundle;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.GrapheneElement;
@@ -10,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +20,17 @@ public abstract class BasePage implements Serializable {
 
     @Drone
     private WebDriver browser;
+
+    protected ResourceBundle resourceBundle;
+
+    protected BasePage() {
+        try {
+            //when running as client(black box) bundle must be found in application classpath instead of current thread(test thread will look into test resources)
+            resourceBundle = new ResourceBundle(getClass().getResourceAsStream("/messages_en.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String getLocation() {
         if (!getClass().isAnnotationPresent(Location.class)) {

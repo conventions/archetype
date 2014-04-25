@@ -27,7 +27,7 @@
         <arquillian.remote>false</arquillian.remote>
         <arquillian.chromeDriver>c:\chromedriver.exe</arquillian.chromeDriver>
         <arquillian.localAddress>localhost</arquillian.localAddress>
-        <arquillian.remoteAddress>http://remote-selenium-hub:1035/wd/hub</arquillian.remoteAddress>
+        <arquillian.seleniumGrid>http://remote-selenium-hub:1035/wd/hub</arquillian.seleniumGrid>
         <!-- servers -->
         <jboss.version>7.2.0.Final</jboss.version>
         <wildfly.version>8.0.0.Final</wildfly.version>
@@ -138,6 +138,22 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- mock -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>1.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>1.5</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- arquillian -->
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>

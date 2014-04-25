@@ -6,8 +6,6 @@ import org.conventions.archetype.test.util.Deployments;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.jboss.shrinkwrap.resolver.api.maven.MavenResolverSystem;
 import org.junit.runner.RunWith;
 
 /**
@@ -27,12 +25,7 @@ public class UserBdd extends BaseBdd {
     {
         WebArchive archive = Deployments.getBaseDeployment()
                 .addPackage(BaseBdd.class.getPackage())
-                .addClass(UserSteps.class)
-                .addClass(UserBdd.class)
-                .addAsResource("org/conventions/archetype/test/bdd/user/user_bdd.story");
-        MavenResolverSystem resolver = Maven.resolver();
-        archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("com.google.guava:guava:11.0.1").withoutTransitivity().asFile());
-        archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.jbehave:jbehave-core:3.7.5").withTransitivity().asFile());
+                .addClass(UserSteps.class);
         return archive;
     }
 

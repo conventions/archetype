@@ -1,4 +1,4 @@
-package org.conventions.archetype.test.unit;
+package org.conventions.archetype.test.rest;
 
 import java.util.List;
 

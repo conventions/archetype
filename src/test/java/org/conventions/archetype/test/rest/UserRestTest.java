@@ -1,17 +1,18 @@
-package org.conventions.archetype.test.unit;
+package org.conventions.archetype.test.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventions.archetype.util.AppConstants;
+import org.conventionsframework.util.ResourceBundle;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.junit.Assert;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,15 @@ import java.util.List;
 public class UserRestTest {
     private final String CONTEXT;
 
+    private ResourceBundle resourceBundle;
+
     public UserRestTest(String context) {
         this.CONTEXT = context;
+        try {
+            resourceBundle = new ResourceBundle(getClass().getResourceAsStream("/messages_en.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void shouldInsertUserWithGroups() {
@@ -142,7 +150,7 @@ public class UserRestTest {
             Assert.assertNotNull(response);
             Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
             //will fail to remove cause user has groups
-            Assert.assertEquals(response.getEntity(), TestMessageProvider.getMessage("be.user.remove"));
+            Assert.assertEquals(response.getEntity(), resourceBundle.getString("be.user.remove"));
         } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
@@ -163,7 +171,7 @@ public class UserRestTest {
             Assert.assertNotNull(response);
             Assert.assertEquals(Response.Status.UNAUTHORIZED.getStatusCode(), response.getStatus());
             //will fail to remove cause user has groups
-            Assert.assertEquals(response.getEntity(), TestMessageProvider.getMessage("default-security-message"));
+            Assert.assertEquals(response.getEntity(), resourceBundle.getString("default-security-message"));
         } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());

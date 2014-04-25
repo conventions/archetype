@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
-import org.conventions.archetype.test.unit.UserRestTest;
+import org.conventions.archetype.test.rest.UserRestTest;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.persistence.Cleanup;

@@ -3,7 +3,6 @@ package org.conventions.archetype.test.at.logon;
 import org.conventions.archetype.test.at.BaseAtStep;
 import org.conventions.archetype.test.ft.pages.HomePage;
 import org.conventions.archetype.test.ft.pages.common.Menu;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -53,7 +52,7 @@ public class LogonStep extends BaseAtStep implements Serializable {
 
   @Then("i should be logged in")
   public void shouldBeAt() {
-    home.verifyMessage(TestMessageProvider.getMessage("logon.info.successful"));
+    home.verifyMessage(resourceBundle.getString("logon.info.successful"));
   }
 
 }

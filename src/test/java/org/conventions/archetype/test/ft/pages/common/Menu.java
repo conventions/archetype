@@ -1,6 +1,6 @@
 package org.conventions.archetype.test.ft.pages.common;
 
-import org.conventions.archetype.test.util.TestMessageProvider;
+import org.conventions.archetype.test.ft.BasePage;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.fragment.Root;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 /**
  * Created by rmpestano on 3/9/14.
  */
-public class Menu {
+public class Menu extends BasePage{
 
     @Root
     private GrapheneElement menuBar;
@@ -27,28 +27,28 @@ public class Menu {
 
     private WebElement getUserMenu() {
         if (userMenu == null) {
-            userMenu = findItemByText(TestMessageProvider.getMessage("user") + "s");
+            userMenu = findItemByText(resourceBundle.getString("user") + "s");
         }
         return userMenu;
     }
 
     private WebElement getGroupMenu() {
         if (groupMenu == null) {
-            groupMenu = findItemByText(TestMessageProvider.getMessage("groups"));
+            groupMenu = findItemByText(resourceBundle.getString("groups"));
         }
         return groupMenu;
     }
 
     private WebElement getRoleMenu() {
         if (roleMenu == null) {
-            roleMenu = findItemByText(TestMessageProvider.getMessage("roles"));
+            roleMenu = findItemByText(resourceBundle.getString("roles"));
         }
         return roleMenu;
     }
 
     public WebElement getLogoutMenu() {
         if(logoutMenu == null){
-            logoutMenu = findItemByText(TestMessageProvider.getMessage("logout"));
+            logoutMenu = findItemByText(resourceBundle.getString("logout"));
         }
         return logoutMenu;
     }

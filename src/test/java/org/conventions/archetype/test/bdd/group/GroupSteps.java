@@ -3,7 +3,6 @@ package org.conventions.archetype.test.bdd.group;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.service.GroupService;
 import org.conventions.archetype.test.bdd.BaseStep;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
 import org.hibernate.criterion.MatchMode;
 import org.jbehave.core.annotations.*;
@@ -64,7 +63,7 @@ public class GroupSteps extends BaseStep implements Serializable {
         assertNotNull(stepGroup);
         try{
             groupService.remove(stepGroup);
-            message = TestMessageProvider.getMessage("group.delete.message");
+            message = resourceBundle.getString("group.delete.message");
         }catch (BusinessException be){
             message = be.getMessage();
         }
@@ -72,7 +71,7 @@ public class GroupSteps extends BaseStep implements Serializable {
 
     @Then("i receive message $message")
     public void receiveMessage(@Named("message") String message){
-        assertEquals(this.message,TestMessageProvider.getMessage(message));
+        assertEquals(this.message,resourceBundle.getString(message));
     }
 
 

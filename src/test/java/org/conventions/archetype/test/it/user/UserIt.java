@@ -2,8 +2,8 @@ package org.conventions.archetype.test.it.user;
 
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.service.UserService;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
+import org.conventionsframework.util.ResourceBundle;
 
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -19,6 +19,9 @@ public class UserIt implements Serializable {
 
     @Inject
     UserService userService;
+
+    @Inject
+    ResourceBundle resourceBundle;
 
     public void shouldListUsers() {
         //dataset has 2 users
@@ -44,7 +47,7 @@ public class UserIt implements Serializable {
         try{
             userService.remove(user);
         }catch (BusinessException be){
-            assertEquals(be.getMessage(), TestMessageProvider.getMessage("default-security-message"));
+            assertEquals(be.getMessage(), resourceBundle.getString("default-security-message"));
         }
     }
 
@@ -53,7 +56,7 @@ public class UserIt implements Serializable {
         try{
             userService.remove(user);
         }catch (BusinessException be){
-            assertEquals(be.getMessage(), TestMessageProvider.getMessage("be.user.remove"));
+            assertEquals(be.getMessage(), resourceBundle.getString("be.user.remove"));
         }
         assertNotNull(user);
     }

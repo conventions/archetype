@@ -76,4 +76,5 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements Role
         List<Group> groupsFound = q.getResultList();
         return !groupsFound.isEmpty();
     }
+
 }

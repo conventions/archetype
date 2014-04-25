@@ -1,7 +1,6 @@
 package org.conventions.archetype.test.ft.pages.user;
 
 import org.conventions.archetype.test.ft.BasePage;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.Location;
@@ -77,7 +76,7 @@ public class UserHome extends BasePage {
     }
 
     public boolean isEditPage() {
-        return panel.isPresent() && panel.findElement(By.partialLinkText(TestMessageProvider.getMessage("edit"))).isPresent();
+        return panel.isPresent() && panel.findElement(By.partialLinkText(resourceBundle.getString("edit"))).isPresent();
     }
 
     public void newUser(String name, String password){
@@ -87,7 +86,7 @@ public class UserHome extends BasePage {
         this.password.clear();
         this.password.sendKeys(password);
         btSave.click();
-        verifyMessage(TestMessageProvider.getMessage("user.create.message"));
+        verifyMessage(resourceBundle.getString("user.create.message"));
     }
 
     public void manageGroups(){

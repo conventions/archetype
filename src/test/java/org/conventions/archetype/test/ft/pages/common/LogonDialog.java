@@ -1,5 +1,6 @@
 package org.conventions.archetype.test.ft.pages.common;
 
+import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.fragment.Root;
@@ -30,6 +31,7 @@ public class LogonDialog {
         this.password.clear();
         this.password.sendKeys(password);
         guardHttp(btLogon).click();
+
     }
 
     public boolean isPresent(){

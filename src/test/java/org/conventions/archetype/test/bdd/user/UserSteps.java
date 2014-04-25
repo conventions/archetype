@@ -3,7 +3,6 @@ package org.conventions.archetype.test.bdd.user;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.test.bdd.BaseStep;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.hibernate.criterion.MatchMode;
@@ -14,7 +13,6 @@ import javax.inject.Inject;
 import java.io.Serializable;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created with IntelliJ IDEA.
@@ -74,7 +72,7 @@ public class UserSteps extends BaseStep implements Serializable {
         assertEquals(stepUser.getName(),username);
         try{
             userService.remove(stepUser);
-            message = TestMessageProvider.getMessage("user.delete.message");
+            message = resourceBundle.getString("user.delete.message");
         }catch (BusinessException be){
             message = be.getMessage();
         }
@@ -83,7 +81,7 @@ public class UserSteps extends BaseStep implements Serializable {
 
     @Then("i receive message $message")
     public void receiveMessage(@Named("message") String message){
-        assertEquals(this.message,TestMessageProvider.getMessage(message));
+        assertEquals(this.message,resourceBundle.getString(message));
     }
 
 }

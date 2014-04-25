@@ -2,6 +2,7 @@ package org.conventions.archetype.test.ft;
 
 import org.conventions.archetype.bean.UserMBean;
 import org.conventions.archetype.test.util.Deployments;
+import org.conventionsframework.util.ResourceBundle;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Default;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -23,6 +24,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
@@ -43,8 +45,19 @@ public class BaseFt {
     @FindByJQuery("a[id$=logout]")
     protected GrapheneElement logoutButton;
 
+    protected ResourceBundle resourceBundle;
+
     @Rule
     public static ScreenshotTestRule screenshotTestRule;
+
+    public BaseFt() {
+        try {
+            //when running as client bundle must be found in application classpath instead of current thread(test thread will look into test resources)
+            resourceBundle = new ResourceBundle(getClass().getResourceAsStream("/messages_en.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Deployment(testable = false)
     public static Archive<?> createDeployment() {

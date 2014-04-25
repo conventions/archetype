@@ -69,7 +69,7 @@
 <!--         <property name="dimensions">1280x1024</property>  -->
 <!--         <property name="remoteReusable">true</property> -->
  		<property name="remote">${arquillian.remote}</property>
-        <property name="remoteAddress">${arquillian.remoteAddress}</property>
+        <property name="remoteAddress">${arquillian.seleniumGrid}</property>
         <!--<property name="chromeDriverBinary">c:/chromedriver.exe</property>-->
         <!-- to use chrome browser download webdriver: http://code.google.com/p/chromedriver/downloads/list -->
     </extension>

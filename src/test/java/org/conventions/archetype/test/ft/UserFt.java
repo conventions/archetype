@@ -5,7 +5,6 @@ import org.conventions.archetype.test.ft.pages.common.Menu;
 import org.conventions.archetype.test.ft.pages.group.GroupHome;
 import org.conventions.archetype.test.ft.pages.role.RoleHome;
 import org.conventions.archetype.test.ft.pages.user.UserHome;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.InitialPage;
 import org.jboss.arquillian.graphene.page.Page;
@@ -41,7 +40,7 @@ public class UserFt extends BaseFt {
     public void shouldLogonWithSuccess(@InitialPage HomePage home){
         assertTrue(home.getLogonDialog().isPresent());
         home.getLogonDialog().doLogon("admin", "admin");
-        home.verifyMessage(TestMessageProvider.getMessage("logon.info.successful"));
+        home.verifyMessage(resourceBundle.getString("logon.info.successful"));
     }
 
 

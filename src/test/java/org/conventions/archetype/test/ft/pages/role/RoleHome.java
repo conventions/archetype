@@ -1,7 +1,6 @@
 package org.conventions.archetype.test.ft.pages.role;
 
 import org.conventions.archetype.test.ft.BasePage;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.Location;
@@ -53,7 +52,7 @@ public class RoleHome extends BasePage {
         inputName.sendKeys(name);
         GrapheneElement btSave = panel.findElement(By.xpath("//button"));
         guardAjax(btSave).click();
-        verifyMessage(TestMessageProvider.getMessage("role.create.message"));
+        verifyMessage(resourceBundle.getString("role.create.message"));
     }
 
     public void filterByName(String query){

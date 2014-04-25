@@ -8,6 +8,9 @@ import org.conventions.archetype.test.util.TestService;
 import org.conventionsframework.qualifier.Log;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.persistence.Cleanup;
+import org.jboss.arquillian.persistence.TestExecutionPhase;
+import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
@@ -17,6 +20,7 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
@@ -26,6 +30,8 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(Arquillian.class)
 public class HelloArquillianIt {
+
+    private static final String WEB_INF= "src/main/webapp/WEB-INF";
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -44,16 +50,14 @@ public class HelloArquillianIt {
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:4.0").withoutTransitivity().asSingleFile());
 
         //WEB-INF
-        war.addAsWebInfResource("test-beans.xml", "beans.xml");
-        war.addAsWebInfResource("test-web.xml", "web.xml");
-        war.addAsWebInfResource("test-faces-config.xml", "faces-config.xml");
+        war.addAsWebInfResource(new File(WEB_INF,"beans.xml"), "beans.xml");
+        war.addAsWebInfResource(new File(WEB_INF,"web.xml"), "web.xml");
+        war.addAsWebInfResource(new File(WEB_INF,"faces-config.xml"), "faces-config.xml");
 
         war.addAsWebInfResource("jbossas-ds.xml", "jbossas-ds.xml");//datasource
 
         //resources
         war.addAsResource("test-persistence.xml", "META-INF/persistence.xml");
-        war.addAsResource("test-messages_pt.properties", "messages_pt.properties");//test resource bundle
-        war.addAsResource("test-messages_en.properties", "messages_en.properties");
 
         return war;
     }
@@ -75,5 +79,14 @@ public class HelloArquillianIt {
         int numRoles = roleService.getDao().countAll();
         log.info("COUNT:"+numRoles);
         assertEquals(numRoles, 2);
+    }
+
+    @Test
+    @UsingDataSet("role.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldListRolesUsingDataset(){
+        int numRoles = roleService.getDao().countAll();
+        log.info("COUNT:"+numRoles);
+        assertEquals(numRoles, 3);
     }
 }

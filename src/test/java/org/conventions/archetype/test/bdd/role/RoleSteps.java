@@ -4,7 +4,6 @@ import junit.framework.Assert;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.service.RoleService;
 import org.conventions.archetype.test.bdd.BaseStep;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.conventionsframework.exception.BusinessException;
 import org.hibernate.criterion.MatchMode;
 import org.jbehave.core.annotations.BeforeStory;
@@ -59,7 +58,7 @@ public class RoleSteps extends BaseStep implements Serializable {
        assertEquals(role.getName(),name);
        try{
            roleService.remove(role);
-           message = TestMessageProvider.getMessage("role.delete.message");
+           message = resourceBundle.getString("role.delete.message");
        }catch (BusinessException be){
            message = be.getMessage();
        }
@@ -67,7 +66,7 @@ public class RoleSteps extends BaseStep implements Serializable {
 
     @Then("i receive message $message")
     public void receiveMessage(@Named("message") String message){
-        assertEquals(this.message,TestMessageProvider.getMessage(message));
+        assertEquals(this.message,resourceBundle.getString(message));
     }
 
     @When("i insert role with name $roleName")
@@ -75,7 +74,7 @@ public class RoleSteps extends BaseStep implements Serializable {
         try{
             roleService.store(new Role(name));
             assertNotNull(roleService.getDao().findOneByExample(new Role(name)));
-            message = TestMessageProvider.getMessage("role.create.message");
+            message = resourceBundle.getString("role.create.message");
         }catch (Throwable t){
             message = t.getMessage();
         }

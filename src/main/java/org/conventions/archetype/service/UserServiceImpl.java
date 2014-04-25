@@ -175,4 +175,13 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         criteria.add(Restrictions.eq("roles.name",role.getName()));
         return criteria.list();
     }
+
+    /**
+     * used to mock
+     * @param resourceBundle
+     */
+    public void setResourceBundle(ResourceBundle resourceBundle) {
+        this.resourceBundle = resourceBundle;
+    }
+
 }

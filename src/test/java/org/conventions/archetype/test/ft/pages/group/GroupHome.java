@@ -1,7 +1,6 @@
 package org.conventions.archetype.test.ft.pages.group;
 
 import org.conventions.archetype.test.ft.BasePage;
-import org.conventions.archetype.test.util.TestMessageProvider;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
@@ -58,7 +57,7 @@ public class GroupHome extends BasePage {
             GrapheneElement btSave = panel.findElement(By.xpath("//button"));
             selectRoles();
             guardAjax(btSave).click();
-            verifyMessage(TestMessageProvider.getMessage("group.create.message"));
+            verifyMessage(resourceBundle.getString("group.create.message"));
             guardAjax(btBack).click();
         }
     }
@@ -68,7 +67,7 @@ public class GroupHome extends BasePage {
     }
 
     public boolean isEditPage() {
-        return panel.isPresent() && panel.findElement(By.partialLinkText(TestMessageProvider.getMessage("edit"))).isPresent();
+        return panel.isPresent() && panel.findElement(By.partialLinkText(resourceBundle.getString("edit"))).isPresent();
     }
 
     public void selectRoles() {

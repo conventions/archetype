@@ -2,8 +2,10 @@ package org.conventions.archetype.test.warp;
 
 import org.conventions.archetype.test.ft.pages.HomePage;
 import org.conventionsframework.security.SecurityContext;
+import org.conventionsframework.util.ResourceBundle;
 import org.jboss.arquillian.graphene.page.InitialPage;
 import org.jboss.arquillian.junit.InSequence;
+import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.arquillian.warp.Activity;
 import org.jboss.arquillian.warp.Inspection;
 import org.jboss.arquillian.warp.Warp;
@@ -13,6 +15,8 @@ import org.jboss.arquillian.warp.jsf.BeforePhase;
 import org.jboss.arquillian.warp.jsf.Phase;
 import org.junit.Test;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.Serializable;
 
@@ -33,7 +37,6 @@ public class LogonWarp extends BaseWarp implements Serializable {
             assertTrue(home.getLogonDialog().isPresent());
             Warp.initiate(new Activity() {
 
-
                 @Override
                 public void perform() {
                     home.getLogonDialog().doLogon("admin", "admin");
@@ -47,22 +50,27 @@ public class LogonWarp extends BaseWarp implements Serializable {
                         @Inject
                         SecurityContext securityContext;
 
+                        @Inject
+                        ResourceBundle resourceBundle;
+
                         @BeforePhase(Phase.RENDER_RESPONSE)
                         public void shouldNotBeLoggedIn() {
-                            System.out.println("warp loggerin:" + securityContext.loggedIn());
                             assertFalse(securityContext.loggedIn());
                         }
 
                         @AfterPhase(Phase.INVOKE_APPLICATION)
                         public void shouldBeLoggedIn() {
-                            System.out.println("warp loggedin:" + securityContext.loggedIn());
                             assertTrue(securityContext.loggedIn());
+                        }
+
+                        @AfterPhase(Phase.RESTORE_VIEW)
+                        public void shouldHasMessage(@ArquillianResource FacesContext context){
+                            assertTrue(context.getMessageList().contains(new FacesMessage(FacesMessage.SEVERITY_INFO,resourceBundle.getString("logon.info.successful"),"")));
                         }
 
                     });
 
 
-            //"logon.info.successful"
         }
         
 
