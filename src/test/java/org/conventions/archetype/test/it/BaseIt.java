@@ -37,8 +37,6 @@ public class BaseIt {
         addClass(RoleIt.class).
         addClass(BaseIt.class).
         addClass(ArchetypeIt.class);
-
-
         System.out.println(war.toString(true));
         return war;
     }

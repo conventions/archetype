@@ -10,6 +10,7 @@ import org.conventions.archetype.model.Role;
 import org.conventions.archetype.qualifier.ListToUpdate;
 import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.exception.BusinessException;
+import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventionsframework.util.ResourceBundle;
 import org.hibernate.criterion.DetachedCriteria;
@@ -37,17 +38,18 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements Role
     ResourceBundle resourceBundle;
     
     @Override
-    public DetachedCriteria configFindPaginated(Map<String, String> columnFilters, Map<String, Object> externalFilter) {
+    public DetachedCriteria configPagination(SearchModel<Role> searchModel) {
         
         DetachedCriteria dc = getDetachedCriteria();
-        
-        List<Long> groupRoles = (List<Long>) externalFilter.get("groupRoles");
+        Map<String,Object> searchFilter = searchModel.getFilter();
+        Role searchEntity = searchModel.getEntity();
+        List<Long> groupRoles = (List<Long>) searchFilter.get("groupRoles");
         if(groupRoles != null && !groupRoles.isEmpty()){
             //open roleModal listing only with not used groups
             //PS: not used cause roleAssociation is done with picklist now not with list of values anymore
             dc.add(Restrictions.not(Restrictions.in("id", groupRoles)));
         }
-        return super.configFindPaginated(columnFilters, externalFilter,dc); 
+        return super.configPagination(searchModel, dc);
     }
 
     @Override

@@ -113,6 +113,7 @@ public class User extends VersionatedEntityLong {
             for (Group group : groups) {
                 for (Role role : group.getRoles()) {
                     userRoles.add(role.getName());
+
                 }
             }
         }

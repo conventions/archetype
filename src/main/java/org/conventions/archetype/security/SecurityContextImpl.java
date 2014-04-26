@@ -187,10 +187,4 @@ public class SecurityContextImpl extends DefaultSecurityContext implements Seria
     }
 
 
-    /** @Override
-     @Produces
-     @LoggedIn
-     @Named public Boolean loggedIn() {
-     return super.loggedIn();
-     } */
 }

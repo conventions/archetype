@@ -45,7 +45,7 @@ public class ManageGroupPage extends BasePage {
         Graphene.waitModel();
         List<WebElement> rows = super.getTableRows("groupTable");
         assertTrue(!rows.isEmpty());
-        assertTrue(rows.size() == 5);
+        assertTrue(rows.size() == 6);
     }
 
 

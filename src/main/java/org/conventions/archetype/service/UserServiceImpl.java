@@ -11,6 +11,7 @@ import org.conventions.archetype.model.User;
 import org.conventions.archetype.util.AppConstants;
 import org.conventions.archetype.util.Utils;
 import org.conventionsframework.exception.BusinessException;
+import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.service.impl.BaseServiceImpl;
@@ -65,13 +66,16 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         return em;
     }
 
+
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public DetachedCriteria configFindPaginated(Map<String, String> columnFilters, Map<String, Object> externalFilter) {
+    public DetachedCriteria configPagination(SearchModel<User> searchModel) {
 
         DetachedCriteria dc = getDetachedCriteria();
-        if (columnFilters != null) {
-            String group = columnFilters.get("groups");
+        Map<String,Object> searchFilter = searchModel.getFilter();
+        User searchEntity = searchModel.getEntity();
+        if (searchFilter != null) {
+            String group = (String) searchFilter.get("groups");
             if (group != null && !"all".equalsIgnoreCase(group)) {
                 dc.createAlias("groups", "groups");
                 dc.add(Restrictions.eq("groups.name", group));
@@ -80,12 +84,10 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         }
         //you can return only your populated criteria(dc) 
         //but you can also pass your criteria to superclass(as below)
-        //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones 
+        //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones
         //if those fields are present in filters
-        return super.configFindPaginated(columnFilters, externalFilter, dc);
+        return super.configPagination(searchModel,dc);
     }
-
-
 
 
     private List<Group> fetchGroups(User user) {

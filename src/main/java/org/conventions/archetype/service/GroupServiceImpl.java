@@ -4,12 +4,12 @@
  */
 package org.conventions.archetype.service;
 
-import org.conventions.archetype.bean.ComboMBean;
 import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.qualifier.ListToUpdate;
 import org.conventionsframework.exception.BusinessException;
+import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
@@ -56,41 +56,40 @@ public class GroupServiceImpl extends BaseServiceImpl<Group, Long> implements Gr
     }
 
     @Override
-    public DetachedCriteria configFindPaginated(Map<String, String> columnFilters, Map<String, Object> externalFilter) {
+    public DetachedCriteria configPagination(SearchModel<Group> searchModel) {
 
         DetachedCriteria dc = getDetachedCriteria();
-
-        if (columnFilters != null && !columnFilters.isEmpty()) {
-            String role = columnFilters.get("roles");
+        Group searchEntity = searchModel.getEntity();
+        Map<String,Object> searchFilter = searchModel.getFilter();
+        if (searchFilter != null && !searchFilter.isEmpty()) {
+            String role = (String) searchFilter.get("roles");
             if (role != null && !"all".equalsIgnoreCase(role)) {
                 //create join to fetch group roles 
                 dc.createAlias("roles", "roles");
                 dc.add(Restrictions.eq("roles.name", role));
             }
         }
-        if(externalFilter != null && !externalFilter.isEmpty()){
             //not show in group popup groups that user being edited already have
-            List<Long> userGroups = (List<Long>) externalFilter.get("userGroups");//@see UserMBean#preLoadDialog()
+            List<Long> userGroups = (List<Long>) searchFilter.get("userGroups");//@see UserMBean#preLoadDialog()
             if (userGroups != null && !userGroups.isEmpty()) {
                 dc.add(Restrictions.not(Restrictions.in("id", userGroups)));
             }
             
            
 
-            Long userId = (Long) externalFilter.get("currentUser");
+            Long userId = (Long) searchFilter.get("currentUser");
             if(userId != null){
                 //create join to load groups of current user being edited
                 dc.createAlias("users", "users");
                 dc.add(Restrictions.eq("users.id", userId));
             }
             
-        }
 
         //you can return only your populated criteria(dc) 
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones 
         //if those they are present in filters
-        return super.configFindPaginated(columnFilters, externalFilter, dc);
+        return super.configPagination(searchModel, dc);
 
     }
     

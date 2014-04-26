@@ -4,10 +4,10 @@ Scenario: should list roles
 
 When i search roles with name [name]
 
-Then roles found is equal to [total]
+Then roles found is equal to [rowCount]
 
 Examples:
-|name|total|
+|name|rowCount|
 |administrator|1|
 |operator|0|
 |a|2|
