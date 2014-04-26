@@ -18,10 +18,10 @@ When user filter role by name [name]
 
 Then should list only roles with name [name]
 
-And return [rowCount] rows
+And return [total] rows
 
 Examples:
-|name|rowCount|
+|name|total|
 |developer|1|
 |admin|1|
 |a|2|
