@@ -30,6 +30,9 @@ public class User extends VersionatedEntityLong {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<Group> groups;
 
+    @Transient
+    private Group group;//used to search users by group
+
 	public User() {
 	}
 
@@ -63,7 +66,15 @@ public class User extends VersionatedEntityLong {
         return this;
     }
 
-	public List<Group> getGroups() {
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public List<Group> getGroups() {
 		return groups;
 	}
 

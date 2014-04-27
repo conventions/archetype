@@ -17,11 +17,18 @@ and open the template in the editor.
     <ui:define name="content">
         <framework:statePusher state="#{findState}" mbean="#{userMBean}"/>
         <center>
-            <p:panel header="#{msg.user}s" style="margin: 15px; height:450px; width: 700px;text-align: left;overflow: auto">
-                <p:remoteCommand name="updateRowCount" update="mainForm:table:table_table:footer"/>
+            <p:panel header="#{msg.user}s" style="margin: 15px; height:500px; width: 700px;text-align: left;overflow: auto">
+                <div style="float: right">
+                    <p:button value="#{msg['user.new']}" outcome="/user/addUser.faces" styleClass="ui-priority-primary"/>
+                </div>
                 <framework:datatable paginator="#{userMBean.paginator}" id="table" widgetVar="tableVar"
                                      emptyMessage="#{msg['user.notfound']}"
-                                     rows="5" onFilter="updateRowCount()">
+                                     rows="5" >
+                    <f:facet name="header">
+                          <div style="text-align: center">
+                              <p:button id="bt-search" value="Search" onclick="searchUser.show();return false"/>
+                          </div>
+                    </f:facet>
                     <p:column id="colName" sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.user}">
                         <h:link value="#{row.name}" outcome="addUser.faces?id=#{row.id}"/>
                     </p:column>
@@ -41,10 +48,11 @@ and open the template in the editor.
                         <framework:removeLink modal="removeUserModal" mbean="#{userMBean}" row="#{row}"/>
                     </p:column>
                     <f:facet name="footer">
-                        <framework:tableFooter id="footer" mbean="#{userMBean}" renderAddButton="false"
-                                                >
-                            <p:button value="#{msg['user.new']}" outcome="/user/addUser.faces" styleClass="ui-priority-primary"/>
-                                </framework:tableFooter>
+                        <framework:tableFooter id="footer" mbean="#{userMBean}" renderAddButton="false">
+                                 <div style="text-align: center">
+                                     <h:outputText value="#{userMBean.searchCriteria}" rendered="#{not empty userMBean.searchCriteria}"/>
+                                 </div>
+                        </framework:tableFooter>
                     </f:facet>
                 </framework:datatable>
             </p:panel>
@@ -57,6 +65,21 @@ and open the template in the editor.
             <p:inputText value="#{userMBean.entityAux.name}" disabled="true"/>
         </framework:modalRemoval>
 
+
+    </ui:define>
+    <ui:define name="popup">
+        <p:dialog id="searchUserDialog" widgetVar="searchUser" modal="true" minHeight="200" header="Search users">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="group" value="Group:"/>
+                    <p:inputText id="group" required="true" value="#{userMBean.searchEntity.group.name}"/>
+                </h:panelGrid>
+                <center>
+                    <p:commandButton id="search" value="search" styleClass="ui-priority-primary" process="@form" partialSubmit="true" update="@(.ui-datatable)" oncomplete="searchUser.hide()"/>
+                    <p:commandButton value="clear" action="#{userMBean.resetSearch}"  process="@form" partialSubmit="true" update="@(.ui-datatable)" oncomplete="searchUser.hide()"/>
+                </center>
+            </h:form>
+        </p:dialog>
 
     </ui:define>
 </ui:composition>

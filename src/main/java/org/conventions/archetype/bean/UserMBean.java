@@ -81,6 +81,9 @@ public class UserMBean extends StateMBean<User> {
         log.info("myConfig:" + myConfig);
         setBaseService(userService);
         super.init();
+        if(getSearchEntity().getGroup() == null){
+            getSearchEntity().setGroup(new Group());
+        }
         setCreateMessage(getResourceBundle().getString("user.create.message"));
         setUpdateMessage(getResourceBundle().getString("user.update.message"));
         setDeleteMessage(getResourceBundle().getString("user.delete.message"));
@@ -246,6 +249,34 @@ public class UserMBean extends StateMBean<User> {
         super.save(getResourceBundle().getString("user.changePass.success"));
     }
 
+    public String getSearchCriteria(){
+        StringBuilder sb = new StringBuilder();
+
+        if(getSearchModel().getFilter().containsKey("name")){
+            sb.append("username:"+getSearchModel().getFilter().get("name")+",");
+        }
+        if(getSearchEntity().getGroup().getName() != null){
+            sb.append("group:"+getSearchEntity().getGroup()+",");
+        }
+
+        int commaIndex = sb.lastIndexOf(",");
+
+        if (commaIndex != -1) {
+            sb.deleteCharAt(commaIndex);
+        }
+
+        if (sb.toString().trim().isEmpty()) {
+            return null;
+        }
+
+        return sb.toString();
+    }
+
+    @Override
+    public void resetSearch() {
+        super.resetSearch();
+        getSearchEntity().setGroup(new Group());
+    }
 
     private void checkUserPassword() {
         /** TODO decript

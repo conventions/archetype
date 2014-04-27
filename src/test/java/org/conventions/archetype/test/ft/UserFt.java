@@ -11,6 +11,9 @@ import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.InSequence;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -79,6 +82,15 @@ public class UserFt extends BaseFt {
         userHome.filterByName("zzzzx");
         assertTrue(userHome.getDatatable().findElements(By.xpath("//tbody//tr[@role='row']")).isEmpty());
     }
+
+    @Test
+    @InSequence(6)
+    public void shouldSearchUserByGroup(){
+        userHome.searchByGroup("Manager");
+        List<WebElement> rows = userHome.getTableRows("table");
+        assertEquals(rows.size(),2);
+    }
+
 
     @Test
     @InSequence(99)

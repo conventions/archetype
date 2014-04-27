@@ -7,8 +7,7 @@ import org.jboss.arquillian.graphene.page.Location;
 import org.jboss.arquillian.graphene.page.Page;
 import org.openqa.selenium.By;
 
-import static org.jboss.arquillian.graphene.Graphene.guardAjax;
-import static org.jboss.arquillian.graphene.Graphene.guardHttp;
+import static org.jboss.arquillian.graphene.Graphene.*;
 
 /**
  * Created by rmpestano on 3/10/14.
@@ -46,6 +45,13 @@ public class UserHome extends BasePage {
 
     @FindByJQuery("input[id*=colName]")
     private GrapheneElement filterName;
+
+    @FindByJQuery("button[id$=bt-search]")
+    private GrapheneElement btSearch;
+
+    @FindByJQuery("div[id$=searchUserDialog]")
+    private SearchUserDialog searchUserDialog;
+
 
     @Page
     private ManageGroupPage manageGroupPage;
@@ -104,6 +110,14 @@ public class UserHome extends BasePage {
         filterName.clear();
         guardAjax(filterName).sendKeys(query);
 
+    }
+
+    public void searchByGroup(String groupName){
+        filterName.clear();
+        guardAjax(filterName).sendKeys(" ");
+        btSearch.click();
+        waitModel();
+        searchUserDialog.searchByGroup(groupName);
     }
 
 }

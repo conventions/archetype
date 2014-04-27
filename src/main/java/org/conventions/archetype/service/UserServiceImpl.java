@@ -82,6 +82,11 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
             }
 
         }
+
+        if(searchEntity.getGroup().getName() != null){//defined in user search dialog
+            dc.createAlias("groups","groups");
+            dc.add(Restrictions.ilike("groups.name",searchEntity.getGroup().getName(),MatchMode.ANYWHERE));
+        }
         //you can return only your populated criteria(dc) 
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones
