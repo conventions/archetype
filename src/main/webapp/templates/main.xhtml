@@ -21,22 +21,28 @@
             <center>
                 <p:panel id="mainPanel" header="Conventions Archetype" style="height: 650px;width: 800px">
                     &nbsp;
-                    <h:outputText style="float: right;text-decoration: underline;font-weight: bold" value="Logged as #{security.user.name}"
+                    <h:outputText style="float: right;text-decoration: underline;font-weight: bold"
+                                  value="Logged as #{security.user.name}"
                                   rendered="#{loggedIn}"/>
                     <p:menubar id="menuBar">
                         <p:menuitem id="homeMenu" action="/home.faces?faces-redirect=true" value="#{msg['home']}"
                                     ajax="false" immediate="true"/>
-                        <p:menuitem id="userMenu" url="/user/userHome.faces" value="#{msg.user}s" ajax="false" immediate="true"/>
-                        <p:menuitem id="groupMenu" action="/group/groupHome.faces?faces-redirect=true&amp;resetBean=true" value="#{msg.groups}" immediate="true"
+                        <p:menuitem id="userMenu" url="/user/userHome.faces" value="#{msg.user}s" ajax="false"
+                                    immediate="true"/>
+                        <p:menuitem id="groupMenu"
+                                    action="/group/groupHome.faces?faces-redirect=true&amp;resetBean=true"
+                                    value="#{msg.groups}" immediate="true"
                                     ajax="false"/>
-                        <p:menuitem id="roleMenu"  action="/role/roleHome.faces?faces-redirect=true&amp;resetBean=true" value="#{msg.roles}" ajax="false"
+                        <p:menuitem id="roleMenu" action="/role/roleHome.faces?faces-redirect=true&amp;resetBean=true"
+                                    value="#{msg.roles}" ajax="false"
                                     immediate="true"/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
                         <p:menuitem value=""/>
-                        <p:menuitem value="#{msg.logout}" id="logout" ajax="false" rendered="#{loggedIn}" action="#{logoutMBean.doLogout}" immediate="true"
+                        <p:menuitem value="#{msg.logout}" id="logout" ajax="false" rendered="#{loggedIn}"
+                                    action="#{logoutMBean.doLogout}" immediate="true"
                                     style="float: right"/>
 
                     </p:menubar>
@@ -69,16 +75,29 @@
                     <p:outputPanel id="pageControl">
                         <ui:insert name="content"/>
                     </p:outputPanel>
-                    <h:outputLink target="_blank"
-                                  style="width:200px;top: 30px;position:relative;left:20px;  float: left;font-size: 10px!important;text-decoration: underline"
-                                  value="https://github.com/conventions/archetype/">
-                        Conventions Archetype source code
-                    </h:outputLink>
-                    <h:outputLink target="_blank"
-                                  style="width:200px;top: 30px;position:relative;left:-20px;  float: right;font-size: 10px!important;text-decoration: underline"
-                                  value="http://conventions.github.io/home/">
-                        Powered by conventions-1.0.0-RC2
-                    </h:outputLink>
+
+                    <table id="footer" style="width: 750px;font-size: 10px!important;text-decoration: underline;top: 150px;position: relative">
+                        <tr>
+                            <td style="width:250px;">
+                                <h:outputLink target="_blank"
+                                              value="http://conventions.github.io/home/">
+                                    Powered by Conventions #{conventionsVersion.version}
+                                </h:outputLink>
+                            </td>
+                            <td style="width:250px;">
+                                <h:outputLink target="_blank"
+                                              value="http://arquillian.org">
+                                    Quality assured by Arquillian testing framework
+                                </h:outputLink>
+                            </td>
+                            <td style="width:250px;">
+                                <h:outputLink target="_blank"
+                                              value="https://github.com/conventions/archetype/">
+                                    Conventions Archetype source code
+                                </h:outputLink>
+                            </td>
+                        </tr>
+                    </table>
                 </p:panel>
             </center>
             <p:outputPanel id="evenRowPanel">
@@ -97,7 +116,7 @@
         <p:ajaxStatus onstart="loading.show()"
                       oncomplete="loading.hide()"
                 />
-        <p:dialog widgetVar="loading"  modal="true" height="30px" width="150px" closable="false">
+        <p:dialog widgetVar="loading" modal="true" height="30px" width="150px" closable="false">
             loading...
         </p:dialog>
         <h:inputHidden value="#{initAppBean}"/>
