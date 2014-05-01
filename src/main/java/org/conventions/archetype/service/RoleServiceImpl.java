@@ -28,7 +28,7 @@ import java.util.Map;
  *
  * NON EJB Service
  */
-public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService {
 
     @Inject
     @ListToUpdate(ListToUpdate.ListType.ROLE)

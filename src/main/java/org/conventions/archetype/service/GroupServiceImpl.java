@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
  */
 @Named("groupService")
 @Stateful
-public class GroupServiceImpl extends BaseServiceImpl<Group, Long> implements GroupService {
+public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupService {
 
     @Inject
     private RoleService roleService;
@@ -48,8 +48,11 @@ public class GroupServiceImpl extends BaseServiceImpl<Group, Long> implements Gr
 
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     EntityManager em;
-    
 
+
+    /**
+     * override default entityManager which is type = TRANSACTION
+     */
     @Override
     public EntityManager getEntityManager() {
         return em;

@@ -42,14 +42,14 @@ public class TestService implements Serializable {
 
     @Inject
     @Service
-    BaseService<User,Long> userService;
+    BaseService<User> userService;
 
     @Inject
     RoleService roleService;
 
     @Inject
     @Service
-    BaseService<Group,Long> groupService;
+    BaseService<Group> groupService;
 
     @Inject
     Utils utils;

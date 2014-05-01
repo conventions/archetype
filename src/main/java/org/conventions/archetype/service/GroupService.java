@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author rmpestano
  */
-public interface GroupService extends BaseService<Group, Long> {
+public interface GroupService extends BaseService<Group> {
 
 
     public List<Role> findAvailableRoles(Group group);

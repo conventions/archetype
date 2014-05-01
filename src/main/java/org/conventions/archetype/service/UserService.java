@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author rmpestano
  */
-public interface UserService extends BaseService<User, Long> {
+public interface UserService extends BaseService<User> {
 
 
     

@@ -33,11 +33,11 @@ public class ComboMBean implements Serializable {
     
     @Inject
     @Service        
-    BaseService<Group,Long> groupService;
+    BaseService<Group> groupService;
     
     @Inject
     @Service   
-    BaseService<Role,Long> roleService;
+    BaseService<Role> roleService;
 
     
     public List<SelectItem> getGroupList() {

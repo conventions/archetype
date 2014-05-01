@@ -40,7 +40,7 @@ import java.util.Map;
 @Named("userService")
 @Stateful
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
 
     @Inject
     private ResourceBundle resourceBundle;
@@ -59,7 +59,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     EntityManager em;
 
-    //change super entityManager which is type=Transaction
+    //override super entityManager which is type=Transaction
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public EntityManager getEntityManager() {

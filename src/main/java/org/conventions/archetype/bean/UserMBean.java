@@ -72,7 +72,7 @@ public class UserMBean extends StateMBean<User> {
     User loggedUser;
 
     @Inject
-    @PaginatorService(GroupService.class)
+    @Service(GroupService.class)//group service manages group table pagination @see GroupServiceImpl#configPagination
     private Paginator<Group> groupPaginator;//brings real pagination for group table
 
 

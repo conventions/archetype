@@ -30,7 +30,7 @@ public class InitAppBean implements Serializable{
     
     @Inject
     @Service
-    BaseService<User,Long> userService;
+    BaseService<User> userService;
 
     @Inject
     @Log
