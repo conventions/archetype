@@ -14,10 +14,8 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
 /**
- *
  * @author rmpestano
  */
-
 @Advanced
 @FacesConverter(value="roleConverter")
 public class RoleConverter extends BaseConverter {
