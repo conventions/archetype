@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -54,6 +55,18 @@ public class UserFt extends BaseFt {
        roleHome.newRole("test role");
        roleHome.newRole("test role2");
     }
+
+    @Test
+    @InSequence(3)
+    public void shouldFilterRoles(){
+        menu.gotoRoleHome();
+        roleHome.filterByRoleFilter("test role");
+        List<WebElement> rows = roleHome.getTableRows("table");
+        assertNotNull(rows);
+        assertEquals(rows.size(),1);
+        assertTrue(rows.get(0).getText().contains("test role"));
+    }
+
 
     @Test
     @InSequence(3)

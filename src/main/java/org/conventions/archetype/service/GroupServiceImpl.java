@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
- *
  * @author rmpestano
  */
 @Named("groupService")
@@ -38,7 +37,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
     @Inject
     private RoleService roleService;
-    
+
     @Inject
     private ResourceBundle resourceBundle;
 
@@ -63,30 +62,30 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
         DetachedCriteria dc = getDetachedCriteria();
         Group searchEntity = searchModel.getEntity();
-        Map<String,Object> searchFilter = searchModel.getFilter();
-        if (searchFilter != null && !searchFilter.isEmpty()) {
-            String role = (String) searchFilter.get("roles");
+        Map<String, String> tableFilter = searchModel.getDatatableFilter();//primefaces column filter
+        if (tableFilter != null && !tableFilter.isEmpty()) {
+            String role = tableFilter.get("roles");
             if (role != null && !"all".equalsIgnoreCase(role)) {
                 //create join to fetch group roles 
                 dc.createAlias("roles", "roles");
                 dc.add(Restrictions.eq("roles.name", role));
             }
         }
-            //not show in group popup groups that user being edited already have
-            List<Long> userGroups = (List<Long>) searchFilter.get("userGroups");//@see UserMBean#preLoadDialog()
-            if (userGroups != null && !userGroups.isEmpty()) {
-                dc.add(Restrictions.not(Restrictions.in("id", userGroups)));
-            }
-            
-           
+        Map<String, Object> searchFilter = searchModel.getFilter();
+        //not show in group popup groups that user being edited already have
+        List<Long> userGroups = (List<Long>) searchFilter.get("userGroups");//@see UserMBean#preLoadDialog()
+        if (userGroups != null && !userGroups.isEmpty()) {
+            dc.add(Restrictions.not(Restrictions.in("id", userGroups)));
+        }
 
-            Long userId = (Long) searchFilter.get("currentUser");
-            if(userId != null){
-                //create join to load groups of current user being edited
-                dc.createAlias("users", "users");
-                dc.add(Restrictions.eq("users.id", userId));
-            }
-            
+
+        Long userId = (Long) searchFilter.get("currentUser");
+        if (userId != null) {
+            //create join to load groups of current user being edited
+            dc.createAlias("users", "users");
+            dc.add(Restrictions.eq("users.id", userId));
+        }
+
 
         //you can return only your populated criteria(dc) 
         //but you can also pass your criteria to superclass(as below)
@@ -95,31 +94,31 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         return super.configPagination(searchModel, dc);
 
     }
-    
- 
-     /**
-     * this method should be in a service that manage roles but we(purposely) 
+
+
+    /**
+     * this method should be in a service that manage roles but we(purposely)
      * did not provided one so we do that here in groupService
-     * 
+     *
      * @param groupId
      * @return roles that are not in current group
      */
     @Override
     public List<Role> findAvailableRoles(Group group) {
-        
-        
-        if(group.getRoles() == null || group.getRoles().isEmpty()){
+
+
+        if (group.getRoles() == null || group.getRoles().isEmpty()) {
             return roleService.getDao().findAll();//if no roles associated all roles are available
         }
-        
+
         List<Long> roleIds = new ArrayList<Long>();
         for (Role role : group.getRoles()) {
             roleIds.add(role.getId());
         }
- 
+
         Query q = this.getEntityManager().createNamedQuery("Role.findRoleNotInGroup");
         q.setParameter("roleIds", roleIds);
-        
+
         return q.getResultList();
         //Same as criteria below
 //        DetachedCriteria dc = roleService.getDetachedCriteria();
@@ -129,11 +128,11 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
     @Override
     public void beforeRemove(Group entity) {
-        if(entity.getRoles() != null && !entity.getRoles().isEmpty()){
+        if (entity.getRoles() != null && !entity.getRoles().isEmpty()) {
             throw new BusinessException(resourceBundle.getString("group.business01"));
         }
-        if(entity.getUsers() != null && !entity.getUsers().isEmpty()){
-             throw new BusinessException(resourceBundle.getString("group.business02"));
+        if (entity.getUsers() != null && !entity.getUsers().isEmpty()) {
+            throw new BusinessException(resourceBundle.getString("group.business02"));
         }
     }
 
@@ -148,20 +147,19 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     public void afterRemove(Group entity) {
         updateGroupList.fire(new UpdateList());
     }
-    
-    
-    
+
+
     @Override
     public void beforeStore(Group entity) {
         //override to perform logic before storing an entity
-         if (isExistingGroup(entity)) {
+        if (isExistingGroup(entity)) {
             throw new BusinessException(resourceBundle.getString("group.business03"));
         }
     }
 
-    
-     private boolean isExistingGroup(Group group) {
-        if(group == null){
+
+    private boolean isExistingGroup(Group group) {
+        if (group == null) {
             return false;
         }
         DetachedCriteria dc = getDetachedCriteria();

@@ -34,6 +34,9 @@ public class RoleHome extends BasePage {
     @FindByJQuery("input[id*=colName]")
     private GrapheneElement filterName;
 
+    @FindByJQuery("div[id$=role\\:comboOneMenu] > div.ui-selectonemenu-trigger")
+    private GrapheneElement roleSelect;
+
     public GrapheneElement getDatatable() {
         return datatable;
     }
@@ -60,6 +63,10 @@ public class RoleHome extends BasePage {
         guardAjax(filterName).sendKeys(query);
     }
 
+    public void filterByRoleFilter(String name){
+        selectItem(roleSelect,name,true);
+    }
+
     public boolean isListPage(){
         return datatable.isPresent();
     }
@@ -71,6 +78,8 @@ public class RoleHome extends BasePage {
     public boolean isFormPage(){
        return panel.isPresent();
     }
+
+
 
 
 }

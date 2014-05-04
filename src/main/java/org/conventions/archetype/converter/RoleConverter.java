@@ -4,15 +4,14 @@
  */
 package org.conventions.archetype.converter;
 
-import org.conventions.archetype.model.Role;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
 import org.apache.myfaces.extensions.cdi.core.api.Advanced;
-import org.conventionsframework.converter.AbstractBaseConverter;
+import org.conventions.archetype.model.Role;
+import org.conventionsframework.converter.BaseConverter;
 import org.conventionsframework.qualifier.Service;
 import org.conventionsframework.service.BaseService;
-import org.conventionsframework.service.impl.BaseServiceImpl;
-import org.conventions.archetype.service.RoleService;
+
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
 /**
  *
@@ -21,11 +20,12 @@ import org.conventions.archetype.service.RoleService;
 
 @Advanced
 @FacesConverter(value="roleConverter")
-public class RoleConverter extends AbstractBaseConverter{
-    
+public class RoleConverter extends BaseConverter {
+
+
     @Inject
-    public void setService(RoleService service){
-        super.setBaseService(service);
+    public void setService(@Service BaseService<Role> baseService) {
+        super.setBaseService(baseService);
     }
-    
+
 }

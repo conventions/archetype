@@ -55,4 +55,21 @@ public abstract class BasePage implements Serializable {
     public List<WebElement> getTableRowsWithTDs(String tableId){
         return browser.findElements(By.xpath("//tbody[contains(@id,'" +tableId +"')]//tr[@role='row']//td[@role='gridcell']"));
     }
+
+
+    protected void selectItem(GrapheneElement selectOne, String descricao) {
+        this.selectItem(selectOne, descricao, false);
+    }
+
+    protected void selectItem(GrapheneElement selectOne, String descricao, boolean hasListener) {
+        Graphene.waitModel().until().element(selectOne).is().present();
+        selectOne.click();
+        Graphene.waitAjax().until().element(By.className("ui-selectonemenu-items-wrapper")).is().present();
+        String strXpath = "//li[contains(text(),'" + descricao + "')]";
+        if (hasListener) {
+            Graphene.guardAjax(selectOne.findElement(By.className("ui-selectonemenu-item").xpath(strXpath))).click();
+        } else {
+            selectOne.findElement(By.className("ui-selectonemenu-item").xpath(strXpath)).click();
+        }
+    }
 }

@@ -43,6 +43,10 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
         DetachedCriteria dc = getDetachedCriteria();
         Map<String,Object> searchFilter = searchModel.getFilter();
         Role searchEntity = searchModel.getEntity();
+            if(searchEntity != null && searchEntity.getId() != null){
+            dc.add(Restrictions.eq("id",searchEntity.getId()));
+            return dc;
+        }
         List<Long> groupRoles = (List<Long>) searchFilter.get("groupRoles");
         if(groupRoles != null && !groupRoles.isEmpty()){
             //open roleModal listing only with not used groups
