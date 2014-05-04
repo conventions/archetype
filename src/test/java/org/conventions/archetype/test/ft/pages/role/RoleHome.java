@@ -33,21 +33,31 @@ public class RoleHome extends BasePage {
 
     @FindByJQuery("input[id*=colName]")
     private GrapheneElement filterName;
+    
+    @FindByJQuery("button[id$=resetRole]")
+    private GrapheneElement resetButton;
 
     @FindByJQuery("div[id$=role\\:comboOneMenu] > div.ui-selectonemenu-trigger")
     private GrapheneElement roleSelect;
+    
+    @FindByJQuery("div[id$=role\\:comboOneMenu]")
+    private GrapheneElement roleSelectText;
 
     public GrapheneElement getDatatable() {
         return datatable;
     }
 
     public void newRole(String name){
-        if(isListPage()){
-            WebElement newButton = footer.findElement(By.xpath("//button"));
-            newButton.click();
+    		gotoRoleForm();
             insertRole(name);
             guardAjax(backButton).click();
-        }
+    }
+    
+    public void gotoRoleForm(){
+    	  if(isListPage()){
+              WebElement newButton = footer.findElement(By.xpath("//button"));
+              newButton.click();
+    	  }   
     }
 
     public void insertRole(String name) {
@@ -74,12 +84,21 @@ public class RoleHome extends BasePage {
     public GrapheneElement getFooter() {
         return footer;
     }
+    
+    public void reset(){
+    	guardAjax(resetButton).click();
+    }
 
     public boolean isFormPage(){
        return panel.isPresent();
     }
 
+    public GrapheneElement getRoleSelectText() {
+		return roleSelectText;
+	} 
 
-
+    public GrapheneElement getInputName() {
+		return inputName;
+	}
 
 }

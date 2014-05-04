@@ -5,6 +5,8 @@ import org.conventions.archetype.test.ft.pages.common.Menu;
 import org.conventions.archetype.test.ft.pages.group.GroupHome;
 import org.conventions.archetype.test.ft.pages.role.RoleHome;
 import org.conventions.archetype.test.ft.pages.user.UserHome;
+import org.jboss.arquillian.graphene.Graphene;
+import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.page.InitialPage;
 import org.jboss.arquillian.graphene.page.Page;
@@ -22,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by rmpestano on 3/9/14.
  */
-public class UserFt extends BaseFt {
+public class ArchetypeFt extends BaseFt {
 
     @FindByJQuery("div[id$=menuBar]")
     private Menu menu;
@@ -55,9 +57,20 @@ public class UserFt extends BaseFt {
        roleHome.newRole("test role");
        roleHome.newRole("test role2");
     }
-
+    
     @Test
     @InSequence(3)
+    public void shouldClearRole(){
+    	roleHome.gotoRoleForm();
+    	GrapheneElement name = roleHome.getInputName();
+    	name.sendKeys("role name");
+    	Graphene.waitGui();
+    	roleHome.reset();
+    	assertTrue(name.getText().isEmpty());
+    }
+
+    @Test
+    @InSequence(4)
     public void shouldFilterRoles(){
         menu.gotoRoleHome();
         roleHome.filterByRoleFilter("test role");
@@ -66,10 +79,23 @@ public class UserFt extends BaseFt {
         assertEquals(rows.size(),1);
         assertTrue(rows.get(0).getText().contains("test role"));
     }
+    
+    @Test
+    @InSequence(5)
+    public void roleFilterShouldBeKeeptInSession(){
+        menu.gotoUserHome();
+        menu.gotoRoleHome();
+        assertEquals(roleHome.getRoleSelectText().getText(), "test role");
+        List<WebElement> rows = roleHome.getTableRows("table");
+        assertNotNull(rows);
+        assertEquals(rows.size(),1);
+        assertTrue(rows.get(0).getText().contains("test role"));
+    }
+
 
 
     @Test
-    @InSequence(3)
+    @InSequence(6)
     public void shouldInsertGroupWithSuccess(){
         menu.gotoGroupHome();
         groupHome.newGroup("testgroup");
@@ -77,7 +103,7 @@ public class UserFt extends BaseFt {
     }
 
     @Test
-    @InSequence(4)
+    @InSequence(7)
     public void shouldInsertUserWithSuccess(){
         menu.gotoUserHome();
         userHome.newUser("test user", "test");
@@ -86,7 +112,7 @@ public class UserFt extends BaseFt {
 
 
     @Test
-    @InSequence(5)
+    @InSequence(8)
     public void shouldSearchUserWithSuccess(){
         menu.gotoUserHome();
         userHome.goToList();
@@ -97,7 +123,7 @@ public class UserFt extends BaseFt {
     }
 
     @Test
-    @InSequence(6)
+    @InSequence(9)
     public void shouldSearchUserByGroup(){
         userHome.searchByGroup("Manager");
         List<WebElement> rows = userHome.getTableRows("table");

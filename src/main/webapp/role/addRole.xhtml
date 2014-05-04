@@ -26,7 +26,7 @@ and open the template in the editor.
             <h:panelGrid columns="3" cellpadding="5px">
                 <framework:saveButton  mbean="#{roleMBean}" process=":mainForm:panelAdd" styleClass="ui-priority-primary"
                                        update=":mainForm:pageControl #{g}" value="#{msg.save}"/>
-                <framework:resetButton mbean="#{roleMBean}" update=":mainForm:panelAdd"/>
+                <framework:resetButton id="resetRole" mbean="#{roleMBean}" update=":mainForm:panelAdd"/>
                 <p:commandButton id="btBack" action="#{roleMBean.setFindState}" update=":mainForm:pageControl" value="#{msg['back']}" icon="ui-icon back" immediate="true"/>
             </h:panelGrid>
         </p:panel>
