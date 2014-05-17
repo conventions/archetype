@@ -5,11 +5,11 @@
 package org.conventions.archetype.bean;
 
 import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
+import org.conventions.archetype.model.Role;
+import org.conventions.archetype.service.RoleService;
 import org.conventionsframework.bean.BaseMBean;
 import org.conventionsframework.qualifier.PersistentClass;
 import org.conventionsframework.qualifier.Service;
-import org.conventions.archetype.model.Role;
-import org.conventions.archetype.service.RoleService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;

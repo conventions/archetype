@@ -5,7 +5,14 @@
 package org.conventions.archetype.bean;
 
 import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
+import org.conventions.archetype.model.Group;
+import org.conventions.archetype.model.States;
+import org.conventions.archetype.model.User;
+import org.conventions.archetype.service.GroupService;
+import org.conventions.archetype.service.UserService;
 import org.conventions.archetype.util.AppConstants;
+import org.conventions.archetype.util.Pages;
+import org.conventions.archetype.util.Utils;
 import org.conventionsframework.bean.StateMBean;
 import org.conventionsframework.bean.state.CrudState;
 import org.conventionsframework.exception.BusinessException;
@@ -14,13 +21,6 @@ import org.conventionsframework.qualifier.*;
 import org.conventionsframework.util.Constants;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.RedirectPage;
-import org.conventions.archetype.model.Group;
-import org.conventions.archetype.model.States;
-import org.conventions.archetype.model.User;
-import org.conventions.archetype.service.GroupService;
-import org.conventions.archetype.service.UserService;
-import org.conventions.archetype.util.Pages;
-import org.conventions.archetype.util.Utils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;

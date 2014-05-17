@@ -4,36 +4,85 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import org.conventions.archetype.test.util.Deployments;
 import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.util.ResourceBundle;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
+import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by rmpestano on 3/1/14.
  */
-public class UserRestTest {
-    private final String CONTEXT;
+@RunWith(Arquillian.class)
+public class UserRestIt {
+
+    @ArquillianResource
+    protected URL context;
+
+
+    @Deployment(testable = false)
+    public static Archive<?> createDeployment() {
+        WebArchive war = Deployments.getBaseDeployment().
+                addClass(RestDataset.class);
+        System.out.println(war.toString(true));
+        return war;
+    }
 
     private ResourceBundle resourceBundle;
 
-    public UserRestTest(String context) {
-        this.CONTEXT = context;
+    public UserRestIt() {
         try {
-            resourceBundle = new ResourceBundle(getClass().getResourceAsStream("/messages_en.properties"));
+            resourceBundle = new ResourceBundle("messages_en.properties");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @Test
+    @InSequence(1)
+    public void shouldListUsersWithSuccess() {
+        ClientRequest request = new ClientRequest(context + "rest/user/list/");
+        request.accept(MediaType.APPLICATION_JSON);
+        ClientResponse<String> response;
+        try {
+            response = request.get(String.class);
+            Assert.assertNotNull(response);
+            assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+            String json = response.getEntity(String.class);
+            Gson gson = new Gson();
+            JsonElement jsonElement = new JsonParser().parse(json);
+            Type userListType = new TypeToken<List<SimpleUser>>() {
+            }.getType();
+            List<SimpleUser> simpleUsers = gson.fromJson(jsonElement, userListType);
+            Assert.assertNotNull(simpleUsers);
+            assertEquals(simpleUsers.size(),2);//rest dataset has 2 users @see RestDataset.java
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Assert.fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    @InSequence(2)
     public void shouldInsertUserWithGroups() {
         SimpleUser user = new SimpleUser();
         user.setName("user rest");
@@ -57,7 +106,7 @@ public class UserRestTest {
         groups.add(group1);
         groups.add(group2);
         user.setGroups(groups);
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/add/");
+        ClientRequest request = new ClientRequest(context + "rest/user/add/");
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response = null;
         try {
@@ -76,11 +125,13 @@ public class UserRestTest {
         }
     }
 
+    @Test
+    @InSequence(3)
     public void shouldInsertUserWithoutGroup() {
         SimpleUser user = new SimpleUser();
         user.setName("userWithoutGroups");
         user.setPassword("pass");
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/add/");
+        ClientRequest request = new ClientRequest(context + "rest/user/add/");
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
         try {
@@ -95,14 +146,16 @@ public class UserRestTest {
         }
     }
 
-    public void shouldFindUserByName(String name) {
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/findByName/" + name);
+    @Test
+    @InSequence(4)
+    public void shouldFindUserByName() {
+        ClientRequest request = new ClientRequest(context + "rest/user/findByName/restUser");//restDataset has UserRest
         request.accept(MediaType.APPLICATION_JSON);
         ClientResponse<String> response;
         try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+            assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
             String json = response.getEntity(String.class);
             Gson gson = new Gson();
             JsonElement jsonElement = new JsonParser().parse(json);
@@ -115,31 +168,13 @@ public class UserRestTest {
     }
 
 
-    public void shouldListUsersWithSuccess() {
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/list/");
-        request.accept(MediaType.APPLICATION_JSON);
-        ClientResponse<String> response;
-        try {
-            response = request.get(String.class);
-            Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
-            String json = response.getEntity(String.class);
-            Gson gson = new Gson();
-            JsonElement jsonElement = new JsonParser().parse(json);
-            Type userListType = new TypeToken<List<SimpleUser>>() {
-            }.getType();
-            List<SimpleUser> simpleUsers = gson.fromJson(jsonElement, userListType);
-            Assert.assertNotNull(simpleUsers);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Assert.fail(ex.getMessage());
-        }
-    }
 
+    @Test
+    @InSequence(5)
     public void shouldNotDeleteUserWithGroups() {
 
         SimpleUser adminUser = findUserByNameViaRest("user rest");
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + adminUser.getId());
+        ClientRequest request = new ClientRequest(context + "rest/user/delete/" + adminUser.getId());
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
         request.header("username", adminUser.getName());
         request.header("password", "pass");//TODO decript adminUser.getPassword()
@@ -148,19 +183,21 @@ public class UserRestTest {
         try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+            assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
             //will fail to remove cause user has groups
-            Assert.assertEquals(response.getEntity(), resourceBundle.getString("be.user.remove"));
+            assertEquals(response.getEntity(), resourceBundle.getString("be.user.remove"));
         } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
         }
     }
 
+    @Test
+    @InSequence(6)
     public void shouldNotDeleteUserWithNoPermission() {
 
         SimpleUser nonAdminUser = findUserByNameViaRest("userWithoutGroups");
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + nonAdminUser.getId());
+        ClientRequest request = new ClientRequest(context + "rest/user/delete/" + nonAdminUser.getId());
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
         request.header("username", nonAdminUser.getName());
         request.header("password", "pass");//TODO decript adminUser.getPassword()
@@ -169,9 +206,9 @@ public class UserRestTest {
         try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.UNAUTHORIZED.getStatusCode(), response.getStatus());
+            assertEquals(Response.Status.UNAUTHORIZED.getStatusCode(), response.getStatus());
             //will fail to remove cause user has groups
-            Assert.assertEquals(response.getEntity(), resourceBundle.getString("default-security-message"));
+            assertEquals(response.getEntity(), resourceBundle.getString("default-security-message"));
         } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
@@ -180,7 +217,7 @@ public class UserRestTest {
 
     public void shouldDeleteUserWithoutGroups(){
         SimpleUser userWithoutGroup = findUserByNameViaRest("userWithoutGroups");
-        ClientRequest request = new ClientRequest(CONTEXT + "rest/user/delete/" + userWithoutGroup.getId());
+        ClientRequest request = new ClientRequest(context + "rest/user/delete/" + userWithoutGroup.getId());
         SimpleUser adminUser = findUserByNameViaRest("user rest");
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
         request.header("username", adminUser.getName());
@@ -189,7 +226,7 @@ public class UserRestTest {
         try {
             response = request.get(String.class);
             Assert.assertNotNull(response);
-            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+            assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
         } catch (Exception ex) {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
@@ -200,8 +237,8 @@ public class UserRestTest {
         Assert.assertNotNull(username);
         SimpleUser user = null;
         try {
-            ClientResponse<String> response = new ClientRequest(CONTEXT + "rest/user/findByName/" + username).accept(MediaType.APPLICATION_JSON).get(String.class);
-            Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+            ClientResponse<String> response = new ClientRequest(context + "rest/user/findByName/" + username).accept(MediaType.APPLICATION_JSON).get(String.class);
+            assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
             String json = response.getEntity(String.class);
             Assert.assertNotNull(json);
             JsonElement jsonElement = new JsonParser().parse(json);

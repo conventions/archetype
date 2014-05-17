@@ -5,6 +5,7 @@ import org.conventions.archetype.model.User;
 import org.conventions.archetype.security.SecurityContextImpl;
 import org.conventions.archetype.service.UserService;
 import org.conventionsframework.exception.BusinessException;
+import org.hibernate.criterion.MatchMode;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -61,7 +62,7 @@ public class UserRest implements Serializable {
         if (name != null) {
             User userQuery = new User();
             userQuery.setName(name);
-            User user = userService.getDao().findOneByExample(userQuery);
+            User user = userService.getDao().findOneByExample(userQuery, MatchMode.EXACT);
             if (user == null) {
                 return Response.status(Response.Status.NO_CONTENT).entity("user not found with name:" + name).build();
             }

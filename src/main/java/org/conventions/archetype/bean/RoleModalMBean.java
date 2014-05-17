@@ -4,17 +4,15 @@
  */
 package org.conventions.archetype.bean;
 
+import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScoped;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.service.RoleService;
 import org.conventionsframework.bean.ModalMBean;
-import java.io.Serializable;
-import javax.enterprise.event.Observes;
-import javax.enterprise.event.Reception;
-import javax.inject.Named;
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScoped;
-import org.conventionsframework.event.ModalInitialization;
 import org.conventionsframework.qualifier.Service;
 import org.primefaces.event.CloseEvent;
+
+import javax.inject.Named;
+import java.io.Serializable;
 
  /**
  * 
