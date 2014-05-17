@@ -42,14 +42,6 @@ public class UserIt implements Serializable {
         assertNotNull(userService.getDao().get(1L));
     }
 
-    public void shouldFailToRemoveUserWithoutPermission(User user) {
-        assertNotNull(user);
-        try{
-            userService.remove(user);
-        }catch (BusinessException be){
-            assertEquals(be.getMessage(), resourceBundle.getString("default-security-message"));
-        }
-    }
 
     public void shouldFailToRemoveUserWithGroups(User user) {
         assertNotNull(user);

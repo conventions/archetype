@@ -3,6 +3,7 @@ package org.conventions.archetype.test.it;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
+import org.conventionsframework.exception.BusinessException;
 import org.jboss.arquillian.persistence.Cleanup;
 import org.jboss.arquillian.persistence.TestExecutionPhase;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -11,6 +12,9 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 
 import javax.inject.Inject;
+
+import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @Transactional(value = TransactionMode.DISABLED)
 public class ArchetypeIt extends BaseIt {
@@ -53,7 +57,12 @@ public class ArchetypeIt extends BaseIt {
         //TODO decripty user pass
         super.login(user.getName(),"user");
         //looged in user has no permition to remove user
-        userIt.shouldFailToRemoveUserWithoutPermission(user);
+        assertNotNull(user);
+        try{
+            userService.remove(user);
+        }catch (BusinessException be){
+            assertEquals(be.getMessage(), resourceBundle.getString("default-security-message"));
+        }
     }
 
     @Test

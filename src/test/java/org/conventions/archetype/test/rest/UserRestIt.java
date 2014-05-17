@@ -51,7 +51,7 @@ public class UserRestIt {
 
     public UserRestIt() {
         try {
-            resourceBundle = new ResourceBundle("messages_en.properties");
+            resourceBundle = new ResourceBundle();
         } catch (IOException e) {
             e.printStackTrace();
         }

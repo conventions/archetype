@@ -12,6 +12,11 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
+<<<<<<< Updated upstream
+=======
+          <root url="file://$MODULE_DIR$/target/generated-sources/archetype/target/test-classes/projects/basic/project/basic/src/main/java" />
+          <root url="file://$MODULE_DIR$/target/generated-sources/archetype/target/test-classes/projects/basic/project/basic/src/test/java" />
+>>>>>>> Stashed changes
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
@@ -22,10 +27,16 @@
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
+<<<<<<< Updated upstream
+=======
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/archetype/target/test-classes/projects/basic/project/basic/src/main/java" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/archetype/target/test-classes/projects/basic/project/basic/src/test/java" isTestSource="false" generated="true" />
+>>>>>>> Stashed changes
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+<<<<<<< Updated upstream
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -35,6 +46,24 @@
     <orderEntry type="library" name="Maven: org.apache.myfaces.extensions.cdi.bundles:myfaces-extcdi-bundle-jsf20:1.0.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:all-themes:1.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.1" level="project" />
+=======
+      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/dependency" />
+      <excludeFolder url="file://$MODULE_DIR$/target/dependency-maven-plugin-markers" />
+      <excludeFolder url="file://$MODULE_DIR$/target/jbehave" />
+      <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />
+      <excludeFolder url="file://$MODULE_DIR$/target/surefire-reports" />
+      <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/wildfly-8.0.0.Final" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="conventions-core" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.primefaces:primefaces:4.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:all-themes:1.0.10" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.myfaces.extensions.cdi.bundles:myfaces-extcdi-bundle-jsf20:1.0.6" level="project" />
+>>>>>>> Stashed changes
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.hibernate:hibernate-core:4.3.4.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.logging:jboss-logging:3.1.3.GA" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1" level="project" />

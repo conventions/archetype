@@ -5,6 +5,7 @@ import org.conventions.archetype.service.UserService;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
 import org.conventions.archetype.test.util.Deployments;
+import org.conventionsframework.util.ResourceBundle;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
@@ -24,6 +25,9 @@ public class BaseIt {
 
     @Inject
     protected UserService userService;
+
+    @Inject
+    protected ResourceBundle resourceBundle;
 
     @BeforeClass
     public static void initClass() {
