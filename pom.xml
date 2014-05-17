@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <conventions.version>1.0.4</conventions.version>
         <!-- arquillian extensions -->
-        <version.selenium>2.40.0</version.selenium>
+        <version.selenium>2.41.0</version.selenium>
         <version.drone>2.0.0.Alpha1</version.drone>
         <version.arquillian>1.1.4.Final</version.arquillian>
         <version.graphene>2.0.2.Final</version.graphene>
