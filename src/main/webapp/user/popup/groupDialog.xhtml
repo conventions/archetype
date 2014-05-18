@@ -12,9 +12,8 @@
             <framework:modal id="findGroupDlg" header="#{msg['user.findGroup']}"
                              widgetVar="findGroupDlg"
                              mbean="#{groupModalMBean}"
-                             formId="groupDialogForm"
-                             closeListener="#{groupModalMBean.clearSelection}" 
-                             update=":mainForm:panelGroups  #{g}"
+                             formId="groupDialogForm" renderButton="false"
+                             closeListener="#{groupModalMBean.clearSelection}"
                              autoUpddate="false"
                              >
                   <p:remoteCommand name="updateRowCount" process="@none" update="selectionTable:groupDialogFooter"/>
@@ -44,5 +43,15 @@
                           <framework:tableFooter id="groupDialogFooter" mbean="#{groupModalMBean}" message="#{msg.recordsFound}"/>
                          </f:facet>
                   </p:dataTable>
+                <center>
+                    <p:button value="Add" includeViewParams="true" onclick="jQuery('button[id$=modal_bt]').click();return false"/>
+                    <p:commandButton style="visibility: hidden" value="Add2"
+                                     action="#{groupModalMBean.invokeModalCallback}"
+                                     oncomplete="findGroupDlg.hide()"
+                                     id="modal_bt"
+                                     update=":mainForm:panelGroups  #{g}">
+                        <f:param name="includeViewParams" value="true"/>
+                    </p:commandButton>
+                </center>
             </framework:modal>
 </ui:composition>

@@ -72,12 +72,6 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
             }
         }
         Map<String, Object> searchFilter = searchModel.getFilter();
-        //not show in group popup groups that user being edited already have
-        List<Long> userGroups = (List<Long>) searchFilter.get("userGroups");//@see UserMBean#preLoadDialog()
-        if (userGroups != null && !userGroups.isEmpty()) {
-            dc.add(Restrictions.not(Restrictions.in("id", userGroups)));
-        }
-
 
         Long userId = (Long) searchFilter.get("currentUser");
         if (userId != null) {
