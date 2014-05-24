@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <conventions.version>1.0.4</conventions.version>
+        <conventions.version>1.1.0</conventions.version>
         <!-- arquillian extensions -->
         <version.selenium>2.41.0</version.selenium>
         <version.drone>2.0.0.Alpha1</version.drone>
@@ -45,7 +45,6 @@
         <dependency>
             <groupId>org.conventionsframework</groupId>
             <artifactId>conventions-core</artifactId>
-            <version>1.1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
