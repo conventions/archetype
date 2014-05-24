@@ -39,7 +39,7 @@ public class GroupSteps extends BaseStep implements Serializable {
     @Given("i search group with name $name")
     public void searchGroup(@Named("name") String name){
         Group group = new Group(name);
-        stepGroup = groupService.getDao().findOneByExample(group);
+        stepGroup = groupService.crud().findByExample(group);
         assertNotNull(stepGroup);
         assertEquals(name,stepGroup.getName());
     }
@@ -47,7 +47,7 @@ public class GroupSteps extends BaseStep implements Serializable {
     @When("i edit group name to $name")
     public void editGroup(String name){
         assertNotNull(stepGroup);
-        stepGroup = groupService.getDao().get(stepGroup.getId());
+        stepGroup = groupService.crud().get(stepGroup.getId());
         stepGroup.setName(name);
         groupService.store(stepGroup);
     }
@@ -55,7 +55,7 @@ public class GroupSteps extends BaseStep implements Serializable {
     @Then("group name must be $name")
     public void groupNameMustBe(@Named("name") String name){
         Group group = new Group(name);
-        assertEquals(groupService.getDao().findByExample(group, MatchMode.EXACT).size(), 1);
+        assertEquals(groupService.crud().matchMode(MatchMode.EXACT).countByExample(group), 1);
     }
 
     @When("i try to remove group with name $name")

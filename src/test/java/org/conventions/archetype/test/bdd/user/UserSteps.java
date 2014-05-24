@@ -67,7 +67,7 @@ public class UserSteps extends BaseStep implements Serializable {
     @When("i try to remove user $name")
     public void tryToRemoveUse(@Named("name")String username){
         User user = new User(username);
-        stepUser = userService.getDao().findOneByExample(user, MatchMode.EXACT);
+        stepUser = userService.crud().matchMode(MatchMode.EXACT).findByExample(user);
         assertNotNull(stepUser);
         assertEquals(stepUser.getName(),username);
         try{

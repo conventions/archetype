@@ -35,7 +35,7 @@ public class RoleMBean extends BaseMBean<Role> {
     @Override
     public void delete(Role entity) {
        //reatach entity to hibernate session, needed cause we are using a stateless/Non EJB service
-        super.delete((Role) getBaseService().getDao().load(entity.getId()));
+        super.delete((Role) getBaseService().crud().load(entity.getId()));
     }
 
 }

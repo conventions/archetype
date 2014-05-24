@@ -8,8 +8,7 @@ import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.qualifier.ListToUpdate;
-import org.conventionsframework.qualifier.Service;
-import org.conventionsframework.service.BaseService;
+import org.conventionsframework.crud.Crud;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
@@ -32,19 +31,17 @@ public class ComboMBean implements Serializable {
     private List<SelectItem> roleList;
     
     @Inject
-    @Service        
-    BaseService<Group> groupService;
+    Crud<Group> groupCrud;
     
     @Inject
-    @Service   
-    BaseService<Role> roleService;
+    Crud<Role> roleCrud;
 
     
     public List<SelectItem> getGroupList() {
         if (groupList == null) {
             groupList = new ArrayList<SelectItem>();
             groupList.add(new SelectItem(null, "All"));
-            List<Group> allGroups = groupService.getDao().findAll();
+            List<Group> allGroups = groupCrud.listAll();
             for (Group group : allGroups) {
                 SelectItem item = new SelectItem(group.getName(), group.getName());
                 groupList.add(item);
@@ -57,7 +54,7 @@ public class ComboMBean implements Serializable {
          if (roleList == null) {
             roleList = new ArrayList<SelectItem>();
             roleList.add(new SelectItem(null, "All"));
-            List<Role> allGroups = roleService.getDao().findAll();
+            List<Role> allGroups = roleCrud.listAll();
 
             for (Role role : allGroups) {
                 SelectItem item = new SelectItem(role.getName(), role.getName());

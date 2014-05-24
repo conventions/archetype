@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.security.SecurityContextImpl;
 import org.conventions.archetype.service.UserService;
+import org.conventionsframework.crud.Crud;
 import org.conventionsframework.exception.BusinessException;
 import org.hibernate.criterion.MatchMode;
 
@@ -26,6 +27,9 @@ public class UserRest implements Serializable {
     @Inject
     UserService userService;
 
+    @Inject
+    Crud<User> userCrud;
+
 
     @Inject
     SecurityContextImpl appSecurityContext;
@@ -34,7 +38,7 @@ public class UserRest implements Serializable {
     @Path("/list")
     @Produces({MediaType.APPLICATION_JSON})
     public Response list(@Context HttpHeaders headers) {
-        List<User> list = userService.getDao().findAll();
+        List<User> list = userService.crud().listAll();
         return Response.ok(list).build();
     }
 
@@ -45,7 +49,7 @@ public class UserRest implements Serializable {
         if (id != null) {
             try {
                 Long userId = Long.parseLong(id);
-                User user = userService.getDao().get(userId);
+                User user = userService.crud().get(userId);
                 return Response.ok(user).build();
             } catch (NumberFormatException nfe) {
                 return Response.status(Response.Status.BAD_REQUEST).entity("invalid id to find user:" + id).build();
@@ -62,7 +66,7 @@ public class UserRest implements Serializable {
         if (name != null) {
             User userQuery = new User();
             userQuery.setName(name);
-            User user = userService.getDao().findOneByExample(userQuery, MatchMode.EXACT);
+            User user = userService.crud().matchMode(MatchMode.EXACT).findByExample(userQuery);
             if (user == null) {
                 return Response.status(Response.Status.NO_CONTENT).entity("user not found with name:" + name).build();
             }

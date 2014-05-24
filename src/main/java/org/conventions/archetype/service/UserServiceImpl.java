@@ -69,29 +69,29 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public DetachedCriteria configPagination(SearchModel<User> searchModel) {
+    public Criteria configPagination(SearchModel<User> searchModel) {
 
-        DetachedCriteria dc = getDetachedCriteria();
+        Criteria criteria = getCriteria();
         Map<String,Object> searchFilter = searchModel.getFilter();
         User searchEntity = searchModel.getEntity();
         if (searchFilter != null) {
             String group = (String) searchFilter.get("groups");
             if (group != null && !"all".equalsIgnoreCase(group)) {
-                dc.createAlias("groups", "groups");
-                dc.add(Restrictions.eq("groups.name", group));
+                criteria.createAlias("groups", "groups");
+                criteria.add(Restrictions.eq("groups.name", group));
             }
 
         }
 
         if(searchEntity.getGroup().getName() != null){//defined in user search dialog
-            dc.createAlias("groups","groups");
-            dc.add(Restrictions.ilike("groups.name",searchEntity.getGroup().getName(),MatchMode.ANYWHERE));
+            criteria.createAlias("groups","groups");
+            criteria.add(Restrictions.ilike("groups.name",searchEntity.getGroup().getName(),MatchMode.ANYWHERE));
         }
         //you can return only your populated criteria(dc) 
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones
         //if those fields are present in filters
-        return super.configPagination(searchModel,dc);
+        return super.configPagination(searchModel,criteria);
     }
 
 
@@ -113,11 +113,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @SecurityMethod(rolesAllowed= AppConstants.Role.ADMIN)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void remove(User entity) {
-        entity = dao.get(entity.getId());
+        entity = crud.get(entity.getId());
         if(entity.getGroups() != null && !entity.getGroups().isEmpty()){
             throw new BusinessException(resourceBundle.getString("be.user.remove"));
         }
-        super.dao.delete(entity);
+        super.crud.delete(entity);
     }
 
     @Override
@@ -154,15 +154,15 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         if(user == null){
             return false;
         }
-        DetachedCriteria dc = getDetachedCriteria();
+        Criteria criteria = getCriteria();
         //used to ignore user id which we are editing
         if (user.getId() != null) {
-            dc.add(Restrictions.ne("id", user.getId()));
+            criteria.add(Restrictions.ne("id", user.getId()));
         }
 
         if (!"".endsWith(user.getName())) {
-            dc.add(Restrictions.ilike("name", user.getName(), MatchMode.EXACT));
-            return (dao.getRowCount(dc) > 0);
+            criteria.add(Restrictions.ilike("name", user.getName(), MatchMode.EXACT));
+            return (crud.criteria(criteria).count() > 0);
         }
         return false;
     }

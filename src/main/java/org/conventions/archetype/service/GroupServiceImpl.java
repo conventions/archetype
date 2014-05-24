@@ -11,6 +11,7 @@ import org.conventions.archetype.qualifier.ListToUpdate;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -58,17 +59,17 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     }
 
     @Override
-    public DetachedCriteria configPagination(SearchModel<Group> searchModel) {
+    public Criteria configPagination(SearchModel<Group> searchModel) {
 
-        DetachedCriteria dc = getDetachedCriteria();
+        Criteria criteria = getCriteria();
         Group searchEntity = searchModel.getEntity();
         Map<String, String> tableFilter = searchModel.getDatatableFilter();//primefaces column filter
         if (tableFilter != null && !tableFilter.isEmpty()) {
             String role = tableFilter.get("roles");
             if (role != null && !"all".equalsIgnoreCase(role)) {
                 //create join to fetch group roles 
-                dc.createAlias("roles", "roles");
-                dc.add(Restrictions.eq("roles.name", role));
+                criteria.createAlias("roles", "roles");
+                criteria.add(Restrictions.eq("roles.name", role));
             }
         }
         Map<String, Object> searchFilter = searchModel.getFilter();
@@ -76,16 +77,16 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         Long userId = (Long) searchFilter.get("currentUser");
         if (userId != null) {
             //create join to load groups of current user being edited
-            dc.createAlias("users", "users");
-            dc.add(Restrictions.eq("users.id", userId));
+            criteria.createAlias("users", "users");
+            criteria.add(Restrictions.eq("users.id", userId));
         }
 
 
-        //you can return only your populated criteria(dc) 
+        //you can return only your populated criteria(criteria) 
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones 
         //if those they are present in filters
-        return super.configPagination(searchModel, dc);
+        return super.configPagination(searchModel, criteria);
 
     }
 
@@ -94,7 +95,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
      * this method should be in a service that manage roles but we(purposely)
      * did not provided one so we do that here in groupService
      *
-     * @param groupId
+     * @param group
      * @return roles that are not in current group
      */
     @Override
@@ -102,7 +103,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
 
         if (group.getRoles() == null || group.getRoles().isEmpty()) {
-            return roleService.getDao().findAll();//if no roles associated all roles are available
+            return roleService.crud().listAll();//if no roles associated all roles are available
         }
 
         List<Long> roleIds = new ArrayList<Long>();
@@ -115,9 +116,9 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
         return q.getResultList();
         //Same as criteria below
-//        DetachedCriteria dc = roleService.getDetachedCriteria();
-//        dc.add(Restrictions.not(Restrictions.in("id", roleIds)));
-//        return roleService.findByCriteria(dc);
+//        DetachedCriteria criteria = roleService.getDetachedCriteria();
+//        criteria.add(Restrictions.not(Restrictions.in("id", roleIds)));
+//        return roleService.findByCriteria(criteria);
     }
 
     @Override
@@ -156,15 +157,15 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         if (group == null) {
             return false;
         }
-        DetachedCriteria dc = getDetachedCriteria();
+        Criteria criteria = getCriteria();
         //used to ignore user id which we are editing
         if (group.getId() != null) {
-            dc.add(Restrictions.ne("id", group.getId()));
+            criteria.add(Restrictions.ne("id", group.getId()));
         }
 
         if (!"".endsWith(group.getName())) {
-            dc.add(Restrictions.ilike("name", group.getName(), MatchMode.EXACT));
-            return (dao.getRowCount(dc) > 0);
+            criteria.add(Restrictions.ilike("name", group.getName(), MatchMode.EXACT));
+            return (crud.criteria(criteria).count() > 0);
         }
         return false;
     }

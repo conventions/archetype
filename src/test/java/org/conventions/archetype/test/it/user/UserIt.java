@@ -25,21 +25,21 @@ public class UserIt implements Serializable {
 
     public void shouldListUsers() {
         //dataset has 2 users
-        assertEquals(2, userService.getDao().countAll());
+        assertEquals(2, userService.crud().countAll());
     }
 
     public void shouldInsertUser() {
-        int userCountBefore = userService.getDao().countAll();
+        int userCountBefore = userService.crud().countAll();
         User user = new User();
         user.setName("name");
         user.setPassword("pass");
         userService.store(user);
-        assertEquals(userCountBefore, userService.getDao().countAll() - 1);
+        assertEquals(userCountBefore, userService.crud().countAll() - 1);
     }
 
     public void shouldFindUser() {
         //dataset has user with id = 1
-        assertNotNull(userService.getDao().get(1L));
+        assertNotNull(userService.crud().get(1L));
     }
 
 
@@ -56,7 +56,7 @@ public class UserIt implements Serializable {
     public void shouldRemoveUser(User user) {
         assertNotNull(user);
         userService.remove(user);
-        user = userService.getDao().get(2L);
+        user = userService.crud().get(2L);
         assertNull(user);
     }
 }

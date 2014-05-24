@@ -41,9 +41,8 @@ public class RoleSteps extends BaseStep implements Serializable {
 
     @When("i search roles with name $name")
     public void searchRoleWithName(@Named("name") String name){
-        System.out.println(roleService.getDao().findAll());
         Role role = new Role().name(name);
-        rolesFound = roleService.getDao().findByExample(role, MatchMode.START).size();
+        rolesFound = roleService.crud().matchMode(MatchMode.START).countByExample(role);
     }
 
     @Then("roles found is equal to $total")
@@ -53,7 +52,7 @@ public class RoleSteps extends BaseStep implements Serializable {
 
     @When("i try to remove role with name $name")
     public void removeRole(@Named("name") String name){
-       Role role = roleService.getDao().findOneByExample(new Role().name(name));
+       Role role = roleService.crud().findByExample(new Role().name(name));
        assertNotNull(role);
        assertEquals(role.getName(),name);
        try{
@@ -73,7 +72,7 @@ public class RoleSteps extends BaseStep implements Serializable {
     public void insertRole(String name){
         try{
             roleService.store(new Role(name));
-            assertNotNull(roleService.getDao().findOneByExample(new Role(name)));
+            assertNotNull(roleService.crud().findByExample(new Role(name)));
             message = resourceBundle.getString("role.create.message");
         }catch (Throwable t){
             message = t.getMessage();

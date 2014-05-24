@@ -46,7 +46,7 @@ public class HelloArquillianIt {
         war.addPackages(true, "org.conventions.archetype.util");
         //LIBS
         MavenResolverSystem resolver = Maven.resolver();
-        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.0.4").withTransitivity().asFile());//conventions
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.1.0-SNAPSHOT").withTransitivity().asFile());//conventions
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:4.0").withoutTransitivity().asSingleFile());
 
         //WEB-INF
@@ -76,7 +76,7 @@ public class HelloArquillianIt {
     public void shouldListRolesWithSuccess(){
         testService.clearDatabase();
         testService.createRoleDataset();
-        int numRoles = roleService.getDao().countAll();
+        int numRoles = roleService.crud().countAll();
         log.info("COUNT:"+numRoles);
         assertEquals(numRoles, 2);
     }
@@ -85,7 +85,7 @@ public class HelloArquillianIt {
     @UsingDataSet("role.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldListRolesUsingDataset(){
-        int numRoles = roleService.getDao().countAll();
+        int numRoles = roleService.crud().countAll();
         log.info("COUNT:"+numRoles);
         assertEquals(numRoles, 3);
     }

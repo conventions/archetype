@@ -53,7 +53,7 @@ public class ArchetypeIt extends BaseIt {
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldFailToRemoveUserWithoutPermission() {
-        User user = userService.getDao().get(2L);
+        User user = userService.crud().get(2L);
         //TODO decripty user pass
         super.login(user.getName(),"user");
         //looged in user has no permition to remove user
@@ -71,7 +71,7 @@ public class ArchetypeIt extends BaseIt {
     public void shouldFailToRemoveUserWithGroups() {
         super.login("arun","42");//arun has permission
         //user with id 1 has groups
-        User user = userService.getDao().get(1L);
+        User user = userService.crud().get(1L);
         userIt.shouldFailToRemoveUserWithGroups(user);
     }
 
@@ -81,7 +81,7 @@ public class ArchetypeIt extends BaseIt {
     public void shouldRemoveUser() {
         //user 2 has no groups
         super.login("arun","42");
-        User user = userService.getDao().get(2L);
+        User user = userService.crud().get(2L);
         userIt.shouldRemoveUser(user);
     }
 

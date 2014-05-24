@@ -3,7 +3,7 @@ package org.conventions.archetype.bean;
 import org.conventions.archetype.model.Group;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
-import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import javax.ejb.Stateless;
@@ -18,9 +18,9 @@ public class GroupModalService extends BaseServiceImpl<Group> {
 
 
     @Override
-    public DetachedCriteria configPagination(SearchModel<Group> searchModel) {
+    public Criteria configPagination(SearchModel<Group> searchModel) {
         Map<String, Object> searchFilter = searchModel.getFilter();
-        DetachedCriteria dc = getDetachedCriteria();
+        Criteria dc = getCriteria();
         //not show in group popup groups that user being edited already have
         List<Long> userGroups = (List<Long>) searchFilter.get("userGroups");//@see UserMBean#preLoadDialog()
         if (userGroups != null && !userGroups.isEmpty()) {

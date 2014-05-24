@@ -17,7 +17,7 @@ and open the template in the editor.
         <p:panel header="#{msg.roles}" style="margin: 15px;height:450px;width: 750px;text-align: left">
             <h:panelGrid columns="2">
                 <p:outputLabel value="Filter by role:" />                     <!-- roleConverter is optional-->
-                <framework:combo id="role" list="#{roleMBean.baseService.dao.findAll()}" converter="roleConverter"
+                <framework:combo id="role" list="#{roleMBean.baseService.crud().listAll()}" converter="roleConverter"
                                  value="#{roleMBean.searchEntity}"
                                  update="@(.ui-datatable)"
                                  process="@this"

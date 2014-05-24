@@ -13,7 +13,7 @@ import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventionsframework.util.ResourceBundle;
-import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import javax.enterprise.event.Event;
@@ -38,22 +38,22 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
     ResourceBundle resourceBundle;
     
     @Override
-    public DetachedCriteria configPagination(SearchModel<Role> searchModel) {
+    public Criteria configPagination(SearchModel<Role> searchModel) {
         
-        DetachedCriteria dc = getDetachedCriteria();
+        Criteria criteria = getCriteria();
         Map<String,Object> searchFilter = searchModel.getFilter();
         Role searchEntity = searchModel.getEntity();
             if(searchEntity != null && searchEntity.getId() != null){
-            dc.add(Restrictions.eq("id",searchEntity.getId()));
-            return dc;
+            criteria.add(Restrictions.eq("id",searchEntity.getId()));
+            return criteria;
         }
         List<Long> groupRoles = (List<Long>) searchFilter.get("groupRoles");
         if(groupRoles != null && !groupRoles.isEmpty()){
             //open roleModal listing only with not used groups
             //PS: not used cause roleAssociation is done with picklist now not with list of values anymore
-            dc.add(Restrictions.not(Restrictions.in("id", groupRoles)));
+            criteria.add(Restrictions.not(Restrictions.in("id", groupRoles)));
         }
-        return super.configPagination(searchModel, dc);
+        return super.configPagination(searchModel, criteria);
     }
 
     @Override

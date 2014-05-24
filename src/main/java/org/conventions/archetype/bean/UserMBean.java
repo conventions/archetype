@@ -129,7 +129,7 @@ public class UserMBean extends StateMBean<User> {
             if (currentUserId == null || currentUserId == 0) {
                 setBeanState(CrudState.INSERT);
             } else {//edit user
-                User userEdit = getUserService().getDao().load(currentUserId);
+                User userEdit = getUserService().crud().load(currentUserId);
                 if (!userEdit.getId().equals(loggedUser.getId())) {
                     throw new BusinessException(getResourceBundle().getString("be.user.edit-not-allowed"), new RedirectPage(Pages.FIND_USER));
                 }

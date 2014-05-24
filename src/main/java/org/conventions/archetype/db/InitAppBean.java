@@ -51,7 +51,7 @@ public class InitAppBean implements Serializable{
          */
         log.info("my double config:" + myDoubleConfig);
         log.info("init app mbean");
-        if(userService.getDao().countAll() == 0){
+        if(userService.crud().countAll() == 0){
             final Group groupManager = new Group("Manager");
             final Group groupDev = new Group("Devs");
             final Group groupDevOps = new Group("DevOps");
