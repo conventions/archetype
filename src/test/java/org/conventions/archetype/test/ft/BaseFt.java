@@ -25,6 +25,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Locale;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
@@ -52,7 +53,7 @@ public class BaseFt {
     public BaseFt() {
         try {
             //when running as client bundle must be found in application classpath instead of current thread(test thread will look into test resources)
-            resourceBundle = new ResourceBundle();
+            resourceBundle = new ResourceBundle("messages", Locale.ENGLISH);//force test locale, see test-faces-config
         } catch (Exception e) {
             e.printStackTrace();
         }

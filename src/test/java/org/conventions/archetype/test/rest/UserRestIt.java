@@ -25,6 +25,7 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -50,7 +51,7 @@ public class UserRestIt {
 
     public UserRestIt() {
         try {
-            resourceBundle = new ResourceBundle();
+            resourceBundle = new ResourceBundle("messages",Locale.ENGLISH);//force test locale, see test-faces-config
         } catch (Exception e) {
             e.printStackTrace();
         }

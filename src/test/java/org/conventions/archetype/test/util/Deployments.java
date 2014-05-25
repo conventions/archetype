@@ -63,7 +63,7 @@ public class Deployments {
 
         //resources
         war.addAsResource("test-persistence.xml", "META-INF/persistence.xml");
-        war.addAsResource("messages_pt.properties", "messages_pt.properties");
+        war.addAsResource("messages_en.properties", "messages_pt.properties");//force fixed messages for test to be independent from default locale
         war.addAsResource("messages_en.properties", "messages_en.properties");
 
         return war;
