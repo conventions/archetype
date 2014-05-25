@@ -21,7 +21,6 @@ import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class UserRestIt {
     public UserRestIt() {
         try {
             resourceBundle = new ResourceBundle();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

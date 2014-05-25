@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -6,13 +7,9 @@
       xmlns:framework="http://java.sun.com/jsf/composite/components/conventions"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<f:view contentType="text/html">
+<f:view contentType="text/html" encoding="UTF-8">
     <h:head>
-        <f:loadBundle
-                basename="messages_#{(resourceBundleProvider.currentLocale ne 'en' and resourceBundleProvider.currentLocale ne 'pt') ? 'en': resourceBundleProvider.currentLocale}"
-                var="msg"/>
         <title>#{msg['title']}</title>
-        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
         <h:outputStylesheet name="default.css" library="css"/>
     </h:head>
     <h:body>

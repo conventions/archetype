@@ -11,7 +11,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,8 +25,8 @@ public abstract class BasePage implements Serializable {
     protected BasePage() {
         try {
             //when running as client(black box) bundle must be found in application classpath instead of current thread(test thread will look into test resources)
-            resourceBundle = new ResourceBundle(getClass().getResourceAsStream("/messages_en.properties"));
-        } catch (IOException e) {
+            resourceBundle = new ResourceBundle();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

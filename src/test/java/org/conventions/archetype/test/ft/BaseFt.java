@@ -24,7 +24,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
@@ -53,8 +52,8 @@ public class BaseFt {
     public BaseFt() {
         try {
             //when running as client bundle must be found in application classpath instead of current thread(test thread will look into test resources)
-            resourceBundle = new ResourceBundle(getClass().getResourceAsStream("/messages_en.properties"));
-        } catch (IOException e) {
+            resourceBundle = new ResourceBundle();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
