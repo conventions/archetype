@@ -44,7 +44,7 @@
                          </f:facet>
                   </p:dataTable>
                 <center>
-                    <p:button value="Add" includeViewParams="true" onclick="jQuery('button[id$=modal_bt]').click();return false"/>
+                    <p:button value="Add" id="btAdd" includeViewParams="true" onclick="jQuery('button[id$=modal_bt]').click();return false"/>
                     <p:commandButton style="visibility: hidden" value="Add2"
                                      action="#{groupModalMBean.invokeModalCallback}"
                                      oncomplete="findGroupDlg.hide()"

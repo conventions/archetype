@@ -25,7 +25,7 @@ public class GroupDialog extends BasePage{
     @Root
     private GrapheneElement dialog;
 
-    @FindByJQuery("button[id$=modal_bt]")
+    @FindByJQuery("button[id$=btAdd]")
     private GrapheneElement btAdd;
 
     @FindByJQuery("tbody[id$=selectionTable_data]")
