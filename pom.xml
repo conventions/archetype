@@ -742,8 +742,8 @@
         <profile>
             <id>jboss-managed</id>
             <properties>
-                <!--arquillian.serverHome>${project.build.directory}/jboss-as-${jboss.version}</arquillian.serverHome-->
-                <arquillian.serverHome>/home/rmpestano/jboss-eap-6.1</arquillian.serverHome>
+                <arquillian.serverHome>${project.build.directory}/jboss-as-${jboss.version}</arquillian.serverHome>
+                <!--<arquillian.serverHome>/home/rmpestano/jboss-eap-6.2</arquillian.serverHome>-->
                 <datasource>java:jboss/datasources/ExampleDS2</datasource>
                 <hibernate.platform>org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform
                 </hibernate.platform>

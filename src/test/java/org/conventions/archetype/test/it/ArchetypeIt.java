@@ -72,7 +72,16 @@ public class ArchetypeIt extends BaseIt {
         super.login("arun","42");//arun has permission
         //user with id 1 has groups
         User user = userService.crud().get(1L);
-        userIt.shouldFailToRemoveUserWithGroups(user);
+        //userIt.shouldFailToRemoveUserWithGroups(user);
+        //avoid multiple persistenceContexts: javax.ejb.EJBTransactionRolledbackException: JBAS011437:
+        // Found extended persistence context in SFSB invocation call stack but that cannot be used because the transaction already has a transactional context associated with it.  This can be avoided by changing application code, either eliminate the extended persistence context or the transactional context.  See JPA spec 2.0 section 7.6.3.1.  Scoped persistence unit name=2cae0ee9-0bb5-411c-bea7-e0029dc826de.war#archetypeTestPU, persistence context already in transaction =ExtendedEntityManager [2cae0ee9-0bb5-411c-bea7-e0029dc826de.war#archetypeTestPU], extended persistence context =ExtendedEntityManager [2cae0ee9-0bb5-411c-bea7-e0029dc826de.war#archetypeTestPU].
+        assertNotNull(user);
+        try{
+            userService.remove(user);
+        }catch (BusinessException be){
+            assertEquals(be.getMessage(), resourceBundle.getString("be.user.remove"));
+        }
+        assertNotNull(user);
     }
 
     @Test

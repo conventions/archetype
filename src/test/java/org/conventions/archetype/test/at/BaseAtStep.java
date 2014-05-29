@@ -9,6 +9,7 @@ import org.jboss.arquillian.test.api.ArquillianResource;
 import org.openqa.selenium.WebDriver;
 
 import java.net.URL;
+import java.util.Locale;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
@@ -30,8 +31,8 @@ public abstract class BaseAtStep {
 
     protected BaseAtStep() {
         try {
-            //when running as client(black box) bundle must be found in application classpath instead of current thread(test thread will look into test resources)
-            resourceBundle = new ResourceBundle();
+            resourceBundle = new ResourceBundle("messages", Locale.ENGLISH);//force test locale, see test-faces-config
+
         } catch (Exception e) {
             e.printStackTrace();
         }

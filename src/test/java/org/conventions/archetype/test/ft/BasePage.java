@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Locale;
 
 
 public abstract class BasePage implements Serializable {
@@ -24,8 +25,8 @@ public abstract class BasePage implements Serializable {
 
     protected BasePage() {
         try {
-            //when running as client(black box) bundle must be found in application classpath instead of current thread(test thread will look into test resources)
-            resourceBundle = new ResourceBundle();
+            resourceBundle = new ResourceBundle("messages", Locale.ENGLISH);//force test locale, see test-faces-config
+
         } catch (Exception e) {
             e.printStackTrace();
         }

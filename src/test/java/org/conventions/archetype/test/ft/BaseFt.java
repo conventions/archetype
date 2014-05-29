@@ -52,7 +52,6 @@ public class BaseFt {
 
     public BaseFt() {
         try {
-            //when running as client bundle must be found in application classpath instead of current thread(test thread will look into test resources)
             resourceBundle = new ResourceBundle("messages", Locale.ENGLISH);//force test locale, see test-faces-config
         } catch (Exception e) {
             e.printStackTrace();

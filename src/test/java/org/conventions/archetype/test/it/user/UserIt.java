@@ -43,6 +43,11 @@ public class UserIt implements Serializable {
     }
 
 
+    @Deprecated
+    /**
+     * @deprecated as ArchetypeIt also has userService and its an Stateful EJB we cannot have multiple extended persistenceContext
+     * so we moved this test to ArchtypeIt and use same UserService
+     */
     public void shouldFailToRemoveUserWithGroups(User user) {
         assertNotNull(user);
         try{
