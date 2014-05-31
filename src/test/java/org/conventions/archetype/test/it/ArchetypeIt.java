@@ -7,6 +7,8 @@ import org.conventionsframework.exception.BusinessException;
 import org.jboss.arquillian.persistence.Cleanup;
 import org.jboss.arquillian.persistence.TestExecutionPhase;
 import org.jboss.arquillian.persistence.UsingDataSet;
+import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
+import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 
 import javax.inject.Inject;
@@ -14,6 +16,7 @@ import javax.inject.Inject;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+@Transactional(value = TransactionMode.DISABLED)
 public class ArchetypeIt extends BaseIt {
 
     @Inject
