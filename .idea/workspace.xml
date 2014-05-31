@@ -1,55 +1,332 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dc41cb24-2577-4edf-8e7f-bdc18084b160" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\BaseAt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\BaseAtStep.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\logon\LogonStep.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\logon\logon_at.story" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\role\RoleAt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\role\RoleStep.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\at\role\role_at.story" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\BaseBdd.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\BaseStep.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\Steps.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\group\GroupBdd.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\group\GroupSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\group\group_bdd.story" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\role\RoleBdd.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\role\RoleSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\role\role_bdd.story" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\user\UserBdd.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\user\UserSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\bdd\user\user_bdd.story" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\ArchetypeFt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\BaseFt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\BasePage.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\ScreenshotTestRule.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\HomePage.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\common\LogonDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\common\Menu.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\group\GroupHome.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\role\RoleHome.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\user\GroupDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\user\ManageGroupPage.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\user\SearchUserDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\ft\pages\user\UserHome.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\it\ArchetypeIt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\it\BaseIt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\it\role\RoleIt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\it\user\UserIt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\rest\RestDataset.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\rest\SimpleGroup.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\rest\SimpleRole.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\rest\SimpleUser.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\rest\UserRestIt.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\util\Deployments.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\util\TestService.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\warp\BaseWarp.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\src\test\java\org\conventions\archetype\test\warp\LogonWarp.java" afterPath="" />
+    <list default="true" id="dc41cb24-2577-4edf-8e7f-bdc18084b160" name="Default" comment="fixed warp">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/ArchetypeFt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/ArchetypeIt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/BaseAt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/BaseAtStep.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/BaseBdd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/BaseFt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/BaseIt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/BasePage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/BaseStep.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/warp/BaseWarp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/util/Deployments.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/group/GroupBdd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/user/GroupDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/group/GroupHome.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/group/GroupSteps.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/HomePage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/common/LogonDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/logon/LogonStep.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/warp/LogonWarp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/user/ManageGroupPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/common/Menu.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/rest/RestDataset.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/role/RoleAt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/role/RoleBdd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/role/RoleHome.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/role/RoleIt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/role/RoleStep.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/role/RoleSteps.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/ScreenshotTestRule.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/user/SearchUserDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/rest/SimpleGroup.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/rest/SimpleRole.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/rest/SimpleUser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/Steps.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/util/TestService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/user/UserBdd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/ft/pages/user/UserHome.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/user/UserIt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/rest/UserRestIt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/user/UserSteps.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/group/group_bdd.story" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/logon/logon_at.story" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/at/role/role_at.story" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/role/role_bdd.story" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/bdd/user/user_bdd.story" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__antlr_antlr_2_7_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__cglib_cglib_nodep_2_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_barchart_udt_barchart_udt_bundle_2_3_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_fasterxml_classmate_1_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_github_detro_ghostdriver_phantomjsdriver_1_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_google_code_findbugs_jsr305_1_3_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_google_code_gson_gson_2_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_google_guava_guava_10_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_google_protobuf_protobuf_java_2_4_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_opera_operadriver_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_opera_operalaunchers_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_sun_xml_bind_jaxb_impl_2_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_thoughtworks_paranamer_paranamer_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__com_thoughtworks_xstream_xstream_1_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_cli_commons_cli_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_codec_commons_codec_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_collections_commons_collections_3_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_httpclient_commons_httpclient_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_io_commons_io_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_jxpath_commons_jxpath_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_lang_commons_lang_2_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__dom4j_dom4j_1_6_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__io_netty_netty_3_5_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__io_netty_netty_all_4_0_14_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javassist_javassist_3_12_1_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_activation_activation_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_annotation_jsr250_api_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_enterprise_cdi_api_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_inject_javax_inject_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_mail_mail_1_4_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_servlet_servlet_api_2_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_validation_validation_api_1_0_0_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_xml_bind_jaxb_api_2_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__javax_xml_stream_stax_api_1_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__junit_junit_4_8_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__junit_junit_dep_4_8_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__log4j_log4j_1_2_17.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__mx4j_mx4j_tools_3_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_java_dev_jna_jna_3_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_java_dev_jna_platform_3_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_jcip_jcip_annotations_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_sourceforge_cssparser_cssparser_0_9_11.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_sourceforge_htmlunit_htmlunit_2_13.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_sourceforge_htmlunit_htmlunit_core_js_2_13.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__net_sourceforge_nekohtml_nekohtml_1_9_19.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_commons_commons_exec_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_commons_commons_lang3_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_httpcomponents_httpclient_4_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_httpcomponents_httpcore_4_2_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_httpcomponents_httpmime_4_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_james_apache_mime4j_0_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_maven_aether_provider_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_maven_model_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_maven_model_builder_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_maven_repository_metadata_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_maven_settings_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_maven_settings_builder_3_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_wagon_wagon_file_2_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_wagon_wagon_http_lightweight_2_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_wagon_wagon_http_shared_2_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_maven_wagon_wagon_provider_api_2_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_myfaces_extensions_cdi_bundles_myfaces_extcdi_bundle_jsf20_1_0_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_apache_poi_poi_3_2_FINAL.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_bouncycastle_bcpkix_jdk15on_1_48.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_bouncycastle_bcprov_jdk15on_1_48.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_jackson_jackson_core_asl_1_5_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_jackson_jackson_jaxrs_1_9_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_jackson_jackson_xc_1_9_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_plexus_plexus_compiler_api_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_plexus_plexus_compiler_javac_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_plexus_plexus_component_annotations_1_5_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_plexus_plexus_interpolation_1_19.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_codehaus_plexus_plexus_utils_3_0_15.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_conventionsframework_conventions_core_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_dbunit_dbunit_2_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_easytesting_fest_assert_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_easytesting_fest_util_1_1_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_aether_aether_api_0_9_0_M2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_aether_aether_connector_wagon_0_9_0_M2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_aether_aether_impl_0_9_0_M2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_aether_aether_spi_0_9_0_M2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_aether_aether_util_0_9_0_M2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_jetty_jetty_http_8_1_12_v20130726.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_jetty_jetty_io_8_1_12_v20130726.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_jetty_jetty_util_8_1_12_v20130726.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_jetty_jetty_websocket_8_1_12_v20130726.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_sisu_org_eclipse_sisu_inject_0_0_0_M5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_eclipse_sisu_org_eclipse_sisu_plexus_0_0_0_M5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_freemarker_freemarker_2_3_16.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_glassfish_main_extras_glassfish_embedded_all_3_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hamcrest_hamcrest_core_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hamcrest_hamcrest_integration_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hamcrest_hamcrest_library_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hibernate_common_hibernate_commons_annotations_4_0_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hibernate_hibernate_core_4_3_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hibernate_hibernate_validator_5_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_ini4j_ini4j_0_5_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_javassist_javassist_3_14_0_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jbehave_jbehave_core_3_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_config_arquillian_config_api_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_config_arquillian_config_impl_base_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_container_arquillian_container_impl_base_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_container_arquillian_container_osgi_1_0_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_container_arquillian_container_spi_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_container_arquillian_container_test_api_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_container_arquillian_container_test_impl_base_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_container_arquillian_container_test_spi_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_core_arquillian_core_api_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_core_arquillian_core_impl_base_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_core_arquillian_core_spi_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_drone_api_2_0_0_Alpha1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_drone_configuration_2_0_0_Alpha1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_drone_impl_2_0_0_Alpha1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_drone_spi_2_0_0_Alpha1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_drone_webdriver_2_0_0_Alpha1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_persistence_api_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_persistence_core_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_persistence_dbunit_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_persistence_spi_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_phantom_driver_1_1_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_transaction_api_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_transaction_impl_base_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_transaction_jta_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_transaction_spi_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_warp_api_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_warp_impl_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_warp_jsf_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_extension_arquillian_warp_spi_1_0_0_Alpha7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_graphene_graphene_webdriver_api_2_0_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_graphene_graphene_webdriver_impl_2_0_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_graphene_graphene_webdriver_spi_2_0_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_jbehave_arquillian_jbehave_core_1_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_junit_arquillian_junit_container_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_junit_arquillian_junit_core_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_protocol_arquillian_protocol_jmx_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_protocol_arquillian_protocol_servlet_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_test_arquillian_test_api_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_test_arquillian_test_impl_base_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_test_arquillian_test_spi_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_testenricher_arquillian_testenricher_cdi_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_testenricher_arquillian_testenricher_ejb_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_testenricher_arquillian_testenricher_initialcontext_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_testenricher_arquillian_testenricher_osgi_1_0_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_arquillian_testenricher_arquillian_testenricher_resource_1_1_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_arquillian_common_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_arquillian_container_remote_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_arquillian_protocol_jmx_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_arquillian_testenricher_msc_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_build_config_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_controller_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_controller_client_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_deployment_repository_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_domain_http_interface_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_domain_management_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_ee_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_jmx_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_naming_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_network_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_osgi_service_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_platform_mbean_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_process_controller_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_protocol_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_remoting_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_server_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_as_jboss_as_version_7_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_com_sun_httpserver_httpserver_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_invocation_jboss_invocation_1_1_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jandex_1_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jboss_common_core_2_2_17_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jboss_dmr_1_1_6_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jboss_ejb_client_1_0_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jboss_remote_naming_1_0_5_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jboss_vfs_3_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_jdeparser_jdeparser_1_0_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_logging_jboss_logging_3_1_3_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_logging_jboss_logging_annotations_1_2_0_Beta1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_logging_jboss_logging_processor_1_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_logmanager_jboss_logmanager_1_4_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_logmanager_log4j_jboss_logmanager_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_marshalling_jboss_marshalling_1_3_16_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_marshalling_jboss_marshalling_river_1_3_16_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_metadata_jboss_metadata_common_7_0_8_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_metadata_jboss_metadata_ear_7_0_8_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_modules_jboss_modules_1_2_0_CR1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_msc_jboss_msc_1_0_4_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_deployment_jbosgi_deployment_1_3_0_CR1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_framework_jbosgi_framework_core_2_1_0_CR12.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_metadata_jbosgi_metadata_2_1_1_CR9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_repository_jbosgi_repository_api_2_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_repository_jbosgi_repository_core_2_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_resolver_jbosgi_resolver_api_3_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_resolver_jbosgi_resolver_felix_3_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_spi_jbosgi_spi_3_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_vfs_jbosgi_vfs30_1_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_osgi_vfs_jbosgi_vfs_1_2_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_remoting3_jboss_remoting_3_2_12_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_remotingjmx_remoting_jmx_1_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_resteasy_jaxrs_api_2_3_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_resteasy_resteasy_jackson_provider_2_3_5_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_resteasy_resteasy_jaxb_provider_2_3_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_resteasy_resteasy_jaxrs_2_3_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_resteasy_resteasy_multipart_provider_2_3_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_sasl_jboss_sasl_1_0_3_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_descriptors_shrinkwrap_descriptors_api_base_2_0_0_alpha_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_descriptors_shrinkwrap_descriptors_spi_2_0_0_alpha_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_api_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_api_maven_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_api_maven_archive_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_impl_maven_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_impl_maven_archive_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_spi_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_spi_maven_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_resolver_shrinkwrap_resolver_spi_maven_archive_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_shrinkwrap_api_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_shrinkwrap_impl_base_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_shrinkwrap_shrinkwrap_spi_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_spec_javax_annotation_jboss_annotations_api_1_1_spec_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_spec_javax_ejb_jboss_ejb_api_3_1_spec_1_0_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_spec_javax_interceptor_jboss_interceptors_api_1_1_spec_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_1_spec_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_0_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_staxmapper_1_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_stdio_jboss_stdio_1_0_1_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_threads_jboss_threads_2_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_xnio_xnio_api_3_0_7_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jboss_xnio_xnio_nio_3_0_7_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_json_json_20080701.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_jsoup_jsoup_1_7_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_littleshoot_dnsjava_2_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_littleshoot_dnssec4j_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_littleshoot_littleproxy_1_0_0_beta5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_mockito_mockito_all_1_9_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_mortbay_jetty_servlet_api_2_5_6_1_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_objenesis_objenesis_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_osgi_org_osgi_core_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_powermock_powermock_api_mockito_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_powermock_powermock_api_support_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_powermock_powermock_core_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_powermock_powermock_module_junit4_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_powermock_powermock_module_junit4_common_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_powermock_powermock_reflect_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_primefaces_primefaces_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_primefaces_themes_all_themes_1_0_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_scannotation_scannotation_1_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_jetty_repacked_7_6_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_api_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_chrome_driver_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_firefox_driver_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_htmlunit_driver_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_ie_driver_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_java_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_remote_driver_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_safari_driver_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_server_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_seleniumhq_selenium_selenium_support_2_41_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_slf4j_slf4j_api_1_7_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_slf4j_slf4j_log4j12_1_7_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_sonatype_plexus_plexus_cipher_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_sonatype_plexus_plexus_sec_dispatcher_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_sonatype_sisu_sisu_guice_no_aop_3_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_w3c_css_sac_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_webbitserver_webbit_0_4_14.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__org_yaml_snakeyaml_1_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__xalan_serializer_2_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__xalan_xalan_2_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__xerces_xercesImpl_2_11_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__xml_apis_xml_apis_1_4_01.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java\Projetos\archetype\.idea\libraries\Maven__xpp3_xpp3_min_1_1_4c.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java" afterPath="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archetype.iml" afterPath="$PROJECT_DIR$/archetype.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/archetype_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/archetype_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tree.txt" afterPath="$PROJECT_DIR$/tree.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="archetype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,7 +382,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java" line="63" class="org.conventions.archetype.test.it.HelloArquillianIt" package="org.conventions.archetype.test.it">
+      <breakpoint url="file://$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java" line="80" class="org.conventions.archetype.test.it.HelloArquillianIt" package="org.conventions.archetype.test.it">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -130,48 +407,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SecurityContextImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/security/SecurityContextImpl.java">
+      <file leaf-file-name="LogonWarp.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/warp/LogonWarp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="71" selection-start="2962" selection-end="2962" vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="2703">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="193" column="13" selection-start="7720" selection-end="7720" vertical-scroll-proportion="0.0" vertical-offset="2980" max-vertical-offset="18564">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HelloArquillianIt.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="47" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.5087282" vertical-offset="408" max-vertical-offset="1394">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arquillian.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/arquillian.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="75" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1581">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/service/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2822">
+            <state line="29" column="13" selection-start="1099" selection-end="1099" vertical-scroll-proportion="-0.51706034" vertical-offset="316" max-vertical-offset="1003">
               <folding />
             </state>
           </provider>
@@ -199,11 +438,24 @@
         <option value="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/ArchetypeIt.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/BaseIt.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/model/BaseEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/conventions/archetype/bean/ComboMBean.java" />
+        <option value="$PROJECT_DIR$/../conventions-core/pom.xml" />
+        <option value="$PROJECT_DIR$/../conventions-core/src/main/resources/META-INF/services/javax.enterprise.inject.spi.Extension" />
+        <option value="$PROJECT_DIR$/../conventions-core/src/main/resources/conventions.properties" />
+        <option value="$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/util/VersionUtils.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java" />
+        <option value="$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/extension/Bootstrap.java" />
+        <option value="$PROJECT_DIR$/../conventions-core/src/main/resources/META-INF/faces-config.xml" />
       </list>
     </option>
   </component>
   <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
     <option name="enabledProfiles">
       <list>
         <option value="jboss-remote" />
@@ -268,6 +520,94 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="warp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="archetype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -286,8 +626,11 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
-  <component name="RunManager" selected="Maven.archtest">
+  <component name="RunManager" selected="Maven.conventions">
     <configuration default="false" name="LogonWarp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -712,11 +1055,39 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="4">
+    <configuration default="false" name="conventions" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/../conventions-core" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JBoss Server.jboss" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.LogonWarp" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.HelloArquillianIt" />
       <item index="3" class="java.lang.String" itemvalue="Maven.archtest" />
+      <item index="4" class="java.lang.String" itemvalue="Maven.conventions" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -730,6 +1101,23 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="dc41cb24-2577-4edf-8e7f-bdc18084b160" name="Default" comment="" />
@@ -738,7 +1126,7 @@
       <workItem from="1401329739708" duration="12000" />
       <workItem from="1401329754960" duration="3131000" />
       <workItem from="1401414256045" duration="331000" />
-      <workItem from="1401491200626" duration="14188000" />
+      <workItem from="1401491200626" duration="20986000" />
     </task>
     <task id="LOCAL-00001" summary="fixed black box tests messages">
       <created>1401331627234</created>
@@ -752,11 +1140,15 @@
       <created>1401499388537</created>
       <updated>1401499388537</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="removed conventions version system event in favor of CDI service to print conventions version&#10;&#10;added BaseEntity again(it just disappear from repo???)">
+      <created>1401558064271</created>
+      <updated>1401558064271</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17662000" />
+    <option name="totallyTimeSpent" value="24460000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -796,16 +1188,16 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3696275" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41690543" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -827,7 +1219,8 @@
     </option>
     <MESSAGE value="fixed black box tests messages" />
     <MESSAGE value="fixed warp" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed warp" />
+    <MESSAGE value="removed conventions version system event in favor of CDI service to print conventions version&#10;&#10;added BaseEntity again(it just disappear from repo???)" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed conventions version system event in favor of CDI service to print conventions version&#10;&#10;added BaseEntity again(it just disappear from repo???)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -886,13 +1279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/security/SecurityContextImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="71" selection-start="2962" selection-end="2962" vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="2703">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/arquillian.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="75" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1581">
@@ -900,19 +1286,172 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/security/SecurityContextImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="49" selection-start="1753" selection-end="1797" vertical-scroll-proportion="0.0" vertical-offset="314" max-vertical-offset="2703">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/beans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="6.12" vertical-offset="153" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/model/SearchModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="37" selection-start="263" selection-end="263" vertical-scroll-proportion="0.55737704" vertical-offset="0" max-vertical-offset="1445">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/service/impl/BaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="41" selection-start="994" selection-end="994" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3842">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/model/AbstractBaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/model/AbstractVersionatedEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="85" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/model/VersionatedEntityLong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="69" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/model/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="39" selection-start="737" selection-end="737" vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="1581">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/service/GroupServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="57" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="2567">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="13" selection-start="7720" selection-end="7720" vertical-scroll-proportion="0.0" vertical-offset="2980" max-vertical-offset="18564">
+        <state line="915" column="61" selection-start="37831" selection-end="37831" vertical-scroll-proportion="0.0" vertical-offset="14882" max-vertical-offset="18564">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/model/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="18" selection-start="105" selection-end="105" vertical-scroll-proportion="0.27868852" vertical-offset="0" max-vertical-offset="366">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/conventions/archetype/bean/ComboMBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="47" selection-start="753" selection-end="753" vertical-scroll-proportion="-0.78142077" vertical-offset="473" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/resources/META-INF/services/javax.enterprise.inject.spi.Extension">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/resources/META-INF/beans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/util/VersionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="21" selection-start="899" selection-end="899" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/resources/conventions.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="17" selection-start="7298" selection-end="7298" vertical-scroll-proportion="0.0" vertical-offset="3183" max-vertical-offset="4216">
+          <folding>
+            <marker date="1401556257014" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/it/HelloArquillianIt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="47" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.5087282" vertical-offset="408" max-vertical-offset="1394">
+        <state line="48" column="118" selection-start="2228" selection-end="2228" vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="1666">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1401329732594" expanded="true" signature="-1:-1" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/java/org/conventionsframework/extension/Bootstrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="83" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0" vertical-offset="356" max-vertical-offset="578">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../conventions-core/src/main/resources/META-INF/faces-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="33" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.38202247" vertical-offset="357" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/conventions/archetype/test/warp/LogonWarp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="13" selection-start="1099" selection-end="1099" vertical-scroll-proportion="-0.51706034" vertical-offset="316" max-vertical-offset="1003">
+          <folding />
         </state>
       </provider>
     </entry>

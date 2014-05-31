@@ -180,6 +180,7 @@
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito</artifactId>
             <version>1.5</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -190,6 +191,19 @@
             <scope>test</scope>
         </dependency>
 
+        <!--arquillian persistence(dbunit) -->
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-persistence-api</artifactId>
+            <version>1.0.0.Alpha7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-persistence-dbunit</artifactId>
+            <version>1.0.0.Alpha7</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- shrinkWrap resolvers -->
         <dependency>
@@ -199,29 +213,34 @@
             <type>pom</type>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.arquillian.graphene</groupId>-->
-            <!--<artifactId>graphene-webdriver</artifactId>-->
-            <!--<type>pom</type>-->
-            <!--<scope>test</scope>-->
-            <!--<version>${version.graphene}</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.jboss.arquillian.extension</groupId>-->
-                    <!--<artifactId>arquillian-phantom-driver</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.jboss.arquillian.graphene</groupId>
+            <artifactId>graphene-webdriver</artifactId>
+            <type>pom</type>
+            <scope>test</scope>
+            <version>${version.graphene}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.arquillian.extension</groupId>
+                    <artifactId>arquillian-phantom-driver</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!-- headless browser phantom.js -->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.arquillian.extension</groupId>-->
-            <!--<artifactId>arquillian-phantom-driver</artifactId>-->
-            <!--<version>1.1.2.Final</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-phantom-driver</artifactId>
+            <version>1.1.2.Final</version>
+            <scope>test</scope>
+        </dependency>
         <!-- arquillian jbehave -->
-
+        <dependency>
+            <groupId>org.jboss.arquillian.jbehave</groupId>
+            <artifactId>arquillian-jbehave-core</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- arquillian recorder -->
         <!--dependency>
@@ -236,8 +255,18 @@
         </dependency-->
 
         <!-- warp -->
-
-
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-warp</artifactId>
+            <type>pom</type>
+            <scope>test</scope>
+            <version>${version.warp}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-warp-jsf</artifactId>
+            <version>${version.warp}</version>
+        </dependency>
 
 
         <dependency>
@@ -320,13 +349,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--<dependency>-->
-                <!--<groupId>org.jboss.arquillian.extension</groupId>-->
-                <!--<artifactId>arquillian-drone-bom</artifactId>-->
-                <!--<version>${version.drone}</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
-            <!--</dependency>-->
+            <dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-drone-bom</artifactId>
+                <version>${version.drone}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <profiles>
@@ -945,15 +974,12 @@
                         <version>2.16</version>
                         <configuration>
                             <skipTests>false</skipTests>
-                            <runOrder>reversealphabetical</runOrder>
                             <includes>
-                                <include>**/*HelloArquillianIt.java</include>
+                                <include>**/*It.java</include>
                                 <include>**/*Bdd.java</include>
                             </includes>
                             <excludes>
                                 <exclude>**/*BaseIt.java</exclude>
-                                <!-- user rest runs as client -->
-                                <exclude>**/*UserRestIt.java</exclude>
                                 <exclude>**/*BaseBdd.java</exclude>
                             </excludes>
                         </configuration>
