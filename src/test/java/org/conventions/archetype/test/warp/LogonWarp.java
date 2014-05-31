@@ -53,20 +53,25 @@ public class LogonWarp extends BaseWarp implements Serializable {
                         @Inject
                         ResourceBundle resourceBundle;
 
-                        @BeforePhase(Phase.RENDER_RESPONSE)
+                        @BeforePhase(Phase.INVOKE_APPLICATION)
                         public void shouldNotBeLoggedIn() {
+                            System.out.println("shouldNotBeLoggedIn:"+securityContext.loggedIn());
                             assertFalse(securityContext.loggedIn());
                         }
 
                         @AfterPhase(Phase.INVOKE_APPLICATION)
-                        public void shouldBeLoggedIn() {
+                        public void shouldBeLoggedIn(@ArquillianResource FacesContext context) {
+                            System.out.println("shouldBeLoggedIn:"+securityContext.loggedIn());
                             assertTrue(securityContext.loggedIn());
+                            boolean loggedInMessage = false;
+                            for (FacesMessage facesMessage : context.getMessageList()) {
+                                  if(facesMessage.getSummary().equals(resourceBundle.getString("logon.info.successful"))){
+                                      loggedInMessage = true;
+                                  }
+                            }
+                            assertTrue(loggedInMessage);
                         }
 
-                        @AfterPhase(Phase.RESTORE_VIEW)
-                        public void shouldHasMessage(@ArquillianResource FacesContext context){
-                            assertTrue(context.getMessageList().contains(new FacesMessage(FacesMessage.SEVERITY_INFO,resourceBundle.getString("logon.info.successful"),"")));
-                        }
 
                     });
 
