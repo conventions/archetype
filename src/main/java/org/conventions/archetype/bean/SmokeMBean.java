@@ -22,7 +22,7 @@ public class SmokeMBean {
     }
 
     public void testRestEndpoint(){
-        todo
+        //todo
     }
 
     public Boolean getRestEndpointStatus() {
