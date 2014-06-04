@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <conventions.version>1.1.1</conventions.version>
+        <conventions.version>1.1.2</conventions.version>
         <!-- arquillian extensions -->
         <version.selenium>2.41.0</version.selenium>
         <version.drone>2.0.0.Alpha1</version.drone>
@@ -1019,6 +1019,8 @@
                 <arquillian.browser>opera</arquillian.browser>
             </properties>
         </profile>
+
+
     </profiles>
 
     <repositories>
@@ -1103,6 +1105,25 @@
                 <version>2.16</version>
                 <configuration>
                     <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- deploy -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.1.Final</version>
+                <configuration>
+                    <id>wildfly-deploy</id>
+                    <hostname>localhost</hostname>
+                    <port>9990</port>
+                    <filename>${project.build.finalName}.war</filename>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>deploy-only</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </configuration>
             </plugin>
         </plugins>
