@@ -250,7 +250,7 @@ public class UserMBean extends StateMBean<User> {
     }
 
     public String getSearchCriteria(){
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(21);
 
         if(getSearchModel().getFilter().containsKey("name")){
             sb.append("username:"+getSearchModel().getFilter().get("name")+",");

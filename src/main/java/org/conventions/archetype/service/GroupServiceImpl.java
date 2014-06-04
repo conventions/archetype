@@ -62,7 +62,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     public Criteria configPagination(SearchModel<Group> searchModel) {
 
         Criteria criteria = getCriteria();
-        Group searchEntity = searchModel.getEntity();
+        //Group searchEntity = searchModel.getEntity();
         Map<String, String> tableFilter = searchModel.getDatatableFilter();//primefaces column filter
         if (tableFilter != null && !tableFilter.isEmpty()) {
             String role = tableFilter.get("roles");
