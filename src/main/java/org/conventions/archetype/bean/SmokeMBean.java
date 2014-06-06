@@ -3,6 +3,7 @@ package org.conventions.archetype.bean;
 import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
 
 import javax.inject.Named;
+import java.io.Serializable;
 
 /**
  * Created by rmpestano on 6/3/14.
@@ -11,7 +12,7 @@ import javax.inject.Named;
  */
 @Named
 @ViewAccessScoped
-public class SmokeMBean {
+public class SmokeMBean implements Serializable{
 
     private Boolean dbStatus;
     private Boolean restEndpointStatus;
