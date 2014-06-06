@@ -48,7 +48,7 @@ public class InitAppBean implements Serializable{
     Double myDoubleConfig;
 
     @Inject
-    @DateFormat("dd/MM/yyyy hh:mm:ss")
+    @DateFormat(format = "dd/MM/yyyy hh:mm:ss")
     SimpleDateFormat dateFormat;
 
 
