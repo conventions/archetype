@@ -7,6 +7,7 @@ package org.conventions.archetype.db;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
+import org.conventions.archetype.qualifier.DateFormat;
 import org.conventions.archetype.util.Utils;
 import org.conventionsframework.qualifier.Config;
 import org.conventionsframework.qualifier.Log;
@@ -15,9 +16,12 @@ import org.conventionsframework.service.BaseService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Logger;
 
 /**
@@ -42,6 +46,10 @@ public class InitAppBean implements Serializable{
     @Inject
     @Config
     Double myDoubleConfig;
+
+    @Inject
+    @DateFormat("dd/MM/yyyy hh:mm:ss")
+    SimpleDateFormat dateFormat;
 
 
     @PostConstruct
@@ -103,6 +111,12 @@ public class InitAppBean implements Serializable{
             guest.setPassword(utils.encrypt("guest"));
             userService.store(guest);
         }
+    }
+
+    @Named("timeNow")
+    @Produces
+    public String dateNow(){
+        return dateFormat.format(Calendar.getInstance().getTime());
     }
 
 }
