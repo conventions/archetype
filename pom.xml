@@ -1051,7 +1051,7 @@
         <profile>
             <id>jacoco</id>
             <properties>
-                <jacoco.version>0.7.1.201405082137</jacoco.version>
+                <jacoco.version>0.7.0.201403182114</jacoco.version>
             </properties>
             <dependencies>
                 <dependency>
@@ -1087,23 +1087,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <!-- only white box tests generate coverage data-->
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.16</version>
-                        <configuration>
-                            <skipTests>false</skipTests>
-                            <includes>
-                                <include>**/*It.java</include>
-                                <include>**/*Bdd.java</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/*BaseIt.java</exclude>
-                                <exclude>**/*BaseBdd.java</exclude>
-                            </excludes>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
