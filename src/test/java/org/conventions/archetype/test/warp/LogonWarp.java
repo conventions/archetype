@@ -74,8 +74,6 @@ public class LogonWarp extends BaseWarp implements Serializable {
 
 
                     });
-
-
         }
         
 

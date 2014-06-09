@@ -24,7 +24,7 @@ and open the template in the editor.
                                  
                         <p:ajax event="filter" oncomplete="updateRowCount()"/>
 
-                        <p:column sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.group}">
+                        <p:column id="name" sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.group}">
                             <h:outputText value="#{row.name}"/>
                         </p:column>
                          <p:column sortBy="#{row.rolesAsList}"  filterOptions="#{comboMBean.roleList}" filterBy="#{row.roles}" headerText="#{msg.roles}">

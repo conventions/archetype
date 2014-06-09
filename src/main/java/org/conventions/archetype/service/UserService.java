@@ -5,9 +5,8 @@
 package org.conventions.archetype.service;
 
 import org.conventions.archetype.model.Role;
-import org.conventionsframework.service.BaseService;
 import org.conventions.archetype.model.User;
-import org.conventionsframework.util.ResourceBundle;
+import org.conventionsframework.service.BaseService;
 
 import java.util.List;
 
@@ -25,9 +24,5 @@ public interface UserService extends BaseService<User> {
 
     List<User> findUserByRole(Role role);
 
-    /**
-     * used to mock
-     * @param resourceBundle
-     */
-    void setResourceBundle(ResourceBundle resourceBundle);
+
 }

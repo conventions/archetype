@@ -176,19 +176,12 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     public List<User> findUserByRole(Role role){
-        Criteria criteria = getCriteria();
-        criteria.createAlias("groups","groups", JoinType.LEFT_OUTER_JOIN);
-        criteria.createAlias("groups.roles","roles", JoinType.LEFT_OUTER_JOIN);
-        criteria.add(Restrictions.eq("roles.name",role.getName()));
-        return criteria.list();
+
+        return  crud.getCriteria().
+                createAlias("groups","groups", JoinType.LEFT_OUTER_JOIN).
+                createAlias("groups.roles","roles", JoinType.LEFT_OUTER_JOIN).
+                add(Restrictions.eq("roles.name",role.getName())).list();
     }
 
-    /**
-     * used to mock
-     * @param resourceBundle
-     */
-    public void setResourceBundle(ResourceBundle resourceBundle) {
-        this.resourceBundle = resourceBundle;
-    }
 
 }

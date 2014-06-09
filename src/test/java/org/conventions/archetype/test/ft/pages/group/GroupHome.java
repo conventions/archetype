@@ -76,6 +76,16 @@ public class GroupHome extends BasePage {
         actions.dragAndDrop(roles.get(new Random().nextInt(roles.size())), browser.findElement(By.className("ui-picklist-target"))).perform();
     }
 
+    public void sortGroupsByName(){
+        WebElement column = getTableColumnById("name");
+        guardAjax(column).click();
+    }
 
+    public List<WebElement> getTableRows() {
+        return super.getTableRows("table");
+    }
 
+    public List<WebElement> getTableRowsWithTDa() {
+        return super.getTableRowsWithTDs("table");
+    }
 }

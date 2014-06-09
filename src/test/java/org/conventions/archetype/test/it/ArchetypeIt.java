@@ -14,6 +14,7 @@ import org.junit.Test;
 import javax.inject.Inject;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
 @Transactional(value = TransactionMode.DISABLED)
@@ -122,6 +123,23 @@ public class ArchetypeIt extends BaseIt {
     }
 
 
+    @Test
+    @UsingDataSet(value = "datasets/user.yml")
+    public void shouldHasPermition(){
+        super.login("arun","42");
+        userService.testPermission();
+        //TODO user warp to check facesMessages
+        assertTrue(true);//if it gets here so permission check is ok
+    }
+
+    @Test
+    public void shouldNotHasPermition(){
+        try {
+            userService.testPermission();
+        }catch (BusinessException be){
+            assertEquals(be.getMessage(),"Only operator can perform this task");
+        }
+    }
 
 
 }

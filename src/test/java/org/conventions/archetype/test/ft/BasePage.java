@@ -15,6 +15,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
+import static org.jboss.arquillian.graphene.Graphene.guardAjax;
+import static org.jboss.arquillian.graphene.Graphene.guardNoRequest;
+
 
 public abstract class BasePage implements Serializable {
 
@@ -32,6 +35,8 @@ public abstract class BasePage implements Serializable {
         }
     }
 
+    //navigation
+
     public String getLocation() {
         if (!getClass().isAnnotationPresent(Location.class)) {
             throw new RuntimeException("Provide @Location annotation for class:" + getClass().getSimpleName());
@@ -39,6 +44,8 @@ public abstract class BasePage implements Serializable {
         Location location = getClass().getAnnotation(Location.class);
         return location.value();
     }
+
+    //messages
 
     @FindByJQuery("div.ui-growl-message")
     private GrapheneElement growl;
@@ -48,6 +55,8 @@ public abstract class BasePage implements Serializable {
         Assert.assertEquals(msg.trim(), growl.getText().trim());
     }
 
+
+    //datable
     public List<WebElement> getTableRows(String tableId){
         return browser.findElements(By.xpath("//tbody[contains(@id,'" +tableId +"')]//tr[@role='row']"));
     }
@@ -56,7 +65,32 @@ public abstract class BasePage implements Serializable {
         return browser.findElements(By.xpath("//tbody[contains(@id,'" +tableId +"')]//tr[@role='row']//td[@role='gridcell']"));
     }
 
+    public WebElement getTableColumnById(String colId){
+        WebElement column = browser.findElement(By.xpath("//th[contains(@class,'ui-filter-column') and contains(@id,'" + colId + "')]"));
+        return column;
+    }
 
+    public void filterInputColumn(String colId, String query) {
+        WebElement column = browser.findElement(By.xpath("//th[contains(@class,'ui-filter-column') and contains(@id,'" + colId + "')]//input"));
+        guardAjax(column).sendKeys(query);
+    }
+
+    public void clearFilterColumn(String colId){
+        WebElement column = browser.findElement(By.xpath("//th[contains(@class,'ui-filter-column') and contains(@id,'" + colId + "')]//input"));
+        guardNoRequest(column).clear();
+    }
+
+    public void filterSelectColumn(String colId, String query) {
+        StringBuilder xpath = new StringBuilder("//th[contains(@class,'ui-filter-column') and contains(@id,'" + colId + "')]");
+        xpath.append("//div[contains(@class,'ui-selectonemenu-trigger')]//span[contains(@class,'ui-icon-triangle-1-s')]");
+        browser.findElement(By.xpath(xpath.toString())).click();
+        Graphene.waitAjax().until().element(By.className("ui-selectonemenu-items-wrapper")).is().present();
+        WebElement selectItem = browser.findElement(By.xpath("//li[contains(@class,'ui-selectonemenu-item') and contains(text(),'" + query +"')]"));
+        guardAjax(selectItem).click();
+    }
+
+
+    //select
     protected void selectItem(GrapheneElement selectOne, String descricao) {
         this.selectItem(selectOne, descricao, false);
     }

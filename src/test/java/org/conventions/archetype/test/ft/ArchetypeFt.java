@@ -93,17 +93,36 @@ public class ArchetypeFt extends BaseFt {
     }
 
 
-
     @Test
     @InSequence(6)
     public void shouldInsertGroupWithSuccess(){
         menu.gotoGroupHome();
         groupHome.newGroup("testgroup");
-        groupHome.newGroup("another");
+        groupHome.newGroup("Another");
     }
 
     @Test
     @InSequence(7)
+    public void shouldSortGroupsByName(){
+        menu.gotoGroupHome();
+        groupHome.sortGroupsByName();
+        List<WebElement> rows = groupHome.getTableRows();
+        assertNotNull(rows);
+        assertTrue(rows.get(0).getText().contains("Another"));
+        groupHome.sortGroupsByName();
+        assertTrue(rows.get(0).getText().contains("testgroup"));
+    }
+
+    @Test
+    @InSequence(8)
+    public void shouldFilterGroupsByRole(){
+        groupHome.filterInputColumn("name","testgroup");
+        assertEquals(1,groupHome.getTableRows().size());
+
+    }
+
+    @Test
+    @InSequence(9)
     public void shouldInsertUserWithSuccess(){
         menu.gotoUserHome();
         userHome.newUser("test user", "test");
@@ -112,7 +131,7 @@ public class ArchetypeFt extends BaseFt {
 
 
     @Test
-    @InSequence(8)
+    @InSequence(10)
     public void shouldSearchUserWithSuccess(){
         menu.gotoUserHome();
         userHome.goToList();
@@ -123,7 +142,7 @@ public class ArchetypeFt extends BaseFt {
     }
 
     @Test
-    @InSequence(9)
+    @InSequence(11)
     public void shouldSearchUserByGroup(){
         userHome.searchByGroup("Manager");
         List<WebElement> rows = userHome.getTableRows("table");
@@ -136,5 +155,15 @@ public class ArchetypeFt extends BaseFt {
     public void shouldLogoutSuccessfully(){
         menu.doLogout();
         assertTrue(home.getLogonDialog().isPresent());
+    }
+
+    @Test
+    @InSequence(100)
+    public void shouldLogonAndRedirectToGroupHome(){
+       goToPage(groupHome);
+       String expiredText = browser.findElement(By.xpath("//span[contains(@class,'ui-messages-warn-summary')]")).getText();
+       assertEquals("Your session has expired, please logon again",expiredText);
+       home.getLogonDialog().doLogon("admin","admin");
+       assertTrue(groupHome.isListPage());
     }
 }

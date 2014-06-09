@@ -22,7 +22,7 @@ and open the template in the editor.
         <f:event type="preRenderView" listener="#{security.init}"/>
         <f:event type="preRenderView" listener="#{stateController.clearState}"/>
         <h:form>
-            <p:commandButton value="test permission(must have role Operator)" action="#{userMBean.test}" ajax="false"/>
+            <p:commandButton id="bt-perm" value="test permission(must have role Operator)" action="#{userMBean.test}" ajax="false"/>
         </h:form>
         <h:panelGroup layout="block" style="margin-top: 20px;">
             <center>
