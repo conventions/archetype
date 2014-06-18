@@ -46,7 +46,7 @@ public class HelloArquillianIt {
         war.addPackages(true, "org.conventions.archetype.util");
         //LIBS
         MavenResolverSystem resolver = Maven.resolver();
-        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.2.0").withTransitivity().asFile());//conventions
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.2.1").withTransitivity().asFile());//conventions
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:4.0").withoutTransitivity().asSingleFile());
 
         //WEB-INF
