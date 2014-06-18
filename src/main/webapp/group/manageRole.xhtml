@@ -34,7 +34,7 @@ and open the template in the editor.
                 <f:facet name="header">
                     <center>
                         <p:commandButton value="#{msg['group.associateRole']}" update=":findRoleDlg:findRoleDlg_panel" action="#{groupMBean.preLoadDialog}"
-                                             oncomplete="findRoleDlg.show()"/>
+                                             oncomplete="PF('findRoleDlg').show()"/>
                           
                     </center>
                         
@@ -57,8 +57,7 @@ and open the template in the editor.
     </center>
             <framework:modalRemoval mbean="#{groupMBean}"
                                         update=":mainForm:panelRoles #{g}"
-                                        oncomplete="removeRoleModal.hide();"
-                                        persistentRemove="false"
+                                        oncomplete="PF('removeRoleModal').hide();"
                                         renderMessages="false"
                                         widgetVar="removeRoleModal">
                     <p:inputText value="#{groupMBean.roleSelected.name}" disabled="true"/>

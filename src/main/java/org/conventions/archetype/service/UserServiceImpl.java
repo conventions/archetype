@@ -10,15 +10,14 @@ import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
 import org.conventions.archetype.util.AppConstants;
 import org.conventions.archetype.util.Utils;
-import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.service.impl.BaseServiceImpl;
+import org.conventionsframework.util.Assert;
 import org.conventionsframework.util.MessagesController;
 import org.conventionsframework.util.ResourceBundle;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
@@ -113,10 +112,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @SecurityMethod(rolesAllowed= AppConstants.Role.ADMIN)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void remove(User entity) {
-        entity = crud.get(entity.getId());
-        if(entity.getGroups() != null && !entity.getGroups().isEmpty()){
-            throw new BusinessException(resourceBundle.getString("be.user.remove"));
-        }
+        Assert.notTrue(entity.getGroups() != null && !entity.getGroups().isEmpty(),"be.user.remove");
         super.crud.delete(entity);
     }
 
@@ -136,9 +132,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public void beforeStore(User entity) {
         //override to perform logic before storing an entity
-         if (isExistingUser(entity)) {
-            throw new BusinessException(resourceBundle.getString("be.user.existing"));
-        }
+        Assert.notTrue(isExistingUser(entity),"be.user.existing");
         if(entity.getPassword() != null){
             entity.setPassword(utils.encrypt(entity.getPassword()));//could be in @PrePersist/Update
         }

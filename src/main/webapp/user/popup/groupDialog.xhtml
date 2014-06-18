@@ -47,7 +47,7 @@
                     <p:button value="Add" id="btAdd" includeViewParams="true" onclick="jQuery('button[id$=modal_bt]').click();return false"/>
                     <p:commandButton style="visibility: hidden" value="Add2"
                                      action="#{groupModalMBean.invokeModalCallback}"
-                                     oncomplete="findGroupDlg.hide()"
+                                     oncomplete="PF('findGroupDlg').hide()"
                                      id="modal_bt"
                                      update=":mainForm:panelGroups  #{g}">
                         <f:param name="includeViewParams" value="true"/>

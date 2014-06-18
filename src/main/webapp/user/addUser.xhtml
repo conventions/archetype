@@ -35,7 +35,7 @@ and open the template in the editor.
                                            requiredMessage="#{msg['logon.passwordRequired']}"/>
                     <p:commandLink rendered="#{not userMBean.entity.transient}" value="#{msg['user.changePass']}"
                                    immediate="true" process="@this" update=":changePassForm"
-                                   oncomplete="changePass.show();">
+                                   oncomplete="PF('changePass').show();">
                         <f:setPropertyActionListener value="#{null}" target="#{userMBean.pass}"/>
                         <f:setPropertyActionListener value="#{null}" target="#{userMBean.newPass}"/>
                     </p:commandLink>
@@ -73,7 +73,7 @@ and open the template in the editor.
                 </h:panelGrid>
                 <center>
                     <p:commandButton value="#{msg['user.changePass']}" action="#{userMBean.changePassword}"
-                                     oncomplete="if(!args.validationFailed){changePass.hide()}"/>
+                                     oncomplete="if(!args.validationFailed){PF('changePass').hide()}"/>
                 </center>
             </h:form>
         </p:dialog>

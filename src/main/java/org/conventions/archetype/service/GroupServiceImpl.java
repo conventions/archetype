@@ -8,9 +8,11 @@ import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.qualifier.ListToUpdate;
+import org.conventionsframework.crud.CriteriaBuilder;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
+import org.conventionsframework.util.Assert;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
@@ -40,6 +42,9 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     private RoleService roleService;
 
     @Inject
+    private CriteriaBuilder<Group> builder;
+
+    @Inject
     private ResourceBundle resourceBundle;
 
     @Inject
@@ -61,15 +66,14 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     @Override
     public Criteria configPagination(SearchModel<Group> searchModel) {
 
-        Criteria criteria = getCriteria();
         //Group searchEntity = searchModel.getEntity();
         Map<String, String> tableFilter = searchModel.getDatatableFilter();//primefaces column filter
         if (tableFilter != null && !tableFilter.isEmpty()) {
             String role = tableFilter.get("roles");
             if (role != null && !"all".equalsIgnoreCase(role)) {
                 //create join to fetch group roles 
-                criteria.createAlias("roles", "roles");
-                criteria.add(Restrictions.eq("roles.name", role));
+                builder.join("roles", "roles");
+                builder.eq("roles.name", role);
             }
         }
         Map<String, Object> searchFilter = searchModel.getFilter();
@@ -77,8 +81,8 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         Long userId = (Long) searchFilter.get("currentUser");
         if (userId != null) {
             //create join to load groups of current user being edited
-            criteria.createAlias("users", "users");
-            criteria.add(Restrictions.eq("users.id", userId));
+            builder.join("users", "users");
+            builder.eq("users.id", userId);
         }
 
 
@@ -86,7 +90,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones 
         //if those they are present in filters
-        return super.configPagination(searchModel, criteria);
+        return super.configPagination(searchModel, builder.buildCriteria(crud.getSession()));
 
     }
 
@@ -123,19 +127,13 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
     @Override
     public void beforeRemove(Group entity) {
-        if (entity.getRoles() != null && !entity.getRoles().isEmpty()) {
-            throw new BusinessException(resourceBundle.getString("group.business01"));
-        }
-        if (entity.getUsers() != null && !entity.getUsers().isEmpty()) {
-            throw new BusinessException(resourceBundle.getString("group.business02"));
-        }
+        Assert.notTrue(entity.getRoles() != null && !entity.getRoles().isEmpty(),"group.business01");
+        Assert.notTrue(entity.getUsers() != null && !entity.getUsers().isEmpty(),"group.business02");
     }
 
     @Override
     public void afterStore(Group entity) {
         updateGroupList.fire(new UpdateList());
-
-
     }
 
     @Override
@@ -147,9 +145,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     @Override
     public void beforeStore(Group entity) {
         //override to perform logic before storing an entity
-        if (isExistingGroup(entity)) {
-            throw new BusinessException(resourceBundle.getString("group.business03"));
-        }
+        Assert.notTrue(isExistingGroup(entity),"group.business03");
     }
 
 

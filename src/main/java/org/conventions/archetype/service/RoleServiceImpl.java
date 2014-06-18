@@ -12,6 +12,7 @@ import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
+import org.conventionsframework.util.Assert;
 import org.conventionsframework.util.ResourceBundle;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -44,7 +45,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
         Map<String,Object> searchFilter = searchModel.getFilter();
         Role searchEntity = searchModel.getEntity();
             if(searchEntity != null && searchEntity.getId() != null){
-            criteria.add(Restrictions.eq("id",searchEntity.getId()));
+            criteria.add(Restrictions.eq("id", searchEntity.getId()));
             return criteria;
         }
         List<Long> groupRoles = (List<Long>) searchFilter.get("groupRoles");
@@ -68,12 +69,8 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Override
     public void beforeRemove(Role entity) {
-        if(entity.getName().equals(AppConstants.Role.ADMIN)){
-            throw new BusinessException(resourceBundle.getString("role.be.admin"));
-        }
-        if(roleIsAssociatedWithGroups(entity)){
-            throw new BusinessException(resourceBundle.getString("role.be.groups"));
-        }
+        Assert.notTrue(entity.getName().equals(AppConstants.Role.ADMIN),"role.be.admin");
+        Assert.notTrue(roleIsAssociatedWithGroups(entity),"role.be.groups");
     }
 
     private boolean roleIsAssociatedWithGroups(Role entity) {

@@ -37,7 +37,7 @@ and open the template in the editor.
                     <p:commandButton id="btManageGroup" value="#{msg['user.associateGroup']}"
                                      update=":findGroupDlg:findGroupDlg_panel"
                                      action="#{userMBean.preLoadDialog}"
-                                     oncomplete="findGroupDlg.show()"/>
+                                     oncomplete="PF('findGroupDlg').show()"/>
 
                 </center>
                 <framework:datatable id="groupTable" paginator="#{userMBean.groupPaginator}" widgetVar="groupTableVar"

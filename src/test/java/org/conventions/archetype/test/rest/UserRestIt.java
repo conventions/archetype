@@ -172,8 +172,7 @@ public class UserRestIt {
     @Test
     @InSequence(5)
     public void shouldNotDeleteUserWithGroups() {
-
-        SimpleUser adminUser = findUserByNameViaRest("user rest");
+        SimpleUser adminUser = findUserByNameViaRest("restUser");
         ClientRequest request = new ClientRequest(context + "rest/user/delete/" + adminUser.getId());
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)
         request.header("username", adminUser.getName());
@@ -195,7 +194,6 @@ public class UserRestIt {
     @Test
     @InSequence(6)
     public void shouldNotDeleteUserWithNoPermission() {
-
         SimpleUser nonAdminUser = findUserByNameViaRest("userWithoutGroups");
         ClientRequest request = new ClientRequest(context + "rest/user/delete/" + nonAdminUser.getId());
         //admin username & password to add as headers to check permission(remove method in userService needs authorization to be executed)

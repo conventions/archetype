@@ -93,7 +93,7 @@ public class UserRest implements Serializable {
                     Long userId = Long.parseLong(id);
                     User u = new User();
                     u.setId(userId);
-                    userService.remove(u);
+                    userService.remove(userService.crud().load(u.getId()));
                     return Response.ok().build();
                 } catch (NumberFormatException nfe) {
                     return Response.status(Response.Status.BAD_REQUEST).entity("invalid id to delete user:" + id).build();

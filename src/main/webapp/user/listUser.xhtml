@@ -26,7 +26,7 @@ and open the template in the editor.
                                      rows="5" >
                     <f:facet name="header">
                           <div style="text-align: center">
-                              <p:button id="bt-search" value="Search" onclick="searchUser.show();return false"/>
+                              <p:button id="bt-search" value="Search" onclick="PF('searchUser').show();return false"/>
                           </div>
                     </f:facet>
                     <p:column id="colName" sortBy="#{row.name}" filterBy="#{row.name}" headerText="#{msg.user}">
@@ -75,8 +75,8 @@ and open the template in the editor.
                     <p:inputText id="group" required="true" value="#{userMBean.searchEntity.group.name}"/>
                 </h:panelGrid>
                 <center>
-                    <p:commandButton id="search" value="search" styleClass="ui-priority-primary" process="@form" partialSubmit="true" update="@(.ui-datatable)" oncomplete="searchUser.hide()"/>
-                    <p:commandButton value="clear" action="#{userMBean.resetSearch}"  process="@form" partialSubmit="true" update="@(.ui-datatable)" oncomplete="searchUser.hide()"/>
+                    <p:commandButton id="search" value="search" styleClass="ui-priority-primary" process="@form" partialSubmit="true" update="@(.ui-datatable)" oncomplete="PF('searchUser').hide()"/>
+                    <p:commandButton value="clear" action="#{userMBean.resetSearch}"  process="@form" partialSubmit="true" update="@(.ui-datatable)" oncomplete="PF('searchUser').hide()"/>
                 </center>
             </h:form>
         </p:dialog>

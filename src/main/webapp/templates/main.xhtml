@@ -109,8 +109,8 @@
                 </style>
             </p:outputPanel>
         </h:form>
-        <p:ajaxStatus onstart="loading.show()"
-                      oncomplete="loading.hide()"
+        <p:ajaxStatus onstart="PF('loading').show()"
+                      oncomplete="PF('loading').hide()"
                 />
         <p:dialog widgetVar="loading" modal="true" height="30px" width="150px" closable="false">
             loading...

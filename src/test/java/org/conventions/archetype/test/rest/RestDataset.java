@@ -1,10 +1,11 @@
 package org.conventions.archetype.test.rest;
 
 import org.conventions.archetype.model.Group;
+import org.conventions.archetype.model.Role;
 import org.conventions.archetype.model.User;
+import org.conventions.archetype.util.AppConstants;
+import org.conventions.archetype.util.Utils;
 import org.conventionsframework.crud.Crud;
-import org.conventionsframework.qualifier.Service;
-import org.conventionsframework.service.BaseService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -27,6 +28,9 @@ public class RestDataset {
   @Inject
   Crud<User> userCrud;
 
+  @Inject
+  Utils utils;
+
   @PostConstruct
   public void initRestDataSet() {
     em.createNativeQuery("delete from group__role_").executeUpdate();
@@ -40,9 +44,10 @@ public class RestDataset {
     em.createNativeQuery("delete from user_").executeUpdate();
     em.flush();
 
-    User userWithGroup = new User().name("restUser").password("restUser");
+    User userWithGroup = new User().name("restUser").password(utils.encrypt("pass"));
 
     Group group = new Group("restGroup");
+      group.addRole(new Role(AppConstants.Role.ADMIN));
         userWithGroup.addGroup(group);
     userCrud.setEntityManager(em);
     userCrud.save(userWithGroup);
