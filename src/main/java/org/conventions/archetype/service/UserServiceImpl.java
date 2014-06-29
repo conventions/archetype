@@ -70,27 +70,26 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public Criteria configPagination(SearchModel<User> searchModel) {
 
-        Criteria criteria = getCriteria();
         Map<String,Object> searchFilter = searchModel.getFilter();
         User searchEntity = searchModel.getEntity();
         if (searchFilter != null) {
             String group = (String) searchFilter.get("groups");
             if (group != null && !"all".equalsIgnoreCase(group)) {
-                criteria.createAlias("groups", "groups");
-                criteria.add(Restrictions.eq("groups.name", group));
+                crud.join("groups", "groups");
+                crud.eq("groups.name", group);
             }
 
         }
 
         if(searchEntity.getGroup().getName() != null){//defined in user search dialog
-            criteria.createAlias("groups","groups");
-            criteria.add(Restrictions.ilike("groups.name",searchEntity.getGroup().getName(),MatchMode.ANYWHERE));
+            crud.join("groups","groups");
+            crud.ilike("groups.name",searchEntity.getGroup().getName(),MatchMode.ANYWHERE);
         }
         //you can return only your populated criteria(dc) 
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones
         //if those fields are present in filters
-        return super.configPagination(searchModel,criteria);
+        return super.configPagination(searchModel,crud.getCriteria(true));
     }
 
 
@@ -170,11 +169,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     public List<User> findUserByRole(Role role){
-
-        return  crud.getCriteria().
-                createAlias("groups","groups", JoinType.LEFT_OUTER_JOIN).
-                createAlias("groups.roles","roles", JoinType.LEFT_OUTER_JOIN).
-                add(Restrictions.eq("roles.name",role.getName())).list();
+        return  crud.join("groups","groups", JoinType.LEFT_OUTER_JOIN).
+                join("groups.roles","roles", JoinType.LEFT_OUTER_JOIN).
+                eq("roles.name",role.getName()).list();
     }
 
 

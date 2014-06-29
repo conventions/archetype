@@ -42,7 +42,7 @@ public class RoleSteps extends BaseStep implements Serializable {
     @When("i search roles with name $name")
     public void searchRoleWithName(@Named("name") String name){
         Role role = new Role().name(name);
-        rolesFound = roleService.crud().matchMode(MatchMode.START).countByExample(role);
+        rolesFound = roleService.crud().example(role,MatchMode.START).count();
     }
 
     @Then("roles found is equal to $total")
@@ -52,7 +52,7 @@ public class RoleSteps extends BaseStep implements Serializable {
 
     @When("i try to remove role with name $name")
     public void removeRole(@Named("name") String name){
-       Role role = roleService.crud().findByExample(new Role().name(name));
+       Role role = roleService.crud().example(new Role().name(name)).find();
        assertNotNull(role);
        assertEquals(role.getName(),name);
        try{
@@ -72,7 +72,7 @@ public class RoleSteps extends BaseStep implements Serializable {
     public void insertRole(String name){
         try{
             roleService.store(new Role(name));
-            assertNotNull(roleService.crud().findByExample(new Role(name)));
+            assertNotNull(roleService.crud().example(new Role(name)).find());
             message = resourceBundle.getString("role.create.message");
         }catch (Throwable t){
             message = t.getMessage();

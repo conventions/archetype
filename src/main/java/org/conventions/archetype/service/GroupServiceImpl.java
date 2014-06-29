@@ -8,13 +8,10 @@ import org.conventions.archetype.event.UpdateList;
 import org.conventions.archetype.model.Group;
 import org.conventions.archetype.model.Role;
 import org.conventions.archetype.qualifier.ListToUpdate;
-import org.conventionsframework.crud.CriteriaBuilder;
-import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.model.SearchModel;
 import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventionsframework.util.Assert;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
@@ -40,9 +37,6 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
 
     @Inject
     private RoleService roleService;
-
-    @Inject
-    private CriteriaBuilder<Group> builder;
 
     @Inject
     private ResourceBundle resourceBundle;
@@ -72,8 +66,8 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
             String role = tableFilter.get("roles");
             if (role != null && !"all".equalsIgnoreCase(role)) {
                 //create join to fetch group roles 
-                builder.join("roles", "roles");
-                builder.eq("roles.name", role);
+                crud.join("roles", "roles");
+                crud.eq("roles.name", role);
             }
         }
         Map<String, Object> searchFilter = searchModel.getFilter();
@@ -81,8 +75,8 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         Long userId = (Long) searchFilter.get("currentUser");
         if (userId != null) {
             //create join to load groups of current user being edited
-            builder.join("users", "users");
-            builder.eq("users.id", userId);
+            crud.join("users", "users");
+            crud.eq("users.id", userId);
         }
 
 
@@ -90,7 +84,7 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
         //but you can also pass your criteria to superclass(as below)
         //so the framework will add an ilike to string fields and eq to Integer/Long/Date/Calendar ones 
         //if those they are present in filters
-        return super.configPagination(searchModel, builder.buildCriteria(crud.getSession()));
+        return super.configPagination(searchModel, crud.getCriteria(true));
 
     }
 

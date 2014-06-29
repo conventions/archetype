@@ -66,7 +66,7 @@ public class UserRest implements Serializable {
         if (name != null) {
             User userQuery = new User();
             userQuery.setName(name);
-            User user = userService.crud().matchMode(MatchMode.EXACT).findByExample(userQuery);
+            User user = userService.crud().example(userQuery,MatchMode.EXACT).find();
             if (user == null) {
                 return Response.status(Response.Status.NO_CONTENT).entity("user not found with name:" + name).build();
             }

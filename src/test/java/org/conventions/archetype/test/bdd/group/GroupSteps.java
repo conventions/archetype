@@ -39,7 +39,7 @@ public class GroupSteps extends BaseStep implements Serializable {
     @Given("i search group with name $name")
     public void searchGroup(@Named("name") String name){
         Group group = new Group(name);
-        stepGroup = groupService.crud().findByExample(group);
+        stepGroup = groupService.crud().example(group).find();
         assertNotNull(stepGroup);
         assertEquals(name,stepGroup.getName());
     }
@@ -55,7 +55,7 @@ public class GroupSteps extends BaseStep implements Serializable {
     @Then("group name must be $name")
     public void groupNameMustBe(@Named("name") String name){
         Group group = new Group(name);
-        assertEquals(groupService.crud().matchMode(MatchMode.EXACT).countByExample(group), 1);
+        assertEquals(groupService.crud().example(group,MatchMode.EXACT).count(), 1);
     }
 
     @When("i try to remove group with name $name")

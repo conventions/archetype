@@ -40,7 +40,7 @@ public class RoleIt implements Serializable{
         Role roleExample = new Role();
         //dataset has role with name role3
         roleExample.setName("role3");
-        Role roleFound = roleService.crud().findByExample(roleExample);
+        Role roleFound = roleService.crud().example(roleExample).find();
         assertNotNull(roleFound);
         assertTrue(roleFound.getName().equals("role3"));
     }
