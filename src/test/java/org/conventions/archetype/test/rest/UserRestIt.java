@@ -42,7 +42,7 @@ public class UserRestIt {
     @Deployment(testable = false)
     public static Archive<?> createDeployment() {
         WebArchive war = Deployments.getBaseDeployment().
-                addClass(RestDataset.class);
+        addClass(RestDataset.class);
         System.out.println(war.toString(true));
         return war;
     }

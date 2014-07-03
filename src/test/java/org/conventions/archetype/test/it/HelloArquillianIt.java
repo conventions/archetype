@@ -53,7 +53,7 @@ public class HelloArquillianIt {
         war.addAsWebInfResource(new File(WEB_INF,"beans.xml"), "beans.xml");
         war.addAsWebInfResource(new File(WEB_INF,"web.xml"), "web.xml");
         war.addAsWebInfResource(new File(WEB_INF,"faces-config.xml"), "faces-config.xml");
-
+        war.addAsResource("messages_en.properties", "messages_en.properties");
         war.addAsWebInfResource("jbossas-ds.xml", "jbossas-ds.xml");//datasource
 
         //resources
