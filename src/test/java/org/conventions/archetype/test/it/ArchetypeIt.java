@@ -4,6 +4,7 @@ import org.conventions.archetype.model.User;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
 import org.conventionsframework.exception.BusinessException;
+import org.conventionsframework.qualifier.Config;
 import org.jboss.arquillian.persistence.Cleanup;
 import org.jboss.arquillian.persistence.TestExecutionPhase;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -25,6 +26,14 @@ public class ArchetypeIt extends BaseIt {
 
     @Inject
     UserIt userIt;
+
+    @Inject
+    @Config
+    String systemVersion;
+
+    @Inject
+    @Config("key.with.dots")
+    String valueFromConfigProvider;
 
 
     @Test
@@ -139,6 +148,17 @@ public class ArchetypeIt extends BaseIt {
         }catch (BusinessException be){
             assertEquals(be.getMessage(),"Only operator can perform this task");
         }
+    }
+
+    @Test
+    public void shouldGetInjectedVersionFromConfigProvider(){
+       assertEquals(systemVersion,resourceBundle.getString("version"));
+    }
+
+
+    @Test
+    public void shouldGetInjectedConfigWithDots(){
+        assertEquals(valueFromConfigProvider,"keyWithDots");
     }
 
 

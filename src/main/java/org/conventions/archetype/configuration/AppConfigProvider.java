@@ -28,7 +28,8 @@ public class AppConfigProvider  {
 
         addConfig("myConfig", 1L);
         addConfig("myDoubleConfig",2.5);
-        addConfig("version",resourceBundle.getString("version"));
+        addConfig("key.with.dots","keyWithDots");
+        addConfig("systemVersion",resourceBundle.getString("version"));
         /**
          * to get custom config use:
          * @Inject
