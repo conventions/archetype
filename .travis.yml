@@ -1,3 +1,3 @@
 language: java
 jdk: oraclejdk7
-script: mvn test -Pwhitebox -Pwildfly-managed -Pjacoco
+script: mvn install -Pwhitebox -Pjboss-managed -Pjacoco

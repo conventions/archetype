@@ -878,9 +878,10 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>com.googlecode</groupId>
+                                            <!--groupId>com.googlecode</groupId-->
+                                            <groupId>org.jboss.as</groupId>
                                             <artifactId>jboss-as-dist</artifactId>
-                                            <version>${jboss.version}</version>
+                                            <version>7.2.0.Final</version>
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
