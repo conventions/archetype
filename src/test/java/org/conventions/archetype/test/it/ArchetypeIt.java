@@ -29,7 +29,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Inject
     @Config
-    String systemVersion;
+    String appVersion;
 
     @Inject
     @Config("key.with.dots")
