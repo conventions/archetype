@@ -152,7 +152,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     public void shouldGetInjectedVersionFromConfigProvider(){
-       assertEquals(systemVersion,resourceBundle.getString("version"));
+       assertEquals(appVersion,resourceBundle.getString("version"));
     }
 
 
