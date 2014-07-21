@@ -4,17 +4,18 @@
  */
 package org.conventions.archetype.bean;
 
-import org.conventionsframework.model.Theme;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Singleton
-@ConcurrencyManagement(ConcurrencyManagementType.BEAN)//means every method is non blocking so multiple threads can access it at the same time
-@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+import org.conventionsframework.model.Theme;
+
+@Named
+@SessionScoped
 public class ThemeMBean implements Serializable{
     private Theme theme;
     private String evenRow;
