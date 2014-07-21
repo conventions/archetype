@@ -38,8 +38,6 @@ public class GroupServiceImpl extends BaseServiceImpl<Group> implements GroupSer
     @Inject
     private RoleService roleService;
 
-    @Inject
-    private ResourceBundle resourceBundle;
 
     @Inject
     @ListToUpdate(ListToUpdate.ListType.GROUP)
