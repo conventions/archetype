@@ -148,6 +148,26 @@ public class ArchetypeIt extends BaseIt {
     }
 
     @Test
+    @UsingDataSet(value = "datasets/user.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldPaginateUsers(){
+      userIt.shouldPaginateUsers();
+    }
+
+    @Test
+    @UsingDataSet(value = "datasets/user.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldPaginateUsersWithGroupName(){
+        userIt.shouldPaginateUserWithGroups("group1", 1);
+        userIt.shouldPaginateUserWithGroups("group2",1);
+        userIt.shouldPaginateUserWithGroups("group3",0);
+        userIt.shouldPaginateUserWithGroupsInFilter("group1", 1);
+        userIt.shouldPaginateUserWithGroupsInFilter("group2", 1);
+        userIt.shouldPaginateUserWithGroupsInFilter("group3",0);
+    }
+
+
+    @Test
     public void shouldNotHasPermition(){
         try {
             userService.testPermission();

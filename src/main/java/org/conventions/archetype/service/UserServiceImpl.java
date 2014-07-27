@@ -88,7 +88,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
         }
 
-        if(searchEntity.getGroup().getName() != null){//defined in user search dialog
+        if(searchEntity != null && searchEntity.getGroup().getName() != null){//defined in user search dialog
             crud.join("groups","groups");
             crud.ilike("groups.name",searchEntity.getGroup().getName(),MatchMode.ANYWHERE);
         }
@@ -124,19 +124,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     public void remove(User entity) {
         Assert.notTrue(entity.getGroups() != null && !entity.getGroups().isEmpty(),"be.user.remove");
         super.crud.delete(entity);
-    }
-
-    @Override
-    public void beforeRemove(User entity) {
-        //override to perform logic before removing an entity
-        super.beforeRemove(entity);
-    }
-
-
-    @Override
-    public void afterRemove(User entity) {
-        //override to perform logic after removing an entity
-        super.afterRemove(entity);
     }
 
     @Override
