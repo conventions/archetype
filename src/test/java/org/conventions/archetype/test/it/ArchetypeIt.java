@@ -216,4 +216,13 @@ public class ArchetypeIt extends BaseIt {
     }
 
 
+    @Test
+    @UsingDataSet(value = "datasets/user.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldHasRole(){
+        super.login("arun","42");
+        securityContext.hasRole("administrator");
+        securityContext.hasAnyRole("operator");
+    }
+
 }
