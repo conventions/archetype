@@ -11,6 +11,7 @@ import org.conventions.archetype.model.User;
 import org.conventions.archetype.util.AppConstants;
 import org.conventions.archetype.util.Utils;
 import org.conventionsframework.model.SearchModel;
+import org.conventionsframework.qualifier.Log;
 import org.conventionsframework.qualifier.LoggedIn;
 import org.conventionsframework.qualifier.SecurityMethod;
 import org.conventionsframework.service.impl.BaseServiceImpl;
@@ -26,11 +27,13 @@ import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.enterprise.event.Event;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,6 +53,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Inject
     @LoggedIn
     User currentUser;
+
+    @Inject
+    @Log
+    Logger log;
 
     @Inject
     Event<UpdateUserRoles> updateUserRolesEvent;
@@ -102,7 +109,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @SecurityMethod(rolesAllowed = AppConstants.Role.OPERATOR, message = "Only operator can perform this task")
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public void testPermission(){
-        MessagesController.addInfo(resourceBundle.getString("test.permission",currentUser.getName(),currentUser.getUserRoles()));
+        if(FacesContext.getCurrentInstance() != null){
+            MessagesController.addInfo(resourceBundle.getString("test.permission",currentUser.getName(),currentUser.getUserRoles()));
+        }else{
+            log.info(resourceBundle.getString("test.permission",currentUser.getName(),currentUser.getUserRoles()));
+        }
     }
 
 

@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @Transactional(value = TransactionMode.DISABLED)
 public class ArchetypeIt extends BaseIt {
@@ -101,7 +102,11 @@ public class ArchetypeIt extends BaseIt {
         //user 2 has no groups
         super.login("arun","42");
         User user = userService.crud().get(2L);
-        userIt.shouldRemoveUser(user);
+        //userIt.shouldRemoveUser(user);
+        assertNotNull(user);
+        userService.remove(user);
+        user = userService.crud().get(2L);
+        assertNull(user);
     }
 
     @Test
@@ -134,6 +139,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldHasPermition(){
         super.login("arun","42");
         userService.testPermission();
