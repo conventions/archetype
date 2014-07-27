@@ -2,6 +2,7 @@ package org.conventions.archetype.test.it;
 
 import org.conventions.archetype.security.SecurityContextImpl;
 import org.conventions.archetype.service.UserService;
+import org.conventions.archetype.test.it.group.GroupIt;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
 import org.conventions.archetype.test.util.Deployments;
@@ -41,6 +42,7 @@ public class BaseIt {
         WebArchive war = Deployments.getBaseDeployment().
         addClass(RoleIt.class).//enable injection in ArchetypeIt
         addClass(UserIt.class).
+        addClass(GroupIt.class).
         addClass(BaseIt.class).
         addClass(ArchetypeIt.class);
         System.out.println(war.toString(true));

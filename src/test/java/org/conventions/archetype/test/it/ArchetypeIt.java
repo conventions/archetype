@@ -1,6 +1,7 @@
 package org.conventions.archetype.test.it;
 
 import org.conventions.archetype.model.User;
+import org.conventions.archetype.test.it.group.GroupIt;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
 import org.conventionsframework.exception.BusinessException;
@@ -29,6 +30,9 @@ public class ArchetypeIt extends BaseIt {
 
     @Inject
     UserIt userIt;
+
+    @Inject
+    GroupIt groupIt;
 
     @Inject
     @Config
@@ -163,7 +167,27 @@ public class ArchetypeIt extends BaseIt {
 
     }
 
+    @Test
+    @UsingDataSet(value = "datasets/group.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shoulFindAvailableRoles() {
+        groupIt.shoulFindAvailableRoles();
+    }
 
+    @Test
+    @UsingDataSet(value = "datasets/group.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shoulPaginateGroupsWithRole() {
+        groupIt.shouldPaginateGroupsWithRole("administrator",1);
+        groupIt.shouldPaginateGroupsWithRole("nonExintingRole",0);
+    }
+
+    @Test
+    @UsingDataSet(value = "datasets/group.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shoulPaginateGroupsWithUserid() {
+        groupIt.shouldPaginateGroupsWithUserId();
+    }
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
@@ -220,7 +244,7 @@ public class ArchetypeIt extends BaseIt {
     @UsingDataSet(value = "datasets/user.yml")
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldHasRole(){
-        super.login("arun","42");
+        super.login("arun", "42");
         securityContext.hasRole("administrator");
         securityContext.hasAnyRole("operator");
     }
