@@ -13,6 +13,8 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -118,7 +120,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @Cleanup(phase = TestExecutionPhase.BEFORE)
-    public void shouldInsertRoler() {
+    public void shouldInsertRole() {
         roleIT.shouldInsertRole();
     }
 
@@ -135,6 +137,32 @@ public class ArchetypeIt extends BaseIt {
     public void shouldremoveRole() {
         roleIT.shouldremoveRole();
     }
+
+    @Test
+    @UsingDataSet(value = "datasets/role.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldPaginateRoleWithName() {
+        //dataset has 3 roles
+        roleIT.shouldPaginateRolesWithName("role2",1);
+        roleIT.shouldPaginateRolesWithName("role",3);
+        roleIT.shouldPaginateRolesWithName("adhiad",0);
+    }
+
+    @Test
+    @UsingDataSet(value = "datasets/role.yml")
+    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    public void shouldPaginateRoleWithIdsInSearchFilter() {
+        //dataset has 3 roles with ids 1,2,3
+        List<Long> ids = new ArrayList<>();
+        ids.add(1L);
+        ids.add(2L);
+        roleIT.shouldPaginateRolesWithIdsInSearchFilter(ids,1);//ids not in
+        ids.clear();
+        ids.add(5L);
+        roleIT.shouldPaginateRolesWithIdsInSearchFilter(ids,3);
+
+    }
+
 
 
     @Test

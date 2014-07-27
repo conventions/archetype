@@ -15,6 +15,7 @@ import org.conventionsframework.service.impl.BaseServiceImpl;
 import org.conventionsframework.util.Assert;
 import org.conventionsframework.util.ResourceBundle;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import javax.enterprise.event.Event;
@@ -24,10 +25,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author rmpestano
- *
- * NON EJB Service
+ *         <p/>
+ *         NON EJB Service
  */
 public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService {
 
@@ -37,19 +37,24 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Inject
     ResourceBundle resourceBundle;
-    
+
     @Override
     public Criteria configPagination(SearchModel<Role> searchModel) {
-        
+
         Criteria criteria = getCriteria();
-        Map<String,Object> searchFilter = searchModel.getFilter();
+        Map<String, Object> searchFilter = searchModel.getFilter();
         Role searchEntity = searchModel.getEntity();
-            if(searchEntity != null && searchEntity.getId() != null){
+        if (searchEntity != null && searchEntity.getId() != null) {
             criteria.add(Restrictions.eq("id", searchEntity.getId()));
             return criteria;
         }
+
+        if(searchEntity != null && Assert.hasText(searchEntity.getName())){
+            criteria.add(Restrictions.ilike("name",searchEntity.getName(), MatchMode.ANYWHERE));
+        }
+
         List<Long> groupRoles = (List<Long>) searchFilter.get("groupRoles");
-        if(groupRoles != null && !groupRoles.isEmpty()){
+        if (groupRoles != null && !groupRoles.isEmpty()) {
             //open roleModal listing only with not used groups
             //PS: not used cause roleAssociation is done with picklist now not with list of values anymore
             criteria.add(Restrictions.not(Restrictions.in("id", groupRoles)));
@@ -69,13 +74,13 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Override
     public void beforeRemove(Role entity) {
-        Assert.notTrue(entity.getName().equals(AppConstants.Role.ADMIN),"role.be.admin");
-        Assert.notTrue(roleIsAssociatedWithGroups(entity),"role.be.groups");
+        Assert.notTrue(entity.getName().equals(AppConstants.Role.ADMIN), "role.be.admin");
+        Assert.notTrue(roleIsAssociatedWithGroups(entity), "role.be.groups");
     }
 
     private boolean roleIsAssociatedWithGroups(Role entity) {
         Query q = getEntityManager().createNamedQuery("Group.findGroupsWithrole");
-        q.setParameter("roleId",entity.getId());
+        q.setParameter("roleId", entity.getId());
         List<Group> groupsFound = q.getResultList();
         return !groupsFound.isEmpty();
     }
