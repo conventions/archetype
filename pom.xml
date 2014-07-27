@@ -36,7 +36,7 @@
         <maven.build.timestamp.format>dd/MM/yyyy HH:mm</maven.build.timestamp.format>
         <!-- sonar -->
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
- 	    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
@@ -340,14 +340,14 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency-->
-<!--
-        <dependency>
-            <groupId>org.glassfish.main.extras</groupId>
-            <artifactId>glassfish-embedded-all</artifactId>
-            <version>3.1.2</version>
-            <scope>provided</scope>
-        </dependency>
- -->
+        <!--
+                <dependency>
+                    <groupId>org.glassfish.main.extras</groupId>
+                    <artifactId>glassfish-embedded-all</artifactId>
+                    <version>3.1.2</version>
+                    <scope>provided</scope>
+                </dependency>
+         -->
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -1089,6 +1089,23 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.eluder.coveralls</groupId>
+                        <artifactId>coveralls-maven-plugin</artifactId>
+                        <version>2.2.0</version>
+                        <executions>
+                            <execution>
+                                <id>coveralls-jacoco</id>
+                                <goals>
+                                    <goal>jacoco</goal>
+                                </goals>
+                                <phase>install</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <repoToken>L5oGgjLVdLJUDrrvZznUwaPAPpvVNli4</repoToken>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
