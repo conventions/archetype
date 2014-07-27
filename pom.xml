@@ -1090,10 +1090,14 @@
                             </execution>
                         </executions>
                     </plugin>
+
                     <plugin>
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
-                        <version>2.2.0</version>
+                        <version>2.0.1</version>
+                        <configuration>
+                            <repoToken>qNIdoZKsxqS7s1ZlSpg2bAsCMQ4CGyc34</repoToken>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>coveralls-jacoco</id>
@@ -1103,9 +1107,6 @@
                                 <phase>install</phase>
                             </execution>
                         </executions>
-                        <configuration>
-                            <repoToken>L5oGgjLVdLJUDrrvZznUwaPAPpvVNli4</repoToken>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
