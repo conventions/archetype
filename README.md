@@ -8,3 +8,7 @@ Conventions Archetype
 [![Coverage Status](https://coveralls.io/repos/conventions/archetype/badge.png)](https://coveralls.io/r/conventions/archetype)
 
 [Live at Openshift Cloud](http://archetype-rpestano.rhcloud.com/archetype/)
+
+[Blog post about testing this project](http://rpestano.wordpress.com/2014/06/08/arquillian/)
+
+

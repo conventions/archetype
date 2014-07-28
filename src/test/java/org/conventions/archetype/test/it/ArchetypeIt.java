@@ -1,6 +1,7 @@
 package org.conventions.archetype.test.it;
 
 import org.conventions.archetype.model.User;
+import org.conventions.archetype.qualifier.DateFormat;
 import org.conventions.archetype.test.it.group.GroupIt;
 import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
@@ -13,14 +14,14 @@ import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 @Transactional(value = TransactionMode.DISABLED)
@@ -42,6 +43,14 @@ public class ArchetypeIt extends BaseIt {
     @Inject
     @Config("key.with.dots")
     String valueFromConfigProvider;
+
+    @Inject
+    @DateFormat(format = "dd/MM/yyyy")
+    SimpleDateFormat sdf;
+
+    @Inject
+    @DateFormat
+    Instance<SimpleDateFormat> sdfInstance;
 
 
     @Test
@@ -249,6 +258,14 @@ public class ArchetypeIt extends BaseIt {
         assertTrue(securityContext.hasRole("administrator"));
         assertTrue(securityContext.hasAnyRole("operator"));
         assertFalse(securityContext.hasAnyRole("anotherRole"));
+    }
+
+    @Test
+    public void shouldProduceSimpleDateFormat(){
+        assertNotNull(sdf);
+        assertEquals(sdf.toPattern(),"dd/MM/yyyy");
+        assertNotNull(sdfInstance.get());
+
     }
 
 }
