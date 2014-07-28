@@ -1075,6 +1075,13 @@
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
                         <version>${jacoco.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>org.conventions.archetype.db.*</exclude>
+                                <exclude>org.conventions.archetype.bean.*</exclude>
+                                <exclude>org.conventions.archetype.converter.*</exclude>
+                            </excludes>
+                        </configuration>
                         <executions>
                             <execution>
                                 <goals>

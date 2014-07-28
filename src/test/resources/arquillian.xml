@@ -78,6 +78,10 @@
         <!--<property name="chromeDriverBinary">c:/chromedriver.exe</property>-->
         <!-- to use chrome browser download webdriver: http://code.google.com/p/chromedriver/downloads/list -->
     </extension>
+
+    <extension qualifier="jacoco">
+        <property name="excludes">org.conventions.archetype.db.*;org.conventions.archetype.bean.*;org.conventions.archetype.converter.*</property>
+    </extension>
      
 <!--     <extension qualifier="selenium-server"> -->
 <!--   		<property name="port">4444</property>  -->
