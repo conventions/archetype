@@ -19,6 +19,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -245,8 +246,9 @@ public class ArchetypeIt extends BaseIt {
     @Cleanup(phase = TestExecutionPhase.BEFORE)
     public void shouldHasRole(){
         super.login("arun", "42");
-        securityContext.hasRole("administrator");
-        securityContext.hasAnyRole("operator");
+        assertTrue(securityContext.hasRole("administrator"));
+        assertTrue(securityContext.hasAnyRole("operator"));
+        assertFalse(securityContext.hasAnyRole("anotherRole"));
     }
 
 }

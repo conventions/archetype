@@ -101,7 +101,7 @@ public class InitAppBean implements Serializable{
             devOps.setPassword(utils.encrypt("devops"));
             devOps.addGroup(groupDevOps);
             userService.store(devOps);
-            
+
             User developer = new User("developer");
             developer.setPassword(utils.encrypt("developer"));
             developer.addGroup(groupDev);
