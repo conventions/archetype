@@ -1080,6 +1080,8 @@
                                 <exclude>org/conventions/archetype/db/*.class</exclude>
                                 <exclude>org/conventions/archetype/bean/*.class</exclude>
                                 <exclude>org/conventions/archetype/converter/*.class</exclude>
+                                <exclude>org/conventions/archetype/util/AppConstants/*.class</exclude>
+                                <exclude>org/conventions/archetype/util/pages.class</exclude>
                             </excludes>
                         </configuration>
                         <executions>
