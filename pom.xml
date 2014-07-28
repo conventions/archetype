@@ -1077,9 +1077,9 @@
                         <version>${jacoco.version}</version>
                         <configuration>
                             <excludes>
-                                <exclude>org.conventions.archetype.db.*</exclude>
-                                <exclude>org.conventions.archetype.bean.*</exclude>
-                                <exclude>org.conventions.archetype.converter.*</exclude>
+                                <exclude>org/conventions/archetype/db/*.class</exclude>
+                                <exclude>org/conventions/archetype/bean/*.class</exclude>
+                                <exclude>org/conventions/archetype/converter/*.class</exclude>
                             </excludes>
                         </configuration>
                         <executions>
@@ -1098,23 +1098,23 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
-                        <groupId>org.eluder.coveralls</groupId>
-                        <artifactId>coveralls-maven-plugin</artifactId>
-                        <version>2.0.1</version>
-                        <configuration>
-                            <repoToken>qNIdoZKsxqS7s1ZlSpg2bAsCMQ4CGyc34</repoToken>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>coveralls-jacoco</id>
-                                <goals>
-                                    <goal>jacoco</goal>
-                                </goals>
-                                <phase>install</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
+                    <!--<plugin>-->
+                        <!--<groupId>org.eluder.coveralls</groupId>-->
+                        <!--<artifactId>coveralls-maven-plugin</artifactId>-->
+                        <!--<version>2.0.1</version>-->
+                        <!--<configuration>-->
+                            <!--<repoToken>qNIdoZKsxqS7s1ZlSpg2bAsCMQ4CGyc34</repoToken>-->
+                        <!--</configuration>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>coveralls-jacoco</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>jacoco</goal>-->
+                                <!--</goals>-->
+                                <!--<phase>install</phase>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
                 </plugins>
             </build>
         </profile>
