@@ -4,10 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
+import org.conventions.archetype.rest.UserRest;
+import org.conventions.archetype.rest.UserRestImpl;
 import org.conventions.archetype.test.util.Deployments;
 import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.util.ResourceBundle;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.extension.rest.client.ArquillianResteasyResource;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -21,6 +25,7 @@ import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,7 +42,6 @@ public class UserRestIt {
 
     @ArquillianResource
     protected URL context;
-
 
     @Deployment(testable = false)
     public static Archive<?> createDeployment() {
@@ -56,6 +60,7 @@ public class UserRestIt {
             e.printStackTrace();
         }
     }
+
 
     @Test
     @InSequence(1)
@@ -79,6 +84,24 @@ public class UserRestIt {
             ex.printStackTrace();
             Assert.fail(ex.getMessage());
         }
+    }
+    
+    
+    //using rest extensions
+    @Test
+    @InSequence(1)
+    public void shouldListUsers(@ArquillianResteasyResource UserRest userRest){
+    	 ClientResponse<String> response = (ClientResponse<String>) userRest.list();
+    	 Assert.assertNotNull(response);
+         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+         String json = response.getEntity(String.class);
+         Gson gson = new Gson();
+         JsonElement jsonElement = new JsonParser().parse(json);
+         Type userListType = new TypeToken<List<SimpleUser>>() {
+         }.getType();
+         List<SimpleUser> simpleUsers = gson.fromJson(jsonElement, userListType);
+         Assert.assertNotNull(simpleUsers);
+         assertEquals(simpleUsers.size(),2);//rest dataset has 2 users @see RestDataset.java
     }
 
     @Test
@@ -124,7 +147,7 @@ public class UserRestIt {
             Assert.fail(error);
         }
     }
-
+    
     @Test
     @InSequence(3)
     public void shouldInsertUserWithoutGroup() {
@@ -213,6 +236,8 @@ public class UserRestIt {
         }
     }
 
+    @Test
+    @InSequence(7)
     public void shouldDeleteUserWithoutGroups(){
         SimpleUser userWithoutGroup = findUserByNameViaRest("userWithoutGroups");
         ClientRequest request = new ClientRequest(context + "rest/user/delete/" + userWithoutGroup.getId());
@@ -230,6 +255,7 @@ public class UserRestIt {
             Assert.fail(ex.getMessage());
         }
     }
+    
 
     private SimpleUser findUserByNameViaRest(String username) {
         Assert.assertNotNull(username);
