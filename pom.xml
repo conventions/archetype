@@ -242,20 +242,13 @@
 			<version>1.0.0.Alpha3</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.jboss.arquillian.extension</groupId> -->
-		<!-- <artifactId>arquillian-rest-warp-impl-resteasy</artifactId> -->
-		<!-- <version>1.0.0.Alpha3</version> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.jboss.arquillian.extension</groupId> -->
-		<!-- <artifactId>arquillian-rest-client-api</artifactId> -->
-		<!-- <version>1.0.0.Alpha3</version> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-
+		
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-rest-warp-impl-resteasy</artifactId>
+			<version>1.0.0.Alpha3</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.spec.javax.annotation</groupId>

@@ -1,12 +1,17 @@
 package org.conventions.archetype.test.rest;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
+import static org.junit.Assert.assertEquals;
+
+import java.lang.reflect.Type;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.conventions.archetype.rest.UserRest;
-import org.conventions.archetype.rest.UserRestImpl;
 import org.conventions.archetype.test.util.Deployments;
 import org.conventions.archetype.util.AppConstants;
 import org.conventionsframework.util.ResourceBundle;
@@ -23,16 +28,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import java.lang.reflect.Type;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import static org.junit.Assert.assertEquals;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Created by rmpestano on 3/1/14.
