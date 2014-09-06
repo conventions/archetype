@@ -3,12 +3,9 @@ package org.conventions.archetype.test.at;
 import org.conventions.archetype.bean.UserMBean;
 import org.conventions.archetype.test.bdd.BaseBdd;
 import org.conventions.archetype.test.ft.BasePage;
-import org.conventions.archetype.test.ft.ScreenshotTestRule;
 import org.conventions.archetype.test.util.Deployments;
-import org.jboss.arquillian.drone.api.annotation.Default;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.GrapheneElement;
-import org.jboss.arquillian.graphene.context.GrapheneContext;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.Filters;
@@ -16,9 +13,6 @@ import org.jboss.shrinkwrap.api.GenericArchive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.importer.ExplodedImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
@@ -44,8 +38,6 @@ public abstract class BaseAt extends BaseBdd {
     @FindByJQuery("a[id$=logout]")
     protected GrapheneElement logoutButton;
 
-    @Rule
-    public static ScreenshotTestRule screenshotTestRule;
 
 
     public static WebArchive createBaseDeployment() {
@@ -60,12 +52,6 @@ public abstract class BaseAt extends BaseBdd {
         return war;
     }
 
-    @BeforeClass
-    public static void initScreenShooter() {
-        //    WebDriver augmentedDriver = new Augmenter().augment(GrapheneContext.getContextFor(Default.class).getWebDriver(TakesScreenshot.class));
-        //    screenshotTestRule = new ScreenshotTestRule((TakesScreenshot) augmentedDriver);
-        screenshotTestRule = new ScreenshotTestRule((TakesScreenshot) GrapheneContext.getContextFor(Default.class).getWebDriver(TakesScreenshot.class));
-    }
 
     public void logout() {
         guardHttp(logoutButton).click();

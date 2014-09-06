@@ -4,10 +4,8 @@ import org.conventions.archetype.bean.UserMBean;
 import org.conventions.archetype.test.util.Deployments;
 import org.conventionsframework.util.ResourceBundle;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.drone.api.annotation.Default;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.GrapheneElement;
-import org.jboss.arquillian.graphene.context.GrapheneContext;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -17,10 +15,7 @@ import org.jboss.shrinkwrap.api.GenericArchive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.importer.ExplodedImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
@@ -47,8 +42,6 @@ public class BaseFt {
 
     protected ResourceBundle resourceBundle;
 
-    @Rule
-    public static ScreenshotTestRule screenshotTestRule;
 
     public BaseFt() {
         try {
@@ -71,12 +64,6 @@ public class BaseFt {
         return war;
     }
 
-    @BeforeClass
-    public static void initScreenShooter() {
-        //    WebDriver augmentedDriver = new Augmenter().augment(GrapheneContext.getContextFor(Default.class).getWebDriver(TakesScreenshot.class));
-        //    screenshotTestRule = new ScreenshotTestRule((TakesScreenshot) augmentedDriver);
-        screenshotTestRule = new ScreenshotTestRule((TakesScreenshot) GrapheneContext.getContextFor(Default.class).getWebDriver(TakesScreenshot.class));
-    }
 
     public void logout() {
         guardHttp(logoutButton).click();
