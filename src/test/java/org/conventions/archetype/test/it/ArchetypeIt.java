@@ -7,8 +7,7 @@ import org.conventions.archetype.test.it.role.RoleIt;
 import org.conventions.archetype.test.it.user.UserIt;
 import org.conventionsframework.exception.BusinessException;
 import org.conventionsframework.qualifier.Config;
-import org.jboss.arquillian.persistence.Cleanup;
-import org.jboss.arquillian.persistence.TestExecutionPhase;
+import org.jboss.arquillian.persistence.CleanupUsingScript;
 import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
@@ -22,7 +21,6 @@ import java.util.List;
 
 import static junit.framework.Assert.*;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 
 @Transactional(value = TransactionMode.DISABLED)
 public class ArchetypeIt extends BaseIt {
@@ -52,17 +50,17 @@ public class ArchetypeIt extends BaseIt {
     @DateFormat
     Instance<SimpleDateFormat> sdfInstance;
 
-
+     
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldListUsers(){
         userIt.shouldListUsers();
 
     }
 
     @Test
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldInsertUser() {
        userIt.shouldInsertUser();
     }
@@ -70,7 +68,7 @@ public class ArchetypeIt extends BaseIt {
    
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldFindUser() {
         userIt.shouldFindUser();
     }
@@ -78,7 +76,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldFailToRemoveUserWithoutPermission() {
         User user = userService.crud().get(2L);
         //TODO decripty user pass
@@ -94,7 +92,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldFailToRemoveUserWithGroups() {
         super.login("arun","42");//arun has permission
         //user with id 1 has groups
@@ -113,7 +111,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldRemoveUser() {
         //user 2 has no groups
         super.login("arun","42");
@@ -127,34 +125,34 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/role.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldListRoles(){
         roleIT.shouldListRoles();
     }
 
     @Test
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldInsertRole() {
         roleIT.shouldInsertRole();
     }
 
     @Test
     @UsingDataSet(value = "datasets/role.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldFindRole() {
         roleIT.shouldFindRole();
     }
 
     @Test
     @UsingDataSet(value = "datasets/role.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldremoveRole() {
         roleIT.shouldremoveRole();
     }
 
     @Test
     @UsingDataSet(value = "datasets/role.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldPaginateRoleWithName() {
         //dataset has 3 roles
         roleIT.shouldPaginateRolesWithName("role2",1);
@@ -164,7 +162,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/role.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldPaginateRoleWithIdsInSearchFilter() {
         //dataset has 3 roles with ids 1,2,3
         List<Long> ids = new ArrayList<>();
@@ -179,14 +177,14 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/group.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shoulFindAvailableRoles() {
         groupIt.shoulFindAvailableRoles();
     }
 
     @Test
     @UsingDataSet(value = "datasets/group.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shoulPaginateGroupsWithRole() {
         groupIt.shouldPaginateGroupsWithRole("administrator",1);
         groupIt.shouldPaginateGroupsWithRole("nonExintingRole",0);
@@ -194,14 +192,14 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/group.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shoulPaginateGroupsWithUserid() {
         groupIt.shouldPaginateGroupsWithUserId();
     }
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldHasPermition(){
         super.login("arun","42");
         userService.testPermission();
@@ -211,14 +209,14 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldPaginateUsers(){
       userIt.shouldPaginateUsers();
     }
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldPaginateUsersWithGroupName(){
         userIt.shouldPaginateUserWithGroups("group1", 1);
         userIt.shouldPaginateUserWithGroups("group2",1);
@@ -228,7 +226,7 @@ public class ArchetypeIt extends BaseIt {
         userIt.shouldPaginateUserWithGroupsInFilter("group3",0);
     }
 
-
+       
     @Test
     public void shouldNotHasPermition(){
         try {
@@ -252,7 +250,7 @@ public class ArchetypeIt extends BaseIt {
 
     @Test
     @UsingDataSet(value = "datasets/user.yml")
-    @Cleanup(phase = TestExecutionPhase.BEFORE)
+    @CleanupUsingScript("clear.sql")
     public void shouldHasRole(){
         super.login("arun", "42");
         assertTrue(securityContext.hasRole("administrator"));

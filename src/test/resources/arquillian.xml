@@ -48,6 +48,7 @@
     <extension qualifier="persistence">
         <property name="defaultDataSource">${datasource}</property>
         <!--<property name="defaultDataSeedStrategy">CLEAN_INSERT</property>-->
+        <property name="defaultCleanupStrategy ">AFTER</property>
     </extension>
 
     <!--extension qualifier="recorder">
