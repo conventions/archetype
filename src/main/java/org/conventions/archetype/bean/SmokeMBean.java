@@ -1,6 +1,7 @@
 package org.conventions.archetype.bean;
 
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ViewAccessScoped;
+
+import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 
 import javax.inject.Named;
 import java.io.Serializable;

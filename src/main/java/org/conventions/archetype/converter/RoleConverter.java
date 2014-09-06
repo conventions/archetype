@@ -4,7 +4,6 @@
  */
 package org.conventions.archetype.converter;
 
-import org.apache.myfaces.extensions.cdi.core.api.Advanced;
 import org.conventions.archetype.model.Role;
 import org.conventionsframework.converter.BaseConverter;
 import org.conventionsframework.qualifier.Service;
@@ -16,7 +15,6 @@ import javax.inject.Inject;
 /**
  * @author rmpestano
  */
-@Advanced
 @FacesConverter(value="roleConverter")
 public class RoleConverter extends BaseConverter {
 

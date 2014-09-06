@@ -39,17 +39,11 @@ public class Deployments {
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:5.0").withoutTransitivity().asSingleFile());
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces.themes:all-themes:1.0.10").withoutTransitivity().asSingleFile());
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.codehaus.jackson:jackson-core-asl:1.9.13").withoutTransitivity().asFile());
-        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.myfaces.extensions.cdi.bundles:myfaces-extcdi-bundle-jsf20:1.0.6").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.myfaces.extensions.cdi.modules:myfaces-extcdi-jsf20-module-api:1.0.6").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.myfaces.extensions.cdi.modules:myfaces-extcdi-jsf20-module-impl:1.0.6").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.myfaces.extensions.cdi.core:myfaces-extcdi-core-impl:1.0.6").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.myfaces.extensions.cdi.core:myfaces-extcdi-core-api:1.0.6").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-jsf-module-api:0.7").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-jsf-module-impl:0.7").withTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-security-module-api:0.7").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-security-module-impl:0.7").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.core:deltaspike-core-impl:0.7").withoutTransitivity().asSingleFile());
-//        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.core:deltaspike-core-api:0.7").withoutTransitivity().asSingleFile());
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-jsf-module-api:1.0.2").withoutTransitivity().asSingleFile());
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-jsf-module-impl:1.0.2").withoutTransitivity().asSingleFile());
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.core:deltaspike-core-impl:1.0.2").withoutTransitivity().asSingleFile());
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.core:deltaspike-core-api:1.0.2").withoutTransitivity().asSingleFile());
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.apache.deltaspike.modules:deltaspike-security-module-api:1.0.2").withoutTransitivity().asSingleFile());
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("com.google.code.gson:gson:2.2.4").withoutTransitivity().asSingleFile());
         //WEB-INF
 

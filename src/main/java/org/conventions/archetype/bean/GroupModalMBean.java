@@ -4,8 +4,9 @@
  */
 package org.conventions.archetype.bean;
 
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScoped;
+import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.conventions.archetype.model.Group;
+import org.conventions.archetype.service.GroupModalService;
 import org.conventions.archetype.service.GroupServiceImpl;
 import org.conventionsframework.bean.ModalMBean;
 import org.conventionsframework.qualifier.Service;

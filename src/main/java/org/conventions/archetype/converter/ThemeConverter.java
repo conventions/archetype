@@ -6,12 +6,12 @@ package org.conventions.archetype.converter;
 
 import org.conventions.archetype.bean.ThemeMBean;
 import org.conventionsframework.model.Theme;
+
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
-import org.apache.myfaces.extensions.cdi.core.api.Advanced;
 
 /**
  *
@@ -19,7 +19,6 @@ import org.apache.myfaces.extensions.cdi.core.api.Advanced;
  */
 
 @FacesConverter(value="themeConverter")
-@Advanced
 public class ThemeConverter implements Converter{
     
     @Inject

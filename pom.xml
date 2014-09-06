@@ -49,11 +49,7 @@
             <groupId>org.primefaces.themes</groupId>
             <artifactId>all-themes</artifactId>
         </dependency>
-        <!-- codi -->
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.cdi.bundles</groupId>
-            <artifactId>myfaces-extcdi-bundle-jsf20</artifactId>
-        </dependency>
+
         <!--dependency> <groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
             <artifactId>myfaces-extcdi-jsf20-module-impl</artifactId> </dependency> <dependency>
             <groupId>org.apache.myfaces.extensions.cdi.modules</groupId> <artifactId>myfaces-extcdi-jsf20-module-api</artifactId>
@@ -62,12 +58,31 @@
             <groupId>org.apache.myfaces.extensions.cdi.core</groupId> <artifactId>myfaces-extcdi-core-api</artifactId>
             </dependency -->
 
-        <!-- deltaspike commented because https://issues.apache.org/jira/browse/DELTASPIKE-590
-            <dependency> <groupId>org.apache.deltaspike.core</groupId> <artifactId>deltaspike-core-impl</artifactId>
-            </dependency> <dependency> <groupId>org.apache.deltaspike.modules</groupId>
-            <artifactId>deltaspike-jsf-module-api</artifactId> </dependency> <dependency>
-            <groupId>org.apache.deltaspike.modules</groupId> <artifactId>deltaspike-jsf-module-impl</artifactId>
-            </dependency> -->
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-impl</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-jsf-module-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-jsf-module-impl</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-security-module-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
 
 
         <dependency>
@@ -196,7 +211,6 @@
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
         </dependency>
-
 
 
         <!-- end test dependencies -->
@@ -1015,9 +1029,9 @@
             <layout>default</layout>
         </repository>
         <!--<repository>-->
-            <!--<id>arquillian jbehave UNofficial maven repo</id>-->
-            <!--<url>http://arquillian-jbehave-repo.googlecode.com/git/</url>-->
-            <!--<layout>default</layout>-->
+        <!--<id>arquillian jbehave UNofficial maven repo</id>-->
+        <!--<url>http://arquillian-jbehave-repo.googlecode.com/git/</url>-->
+        <!--<layout>default</layout>-->
         <!--</repository>-->
         <repository>
             <id>Jboss AS dist UNofficial maven repo</id>

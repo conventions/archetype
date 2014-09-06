@@ -1,4 +1,4 @@
-package org.conventions.archetype.bean;
+package org.conventions.archetype.service;
 
 import org.conventions.archetype.model.Group;
 import org.conventionsframework.model.SearchModel;
