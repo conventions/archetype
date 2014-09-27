@@ -31,7 +31,7 @@ public class UserBdd extends BaseBdd {
                 .addClass(UserSteps.class);
         
         MavenResolverSystem resolver = Maven.resolver();
-        archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("com.google.guava:guava:11.0.1").withTransitivity().asFile());
+        archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("com.google.guava:guava:18.0").withTransitivity().asFile());
         archive.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.jbehave:jbehave-core:3.7.5").withTransitivity().asFile());
         return archive;
     }

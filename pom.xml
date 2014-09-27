@@ -1070,6 +1070,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>org/conventions/archetype/db/*.class</exclude>
+                                <exclude>org/conventions/archetype/rest/*.class</exclude>
                                 <exclude>org/conventions/archetype/model/*States.class</exclude>
                                 <exclude>org/conventions/archetype/bean/*.class</exclude>
                                 <exclude>org/conventions/archetype/converter/*.class</exclude>
@@ -1129,7 +1130,9 @@
                 <arquillian.browser>firefox</arquillian.browser>
                 <arquillian.remote>true</arquillian.remote>
                 <arquillian.localAddress>http://archetype-rpestano.rhcloud.com/archetype</arquillian.localAddress>
-                <arquillian.seleniumGrid>http://rmpestano:91af0903-cfea-4464-84d7-12a49c2b4e73@ondemand.saucelabs.com/wd/hub</arquillian.seleniumGrid>
+                <arquillian.seleniumGrid>
+                    http://rmpestano:91af0903-cfea-4464-84d7-12a49c2b4e73@ondemand.saucelabs.com/wd/hub
+                </arquillian.seleniumGrid>
             </properties>
         </profile>
 
@@ -1170,6 +1173,14 @@
 
     <repositories>
         <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
             <id>arquillian jbehave UNofficial maven repo</id>
             <url>http://arquillian-jbehave-repo.googlecode.com/git/</url>
             <layout>default</layout>
@@ -1204,84 +1215,84 @@
         </repository>
     </repositories>
 
-<build>
-<resources>
-    <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-    </resource>
-</resources>
-<testResources>
-    <testResource>
-        <directory>src/test/resources</directory>
-        <filtering>true</filtering>
-    </testResource>
-    <testResource>
-        <directory>src/test/java/</directory>
-        <includes>
-            <include>**/*.story</include>
-        </includes>
-    </testResource>
-</testResources>
-<plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
-        <configuration>
-            <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-            <execution>
-                <id>default-cli</id>
-                <goals>
-                    <goal>copy-dependencies</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.16</version>
-        <configuration>
-            <skipTests>true</skipTests>
-        </configuration>
-    </plugin>
-    <!-- deploy -->
-    <plugin>
-        <groupId>org.wildfly.plugins</groupId>
-        <artifactId>wildfly-maven-plugin</artifactId>
-        <version>1.0.1.Final</version>
-        <configuration>
-            <id>wildfly-deploy</id>
-            <hostname>localhost</hostname>
-            <port>9990</port>
-            <filename>${project.build.finalName}.war</filename>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>deploy-only</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </configuration>
-    </plugin>
-</plugins>
-<finalName>archetype</finalName>
-</build>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+            <testResource>
+                <directory>src/test/java/</directory>
+                <includes>
+                    <include>**/*.story</include>
+                </includes>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.16</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- deploy -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.1.Final</version>
+                <configuration>
+                    <id>wildfly-deploy</id>
+                    <hostname>localhost</hostname>
+                    <port>9990</port>
+                    <filename>${project.build.finalName}.war</filename>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>deploy-only</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>archetype</finalName>
+    </build>
 
-        </project>
+</project>
