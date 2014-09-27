@@ -19,7 +19,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-
 import java.io.File;
 import java.util.logging.Logger;
 
@@ -46,7 +45,7 @@ public class HelloArquillianIt {
         war.addPackages(true, "org.conventions.archetype.util");
         //LIBS
         MavenResolverSystem resolver = Maven.resolver();
-        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.3.1").withTransitivity().asFile());//conventions
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.3.2").withoutTransitivity().asFile());//conventions
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:4.0").withoutTransitivity().asSingleFile());
 
         //WEB-INF
