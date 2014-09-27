@@ -51,6 +51,7 @@ public class Deployments {
         war.addAsWebInfResource(new File(WEB_INF,"web.xml"), "web.xml");
         war.addAsWebInfResource(new File(WEB_INF,"faces-config.xml"), "faces-config.xml");
         war.addAsWebInfResource(new File(WEB_INF,"jboss-deployment-structure.xml"), "jboss-deployment-structure.xml");
+        war.addAsWebInfResource(new File(WEB_INF,"jboss-web.xml"), "jboss-web.xml");
         //war.addAsWebInfResource("test-jboss-deployment-structure.xml", "jboss-deployment-structure.xml");
 
         war.addAsWebInfResource("jbossas-ds.xml", "jbossas-ds.xml");

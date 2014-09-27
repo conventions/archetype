@@ -1,4 +1,11 @@
 language: java
 jdk: oraclejdk7
-script: mvn install -Pall-tests -Pwildfly-managed -Pjacoco -Pcoveralls -Pwebdriver-phantomjs
+script: mvn install -Pwhitebox -Pwildfly-managed -Pjacoco -Pcoveralls
+deploy:
+  provider: openshift
+  user: rmpestano@gmail.com
+  password: bigboss # can be encrypted
+  domain: archetype-rpestano.rhcloud.com
+after_deploy:
+  script: mvn test -Pft-tests -Pwildfly-managed -Premote-selenium
 

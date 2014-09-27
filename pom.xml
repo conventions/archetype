@@ -1128,22 +1128,9 @@
             <properties>
                 <arquillian.browser>firefox</arquillian.browser>
                 <arquillian.remote>true</arquillian.remote>
-                <arquillian.localAddress>localhost</arquillian.localAddress>
+                <arquillian.localAddress>http://archetype-rpestano.rhcloud.com/archetype</arquillian.localAddress>
                 <arquillian.seleniumGrid>http://rmpestano:91af0903-cfea-4464-84d7-12a49c2b4e73@ondemand.saucelabs.com/wd/hub</arquillian.seleniumGrid>
             </properties>
-        </profile>
-
-        <!-- selenium web drivers -->
-        <profile>
-            <id>sauce-labs</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.saucelabs</groupId>
-                    <artifactId>arquillian-sauce-drone</artifactId>
-                    <version>0.0.4</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
         </profile>
 
         <!-- selenium web drivers -->
