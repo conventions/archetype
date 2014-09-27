@@ -1116,7 +1116,7 @@
             <properties>
                 <arquillian.browser>firefox</arquillian.browser>
                 <arquillian.remote>true</arquillian.remote>
-                <arquillian.localAddress>http://rmpestano:91af0903-cfea-4464-84d7-12a49c2b4e73@ondemand.saucelabs.com</arquillian.localAddress>
+                <arquillian.localAddress>localhost</arquillian.localAddress>
                 <arquillian.seleniumGrid>http://rmpestano:91af0903-cfea-4464-84d7-12a49c2b4e73@ondemand.saucelabs.com/wd/hub</arquillian.seleniumGrid>
             </properties>
         </profile>
