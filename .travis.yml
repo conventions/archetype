@@ -1,6 +1,6 @@
 language: java
 jdk: oraclejdk7
-script: mvn install -Pall-tests -Pwildfly-managed -Pjacoco -Pcoveralls -Psauce-labs
+script: mvn install -Pft-tests -Pwildfly-managed -Pjacoco -Pcoveralls -Premote-selenium
 addons:
   sauce_connect:
     username: rmpestano
