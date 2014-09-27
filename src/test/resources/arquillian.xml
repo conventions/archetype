@@ -51,6 +51,14 @@
         <property name="defaultCleanupStrategy ">AFTER</property>
     </extension>
 
+    <extension qualifier="sauce-webdriver">
+        <property name="userName">rmpestano</property>
+        <property name="accessKey">91af0903-cfea-4464-84d7-12a49c2b4e73</property>
+        <property name="browser">firefox</property>
+        <property name="os">Windows 2008</property>
+        <property name="version">4.</property>
+    </extension>
+
     <!--extension qualifier="recorder">
         <property name="startBeforeClass">true</property>
     </extension-->
