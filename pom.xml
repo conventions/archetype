@@ -18,7 +18,7 @@
         <version.selenium>2.43.1</version.selenium>
         <version.drone>2.0.0.Alpha2</version.drone>
         <version.arquillian>1.1.5.Final</version.arquillian>
-        <version.graphene>2.0.3.Final</version.graphene>
+        <version.graphene>2.1.0.Alpha1</version.graphene>
         <version.warp>1.0.0.Alpha7</version.warp>
         <version.persistence>1.0.0.Alpha7</version.persistence>
         <version.recorder>1.0.0.Alpha2</version.recorder>
@@ -168,7 +168,6 @@
 
 
         <!-- arquillian -->
-        <!-- arquillian -->
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
@@ -179,13 +178,13 @@
         <dependency>
             <groupId>org.jboss.arquillian.extension</groupId>
             <artifactId>arquillian-persistence-api</artifactId>
-            <version>1.0.0.Alpha6</version>
+            <version>1.0.0.Alpha7</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.extension</groupId>
-            <artifactId>arquillian-persistence-impl</artifactId>
-            <version>1.0.0.Alpha6</version>
+            <artifactId>arquillian-persistence-dbunit</artifactId>
+            <version>1.0.0.Alpha7</version>
             <scope>test</scope>
         </dependency>
 
@@ -205,19 +204,25 @@
             <version>${version.graphene}</version>
             <exclusions>
                 <exclusion>
-                    <groupId>org.jboss.arquillian.extension</groupId>
-                    <artifactId>arquillian-phantom-driver</artifactId>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-remote-driver</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
 
-        <!-- headless browser phantom.js -->
         <dependency>
-            <groupId>org.jboss.arquillian.extension</groupId>
-            <artifactId>arquillian-phantom-driver</artifactId>
-            <version>1.1.2.Final</version>
-            <scope>test</scope>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>${version.selenium}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
+
         <!-- arquillian jbehave -->
         <dependency>
             <groupId>org.jboss.arquillian.jbehave</groupId>
@@ -307,7 +312,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>4.2.5</version>
+            <version>4.3.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
