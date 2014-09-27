@@ -311,6 +311,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
@@ -321,6 +327,7 @@
             <version>1.4.01</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>
