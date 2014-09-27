@@ -6,6 +6,7 @@ deploy:
   user: rmpestano@gmail.com
   password: bigboss # can be encrypted
   domain: archetype-rpestano.rhcloud.com
+  app: archetype
 after_deploy:
   script: mvn test -Pft-tests -Pwildfly-managed -Premote-selenium
 
