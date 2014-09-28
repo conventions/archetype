@@ -46,7 +46,7 @@ public class HelloArquillianIt {
         //LIBS
         MavenResolverSystem resolver = Maven.resolver();
         war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.conventionsframework:conventions-core:1.3.2").withoutTransitivity().asFile());//conventions
-        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:4.0").withoutTransitivity().asSingleFile());
+        war.addAsLibraries(resolver.loadPomFromFile("pom.xml").resolve("org.primefaces:primefaces:5.0").withoutTransitivity().asSingleFile());
 
         //WEB-INF
         war.addAsWebInfResource(new File(WEB_INF,"beans.xml"), "beans.xml");
