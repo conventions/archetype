@@ -5,7 +5,7 @@ deploy:
   provider: openshift
   user: rmpestano@gmail.com
   password: bigboss # can be encrypted
-  domain: archetype-rpestano.rhcloud.com
+  domain: rpestano
   app: archetype
 after_deploy:
   script: mvn test -Pft-tests -Pwildfly-managed -Premote-selenium
