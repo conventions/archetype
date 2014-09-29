@@ -8,5 +8,5 @@ deploy:
   domain: rpestano
   app: archetype
 after_deploy:
-  script: mvn test -Pft-tests -Pwildfly-managed -Premote-selenium
+  run: mvn test -Pft-tests -Pwildfly-managed -Premote-selenium
 
