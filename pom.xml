@@ -231,21 +231,7 @@
             <scope>test</scope>
         </dependency>
 		
-	<!-- force travis download deps -->
-	<dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>13.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-	 
-        <dependency>
-            <groupId>org.jbehave</groupId>
-            <artifactId>jbehave-core</artifactId>
-            <version>3.7.5</version>
-            <scope>provided</scope>
-        </dependency>
-		 
+ 
 
         <!-- arquillian recorder -->
         <!--dependency> <groupId>org.arquillian.extension</groupId> <artifactId>arquillian-recorder-api</artifactId>
